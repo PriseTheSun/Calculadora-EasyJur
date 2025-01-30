@@ -72,18 +72,18 @@
 
       <div class="easyjur-result">
         <form action="">
+          
           <div class="easyjur-revenue-content">
-            <label class="easyjur-label-revenue" for="">
-              Estimativa de receita mensal</label
-            >
-            <span id="easyjur__revenue_value" class="easyjur-value-revenue"
-              >R$ 0</span
-            >
+            <label class="easyjur-label-revenue" for="">Estimativa de receita anual:</label>
+            <span class="easyjur-value-revenue" id="easyjur__annual_revenue">0</span>
           </div>
 
           <div class="easyjur-revenue-item">
-            <label for="">Estimativa de receita anual:</label>
-            <span id="easyjur__annual_revenue">0 Anual</span>
+            <label  for="">
+              Estimativa de receita mensal:</label
+            >
+            <span id="easyjur__revenue_value">R$ 0</span
+            >
           </div>
 
           <div class="easyjur-revenue-item">
@@ -253,7 +253,7 @@
     color: #495a63;
   }
   .easyjur-value-revenue {
-    font-size: 2.5em;
+    font-size: 2.3em;
     font-weight: bold;
     margin-bottom: 20px;
     color: #495a63;
@@ -485,7 +485,7 @@
 
       // Atualiza o elemento com o valor formatado
       document.getElementById("easyjur__annual_revenue").textContent =
-        valorAnualFormatado + " Anual";
+        valorAnualFormatado + "";
     }
   }
 
