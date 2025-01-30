@@ -74,11 +74,16 @@
         <form action="">
           <div class="easyjur-revenue-content">
             <label class="easyjur-label-revenue" for="">
-              Aumento estimado da receita mensal</label
+              Estimativa de aumento mensal</label
             >
             <span id="easyjur__revenue_value" class="easyjur-value-revenue"
               >R$ 0</span
             >
+          </div>
+
+          <div class="easyjur-revenue-item">
+            <label for="">Estimativa de aumento anual:</label>
+            <span id="easyjur__annual_revenue">0 Anual</span>
           </div>
 
           <div class="easyjur-revenue-item">
@@ -283,7 +288,7 @@
     text-transform: uppercase;
     transition: 0.8s;
     position: absolute;
-    bottom: -100px;
+    bottom: -65px;
     width: 100%;
   }
   .easyjur-print-btn:hover {
@@ -315,10 +320,10 @@
     output.textContent = slider.value + " R$";
 
     slider.addEventListener("input", function () {
-        output.textContent = this.value + " R$";
-        calcularReceitaMensal(); // Atualiza a receita quando o valor cobrado por hora muda
+      output.textContent = this.value + " R$";
+      calcularReceitaMensal(); // Atualiza a receita quando o valor cobrado por hora muda
     });
-}
+  }
   function impedirValorNegativo(inputId) {
     const input = document.getElementById(inputId);
 
@@ -387,43 +392,47 @@
     const buttons = document.querySelectorAll(".easyjur-btn-plan");
 
     const horasPorPlano = {
-        sta: 20,
-        pre: 25,
-        std: 35,
-        grw: 50,
-        gpl: 60,
+      sta: 20,
+      pre: 25,
+      std: 35,
+      grw: 50,
+      gpl: 60,
     };
 
     let horasBase = horasPorPlano["sta"];
 
     buttons.forEach((button) => {
-        button.addEventListener("click", function () {
-            horasBase = horasPorPlano[this.id];
-            atualizarHoras();
-        });
+      button.addEventListener("click", function () {
+        horasBase = horasPorPlano[this.id];
+        atualizarHoras();
+      });
     });
 
     inputPessoas.addEventListener("input", atualizarHoras);
 
     function atualizarHoras() {
-        const numeroPessoas = parseInt(inputPessoas.value, 10) || 1;
-        let horasTotais = numeroPessoas * horasBase;
+      const numeroPessoas = parseInt(inputPessoas.value, 10) || 1;
+      let horasTotais = numeroPessoas * horasBase;
 
-        if (horasTotais > 8760) {
-            const anos = (horasTotais / 8760).toFixed(2);
-            spanHoras.textContent = `${anos} Anos`;
-        } else {
-            spanHoras.textContent = `${horasTotais} Horas`;
-        }
+      if (horasTotais > 8760) {
+        const anos = (horasTotais / 8760).toFixed(2);
+        spanHoras.textContent = `${anos} Anos`;
+      } else {
+        spanHoras.textContent = `${horasTotais} Horas`;
+      }
 
-        calcularReceitaMensal(); // Atualiza a receita quando as horas economizadas mudam
+      calcularReceitaMensal(); // Atualiza a receita quando as horas economizadas mudam
     }
-}
+  }
 
-function calcularReceitaMensal() {
-    const horasEconomizadasElement = document.getElementById("easyjur__hours_saved");
+  function calcularReceitaMensal() {
+    const horasEconomizadasElement = document.getElementById(
+      "easyjur__hours_saved"
+    );
     const valorCobradoPorHoraElement = document.getElementById("billed_hour");
-    const receitaMensalElement = document.getElementById("easyjur__revenue_value");
+    const receitaMensalElement = document.getElementById(
+      "easyjur__revenue_value"
+    );
 
     // Extrai o número de horas economizadas (remove "Horas" ou "Anos" do texto)
     const horasEconomizadasTexto = horasEconomizadasElement.textContent;
@@ -437,25 +446,64 @@ function calcularReceitaMensal() {
     const receitaMensal = horasEconomizadas * valorCobradoPorHora;
 
     // Formata o valor em reais (R$) com separadores de milhar e duas casas decimais
-    const receitaFormatada = receitaMensal.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+    const receitaFormatada = receitaMensal.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
 
     // Atualiza o valor no elemento
     receitaMensalElement.textContent = receitaFormatada;
-}
+  }
 
-  // Inicia a função ao carregar a página
-// Inicia as funções ao carregar a página
-calcularHorasTotais();
-atualizarPrecoPlano();
-toggleBotaoAtivo();
-limitarValorMaximo();
-impedirValorNegativo("number_of_peoples");
-atualizarHorasTrabalhadas();
-atualizarHorasCobrada();
-calcularReceitaMensal(); // Inicializa o cálculo da receita   
+  function atualizarReceitaAnual() {
+    // Obtém o elemento do valor mensal
+    const valorMensalTexto = document.getElementById(
+      "easyjur__revenue_value"
+    ).textContent;
+
+    // Remove "R$" e espaços, depois converte para número
+    const valorMensal = parseFloat(
+      valorMensalTexto
+        .replace("R$", "")
+        .replace(/\./g, "")
+        .replace(",", ".")
+        .trim()
+    );
+
+    // Se for um número válido, calcula o valor anual
+    if (!isNaN(valorMensal)) {
+      const valorAnual = valorMensal * 12;
+
+      // Formata para moeda brasileira (R$)
+      const valorAnualFormatado = valorAnual.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+      });
+
+      // Atualiza o elemento com o valor formatado
+      document.getElementById("easyjur__annual_revenue").textContent =
+        valorAnualFormatado + " Anual";
+    }
+  }
+
+  // Adiciona um observer para detectar mudanças no valor mensal e atualizar automaticamente
+  const observer = new MutationObserver(atualizarReceitaAnual);
+  observer.observe(document.getElementById("easyjur__revenue_value"), {
+    childList: true,
+  });
+
+  // Inicia as funções ao carregar a página
+  calcularHorasTotais();
+  atualizarPrecoPlano();
+  atualizarReceitaAnual();
+
+  toggleBotaoAtivo();
+  limitarValorMaximo();
+  impedirValorNegativo("number_of_peoples");
+  atualizarHorasTrabalhadas();
+  atualizarHorasCobrada();
+  calcularReceitaMensal(); // Inicializa o cálculo da receita
 </script>
