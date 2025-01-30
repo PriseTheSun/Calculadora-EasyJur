@@ -299,6 +299,26 @@
 </style>
 
 <script>
+  function iniciarPlanoStart() {
+    // Simula o clique no botão do plano Start
+    const botaoStart = document.getElementById("sta");
+    botaoStart.click(); // Ativa o botão Start
+
+    // Define os valores mínimos para os campos
+    document.getElementById("number_of_peoples").value = 1; // Número mínimo de pessoas
+    document.getElementById("easyjur__hours_worked").value = 2.0; // Horas mínimas trabalhadas
+    document.getElementById("easyjur__billed_hour").value = 30; // Valor mínimo cobrado por hora
+
+    // Atualiza os valores exibidos na tela
+    document.getElementById("hours_worked").textContent = "2.0 Horas";
+    document.getElementById("billed_hour").textContent = "30 R$";
+
+    // Força o cálculo inicial da receita mensal e anual
+    calcularHorasTotais();
+    calcularReceitaMensal();
+    atualizarReceitaAnual();
+}
+
   function atualizarHorasTrabalhadas() {
     // Pega os elementos
     const slider = document.getElementById("easyjur__hours_worked");
@@ -496,14 +516,16 @@
   });
 
   // Inicia as funções ao carregar a página
-  calcularHorasTotais();
-  atualizarPrecoPlano();
-  atualizarReceitaAnual();
-
-  toggleBotaoAtivo();
-  limitarValorMaximo();
-  impedirValorNegativo("number_of_peoples");
-  atualizarHorasTrabalhadas();
-  atualizarHorasCobrada();
-  calcularReceitaMensal(); // Inicializa o cálculo da receita
+ // Inicia as funções ao carregar a página
+calcularHorasTotais();
+atualizarPrecoPlano();
+atualizarReceitaAnual();
+toggleBotaoAtivo();
+limitarValorMaximo();
+impedirValorNegativo("number_of_peoples");
+atualizarHorasTrabalhadas();
+atualizarHorasCobrada();
+calcularReceitaMensal(); // Inicializa o cálculo da receita
+iniciarPlanoStart();
+ // Inicializa o cálculo da receita
 </script>
