@@ -420,7 +420,7 @@
     }
 }
 
-  function calcularReceitaMensal() {
+function calcularReceitaMensal() {
     const horasEconomizadasElement = document.getElementById("easyjur__hours_saved");
     const valorCobradoPorHoraElement = document.getElementById("billed_hour");
     const receitaMensalElement = document.getElementById("easyjur__revenue_value");
@@ -436,8 +436,16 @@
     // Calcula a receita mensal
     const receitaMensal = horasEconomizadas * valorCobradoPorHora;
 
+    // Formata o valor em reais (R$) com separadores de milhar e duas casas decimais
+    const receitaFormatada = receitaMensal.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
     // Atualiza o valor no elemento
-    receitaMensalElement.textContent = `R$ ${receitaMensal.toFixed(2)}`;
+    receitaMensalElement.textContent = receitaFormatada;
 }
 
   // Inicia a função ao carregar a página
