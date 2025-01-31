@@ -1,5 +1,4 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <section class="easyjur-calculator">
   <div class="easyjur-main">
@@ -8,7 +7,9 @@
       <div class="easyjur-content">
         <form id="calculator-form">
           <div>
-            <label for="number_of_peoples">Número de Pessoas no Escritório:</label>
+            <label for="number_of_peoples"
+              >Número de Pessoas no Escritório:</label
+            >
             <input
               class="easyjur-input-amount-peoples"
               type="number"
@@ -21,7 +22,9 @@
           </div>
 
           <div class="easyjur-range-item">
-            <label for="easyjur__hours_worked">Horas Trabalhadas no Escritório</label>
+            <label for="easyjur__hours_worked"
+              >Horas Trabalhadas no Escritório</label
+            >
             <span id="hours_worked">2.0 Horas</span>
             <input
               type="range"
@@ -51,11 +54,21 @@
           <div class="easyjur-plans-selectors">
             <label>Planos</label>
             <div class="easyjur-grid-plans">
-              <button type="button" id="sta" class="easyjur-btn-plan">Start</button>
-              <button type="button" id="pre" class="easyjur-btn-plan">Premium</button>
-              <button type="button" id="std" class="easyjur-btn-plan">Standard</button>
-              <button type="button" id="grw" class="easyjur-btn-plan">Growth</button>
-              <button type="button" id="gpl" class="easyjur-btn-plan">Growth Plus</button>
+              <button type="button" id="sta" class="easyjur-btn-plan">
+                Start
+              </button>
+              <button type="button" id="pre" class="easyjur-btn-plan">
+                Premium
+              </button>
+              <button type="button" id="std" class="easyjur-btn-plan">
+                Standard
+              </button>
+              <button type="button" id="grw" class="easyjur-btn-plan">
+                Growth
+              </button>
+              <button type="button" id="gpl" class="easyjur-btn-plan">
+                Growth Plus
+              </button>
             </div>
           </div>
         </form>
@@ -65,8 +78,12 @@
       <div class="easyjur-result">
         <form>
           <div class="easyjur-revenue-content">
-            <label class="easyjur-label-revenue">Estimativa de receita anual:</label>
-            <span class="easyjur-value-revenue" id="easyjur__annual_revenue">0</span>
+            <label class="easyjur-label-revenue"
+              >Estimativa de receita anual:</label
+            >
+            <span class="easyjur-value-revenue" id="easyjur__annual_revenue"
+              >0</span
+            >
           </div>
 
           <div class="easyjur-revenue-item">
@@ -98,324 +115,358 @@
     <div class="easyjur-caption">
       <p>
         Este cálculo reinveste horas economizadas em atividades faturáveis. Para
-        mais informações, <a href="https://easyjur.com/" target="_blank">veja nosso FAQ.</a>
+        mais informações,
+        <a href="https://easyjur.com/" target="_blank">veja nosso FAQ.</a>
       </p>
     </div>
   </div>
 </section>
 
-
 <style>
   @font-face {
-  font-family: "borna-medium-webfont";
-  src: url("borna/borna-medium.otf") format("otf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-* {
-  font-family: "borna-medium-webfont";
-}
-
-.easyjur-calculator {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.easyjur-main {
-  background-color: #f4f4f4;
-  border-radius: 10px;
-}
-
-.easyjur-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px;
-  height: 450px;
-  width: 800px;
-}
-
-.easyjur-caption p {
-  text-align: center;
-  color: #495a63;
-}
-
-.easyjur-result,
-.easyjur-content {
-  width: 50%;
-}
-
-.easyjur-content form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.easyjur-content label {
-  font-size: 1.2em;
-  color: #495a63;
-}
-
-.easyjur-content input {
-  width: 100%;
-}
-
-.easyjur-range-item {
-  position: relative;
-}
-
-.easyjur-range-item span {
-  position: absolute;
-  right: 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: #495a63;
-}
-
-.easyjur-input-amount-peoples {
-  padding: 10px;
-  border-radius: 7px;
-  border: 1px solid #ccc;
-  outline: #80929b;
-  font-size: 20px;
-  color: #495a63;
-}
-
-.easyjur-plans-selectors {
-  position: absolute;
-  bottom: -140px;
-}
-
-.easyjur-grid-plans {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.easyjur-btn-plan {
-  padding: 10px;
-  color: #e5293f;
-  border: #e5293f solid 1px;
-  background: transparent;
-  border-radius: 5px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: 0.5s;
-  font-size: 11px;
-  font-weight: 600;
-  flex: calc(33% - 10px);
-}
-
-.easyjur-btn-plan:hover,
-.easyjur-btn-plan.active {
-  background-color: #e5293f;
-  color: #fff;
-  font-weight: 700;
-}
-
-.easyjur-result {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #fff;
-  padding: 0 20px;
-  height: 100%;
-  border-radius: 7px;
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-    rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-}
-
-.easyjur-result form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.easyjur-revenue-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.easyjur-label-revenue {
-  font-size: 1.2em;
-  color: #495a63;
-}
-
-.easyjur-value-revenue {
-  font-size: 2.3em;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #495a63;
-}
-
-.easyjur-revenue-item {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  padding-top: 8px;
-  color: #495a63;
-}
-
-.easyjur-revenue-item span {
-  font-weight: 600;
-}
-
-.easyjur-revenue-item::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: #acbac2;
-  margin-bottom: 100px;
-  position: absolute;
-  top: -8px;
-}
-
-.easyjur-print-btn {
-  padding: 10px;
-  background-color: #e5293f;
-  color: #fff;
-  border: #e5293f solid 1px;
-  border-radius: 40px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: 0.8s;
-  position: absolute;
-  bottom: -65px;
-  width: 100%;
-}
-
-.easyjur-print-btn:hover {
-  background-color: transparent;
-  color: #e5293f;
-  font-weight: 700;
-}
-
-
-/*Responsividade*/
-
-@media (max-width: 870px) {
-  .easyjur-calculator {
-    height: auto;
-    overflow: auto;
+    font-family: "borna-medium-webfont";
+    src: url("borna/borna-medium.otf") format("otf");
+    font-weight: normal;
+    font-style: normal;
   }
-  .easyjur-main {
+
+  * {
+    font-family: "borna-medium-webfont";
+  }
+
+  .easyjur-calculator {
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column !important;
+    align-items: center;
     justify-content: center;
+  }
+
+  .easyjur-main {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+  }
+
+  .easyjur-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    height: 450px;
+    width: 800px;
+  }
+
+  .easyjur-caption p {
+    text-align: center;
+    color: #495a63;
+    word-break: break-word;
+    padding: 0 15px;
+  }
+
+  .easyjur-result,
+  .easyjur-content {
+    width: 50%;
+  }
+
+  .easyjur-content form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .easyjur-content label {
+    font-size: 1.2em;
+    color: #495a63;
+  }
+
+  .easyjur-content input {
+    width: 100%;
+  }
+
+  .easyjur-range-item {
+    position: relative;
+  }
+
+  .easyjur-range-item span {
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #495a63;
+  }
+
+  .easyjur-input-amount-peoples {
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    outline: #80929b;
+    font-size: 20px;
+    color: #495a63;
+  }
+
+  .easyjur-plans-selectors {
+    position: absolute;
+    bottom: -140px;
+  }
+
+  .easyjur-grid-plans {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .easyjur-btn-plan {
+    padding: 10px;
+    color: #e5293f;
+    border: #e5293f solid 1px;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.5s;
+    font-size: 11px;
+    font-weight: 600;
+    flex: calc(33% - 10px);
+  }
+
+  .easyjur-btn-plan:hover,
+  .easyjur-btn-plan.active {
+    background-color: #e5293f;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .easyjur-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    padding: 0 20px;
+    height: 100%;
+    border-radius: 7px;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+      rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  }
+
+  .easyjur-result form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .easyjur-revenue-content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
-  .easyjur-container {
-    flex-direction: column !important;
-    height: auto;
-    width: 90%;
+
+  .easyjur-label-revenue {
+    font-size: 1.2em;
+    color: #495a63;
   }
-  .easyjur-revenue-content {
-    margin-top: 20px;
+
+  .easyjur-value-revenue {
+    font-size: 2.3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #495a63;
   }
-  .easyjur-result, .easyjur-content {
-    width: 90%;
+
+  .easyjur-revenue-item {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 8px;
+    color: #495a63;
   }
-  .easyjur-print-btn,
-  .easyjur-plans-selectors{
-    position: unset;
+
+  .easyjur-revenue-item span {
+    font-weight: 600;
   }
-  .easyjur-range-item span {
-    top: -15px;
+
+  .easyjur-revenue-item::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #acbac2;
+    margin-bottom: 100px;
+    position: absolute;
+    top: -8px;
   }
-}
+
+  .easyjur-print-btn {
+    padding: 10px;
+    background-color: #e5293f;
+    color: #fff;
+    border: #e5293f solid 1px;
+    border-radius: 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.8s;
+    position: absolute;
+    bottom: -65px;
+    width: 100%;
+  }
+
+  .easyjur-print-btn:hover {
+    background-color: transparent;
+    color: #e5293f;
+    font-weight: 700;
+  }
+
+  /*Responsividade*/
+
+  @media (max-width: 870px) {
+    .easyjur-calculator {
+      height: 100dvh;
+      overflow: auto;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .easyjur-main {
+      display: flex;
+      flex-direction: column !important;
+      justify-content: center;
+      align-items: center;
+    }
+    .easyjur-container {
+      flex-direction: column !important;
+      height: auto;
+      width: 90%;
+    }
+    .easyjur-revenue-content {
+      margin-top: 20px;
+    }
+    .easyjur-result,
+    .easyjur-content {
+      width: 90%;
+    }
+    .easyjur-print-btn,
+    .easyjur-plans-selectors {
+      position: unset;
+    }
+    .easyjur-range-item span {
+      top: -15px;
+    }
+  }
+
+  @media (max-width: 765px) {
+    .easyjur-calculator {
+      height: auto;
+    }
+  }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const planos = {
-    sta: { preco: 139, usuariosInclusos: 2, horas: 15 },
-    pre: { preco: 389, usuariosInclusos: 5, horas: 20 },
-    std: { preco: 599, usuariosInclusos: 10, horas: 25 },
-    grw: { preco: 1699, usuariosInclusos: 15, horas: 30 },
-    gpl: { preco: 2799, usuariosInclusos: 30, horas: 35 },
-  };
+  document.addEventListener("DOMContentLoaded", () => {
+    const planos = {
+      sta: { preco: 139, usuariosInclusos: 2, horas: 15 },
+      pre: { preco: 389, usuariosInclusos: 5, horas: 20 },
+      std: { preco: 599, usuariosInclusos: 10, horas: 25 },
+      grw: { preco: 1699, usuariosInclusos: 15, horas: 30 },
+      gpl: { preco: 2799, usuariosInclusos: 30, horas: 35 },
+    };
 
-  const form = document.getElementById("calculator-form");
-  const inputs = form.querySelectorAll("input, button");
-  const resultado = {
-    horasTrabalhadas: document.getElementById("hours_worked"),
-    valorCobrado: document.getElementById("billed_hour"),
-    receitaMensal: document.getElementById("easyjur__revenue_value"),
-    receitaAnual: document.getElementById("easyjur__annual_revenue"),
-    horasEconomizadas: document.getElementById("easyjur__hours_saved"),
-    custoMensal: document.getElementById("easyjur__cost"),
-    roi: document.getElementById("easyjur__return"),
-  };
+    const form = document.getElementById("calculator-form");
+    const inputs = form.querySelectorAll("input, button");
+    const resultado = {
+      horasTrabalhadas: document.getElementById("hours_worked"),
+      valorCobrado: document.getElementById("billed_hour"),
+      receitaMensal: document.getElementById("easyjur__revenue_value"),
+      receitaAnual: document.getElementById("easyjur__annual_revenue"),
+      horasEconomizadas: document.getElementById("easyjur__hours_saved"),
+      custoMensal: document.getElementById("easyjur__cost"),
+      roi: document.getElementById("easyjur__return"),
+    };
 
-  let planoAtual = "sta";
+    let planoAtual = "sta";
 
-  // Inicializa os valores e destaca o plano "Start"
-  iniciarPlanoStart();
+    // Inicializa os valores e destaca o plano "Start"
+    iniciarPlanoStart();
 
-  // Adiciona listeners
-  inputs.forEach((input) => input.addEventListener("input", atualizarCalculos));
-  document.querySelectorAll(".easyjur-btn-plan").forEach((btn) =>
-    btn.addEventListener("click", () => {
-      // Remove a classe .active de todos os botões
-      document.querySelectorAll(".easyjur-btn-plan").forEach((b) => b.classList.remove("active"));
-      // Adiciona a classe .active ao botão clicado
-      btn.classList.add("active");
-      planoAtual = btn.id;
+    // Adiciona listeners
+    inputs.forEach((input) =>
+      input.addEventListener("input", atualizarCalculos)
+    );
+    document.querySelectorAll(".easyjur-btn-plan").forEach((btn) =>
+      btn.addEventListener("click", () => {
+        // Remove a classe .active de todos os botões
+        document
+          .querySelectorAll(".easyjur-btn-plan")
+          .forEach((b) => b.classList.remove("active"));
+        // Adiciona a classe .active ao botão clicado
+        btn.classList.add("active");
+        planoAtual = btn.id;
+        atualizarCalculos();
+      })
+    );
+
+    function iniciarPlanoStart() {
+      document.getElementById("number_of_peoples").value = 1;
+      document.getElementById("easyjur__hours_worked").value = 4.0;
+      document.getElementById("easyjur__billed_hour").value = 30;
+      // Adiciona a classe .active ao botão do plano "Start"
+      document.getElementById("sta").classList.add("active");
       atualizarCalculos();
-    })
-  );
+    }
 
-  function iniciarPlanoStart() {
-    document.getElementById("number_of_peoples").value = 1;
-    document.getElementById("easyjur__hours_worked").value = 4.0;
-    document.getElementById("easyjur__billed_hour").value = 30;
-    // Adiciona a classe .active ao botão do plano "Start"
-    document.getElementById("sta").classList.add("active");
-    atualizarCalculos();
-  }
+    function atualizarCalculos() {
+      const numeroPessoas = parseInt(
+        document.getElementById("number_of_peoples").value,
+        10
+      );
+      const horasTrabalhadas = parseFloat(
+        document.getElementById("easyjur__hours_worked").value
+      );
+      const valorCobradoPorHora = parseFloat(
+        document.getElementById("easyjur__billed_hour").value
+      );
 
-  function atualizarCalculos() {
-    const numeroPessoas = parseInt(document.getElementById("number_of_peoples").value, 10);
-    const horasTrabalhadas = parseFloat(document.getElementById("easyjur__hours_worked").value);
-    const valorCobradoPorHora = parseFloat(document.getElementById("easyjur__billed_hour").value);
+      const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
+      const receitaMensal =
+        (horasEconomizadas + horasTrabalhadas) * valorCobradoPorHora;
+      const custoMensal = calcularCusto(numeroPessoas, planoAtual);
+      const roi = calcularROI(receitaMensal, custoMensal);
 
-    const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
-    const receitaMensal = (horasEconomizadas + horasTrabalhadas) * valorCobradoPorHora;
-    const custoMensal = calcularCusto(numeroPessoas, planoAtual);
-    const roi = calcularROI(receitaMensal, custoMensal);
+      resultado.horasTrabalhadas.textContent = `${horasTrabalhadas} Horas`;
+      resultado.valorCobrado.textContent = `${valorCobradoPorHora} R$`;
+      resultado.receitaMensal.textContent = receitaMensal.toLocaleString(
+        "pt-BR",
+        {
+          style: "currency",
+          currency: "BRL",
+        }
+      );
+      resultado.receitaAnual.textContent = (receitaMensal * 12).toLocaleString(
+        "pt-BR",
+        {
+          style: "currency",
+          currency: "BRL",
+        }
+      );
+      resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
+      resultado.custoMensal.textContent = `R$ ${custoMensal.toLocaleString(
+        "pt-BR",
+        { maximumFractionDigits: 0 }
+      )}`; // Formata para número inteiro
+      resultado.roi.textContent = `${Math.round(roi)}X`;
+    }
 
-    resultado.horasTrabalhadas.textContent = `${horasTrabalhadas} Horas`;
-    resultado.valorCobrado.textContent = `${valorCobradoPorHora} R$`;
-    resultado.receitaMensal.textContent = receitaMensal.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-    resultado.receitaAnual.textContent = (receitaMensal * 12).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-    resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
-    resultado.custoMensal.textContent = `R$ ${custoMensal.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`; // Formata para número inteiro
-    resultado.roi.textContent = `${Math.round(roi)}X`;
-  }
+    function calcularCusto(totalUsuarios, plano) {
+      const { preco, usuariosInclusos } = planos[plano];
+      if (totalUsuarios <= usuariosInclusos) return Math.round(preco); // Arredonda o valor
+      const precoPorUsuarioExtra = preco / usuariosInclusos;
+      return Math.round(
+        preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra
+      ); // Arredonda o valor
+    }
 
-  function calcularCusto(totalUsuarios, plano) {
-    const { preco, usuariosInclusos } = planos[plano];
-    if (totalUsuarios <= usuariosInclusos) return Math.round(preco); // Arredonda o valor
-    const precoPorUsuarioExtra = preco / usuariosInclusos;
-    return Math.round(preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra); // Arredonda o valor
-  }
-
-  function calcularROI(receita, custo) {
-    return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
-  }
-});
+    function calcularROI(receita, custo) {
+      return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
+    }
+  });
 </script>
