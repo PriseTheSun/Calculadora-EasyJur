@@ -86,7 +86,7 @@
 
           <div class="easyjur-revenue-item">
             <label>Retorno sobre o Investimento:</label>
-            <span id="esyjur__return">0X</span>
+            <span id="easyjur__return">0X</span>
           </div>
 
           <button class="easyjur-print-btn">Imprimir Relatório</button>
@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
     receitaAnual: document.getElementById("easyjur__annual_revenue"),
     horasEconomizadas: document.getElementById("easyjur__hours_saved"),
     custoMensal: document.getElementById("easyjur__cost"),
-    roi: document.getElementById("esyjur__return"),
+    roi: document.getElementById("easyjur__return"),
   };
 
   let planoAtual = "sta";
@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function calcularROI(receita, custo) {
-    return custo === 0 ? 0 : (receita - custo) / custo;
+    return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
   }
 });
 </script>
