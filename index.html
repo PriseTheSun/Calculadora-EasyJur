@@ -498,6 +498,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.round(preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra);
   }
 
+  //calculo roi
   function calcularROI(receita, custo) {
     return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
   }
