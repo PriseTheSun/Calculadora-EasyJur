@@ -102,7 +102,7 @@
           </div>
 
           <div class="easyjur-revenue-item">
-            <label>Retorno sobre o Investimento:</label>
+            <label class="label-evidence">Retorno sobre o Investimento:</label>
             <span id="easyjur__return">0X</span>
           </div>
 
@@ -256,6 +256,10 @@
     gap: 20px;
   }
 
+  .label-evidence {
+  font-weight: 700;
+}
+
   .easyjur-revenue-content {
     display: flex;
     flex-direction: column;
@@ -350,7 +354,7 @@
       position: unset;
     }
     .easyjur-range-item span {
-      top: -15px;
+      top: 45px;
     }
   }
 
@@ -359,6 +363,53 @@
       height: auto;
     }
   }
+
+
+
+
+
+/* Estilos para o controle deslizante (input[type="range"]) */
+.easyjur-range-slider {
+  -webkit-appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+/* Estilos para o botão (thumb) do range */
+.easyjur-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #e5293f;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.easyjur-range-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #e5293f;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* Efeito quando o slider é interagido */
+.easyjur-range-slider:focus {
+  background: #e5293f45;
+}
+
+.easyjur-range-slider:hover::-webkit-slider-thumb {
+  background: #e5293f;
+}
+
+.easyjur-range-slider:hover::-moz-range-thumb {
+  background: #e5293f;
+}
 </style>
 
 <script>
@@ -414,11 +465,32 @@
       atualizarCalculos();
     }
 
+    document
+      .getElementById("number_of_peoples")
+      .addEventListener("input", () => {
+        let numeroPessoas = parseInt(
+          document.getElementById("number_of_peoples").value,
+          10
+        );
+        if (isNaN(numeroPessoas) || numeroPessoas < 1) {
+          document.getElementById("number_of_peoples").value = 1;
+        }
+        atualizarCalculos();
+      });
+
     function atualizarCalculos() {
-      const numeroPessoas = parseInt(
+      // Obtém o valor do campo "Número de Pessoas no Escritório"
+      let numeroPessoas = parseInt(
         document.getElementById("number_of_peoples").value,
         10
       );
+
+      // Verifica se o valor é um número válido
+      if (isNaN(numeroPessoas) || numeroPessoas < 1) {
+        numeroPessoas = 1; // Define um valor padrão caso o campo esteja vazio ou inválido
+        document.getElementById("number_of_peoples").value = numeroPessoas; // Atualiza o campo com o valor padrão
+      }
+
       const horasTrabalhadas = parseFloat(
         document.getElementById("easyjur__hours_worked").value
       );
@@ -452,7 +524,7 @@
       resultado.custoMensal.textContent = `R$ ${custoMensal.toLocaleString(
         "pt-BR",
         { maximumFractionDigits: 0 }
-      )}`; // Formata para número inteiro
+      )}`;
       resultado.roi.textContent = `${Math.round(roi)}X`;
     }
 
@@ -469,4 +541,37 @@
       return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
     }
   });
+
+// Função para atualizar a cor de fundo e o valor exibido
+function updateSlider(slider, output) {
+  // Atualiza o valor exibido
+  output.textContent = slider.value + " Horas";
+
+  // Calcula a porcentagem percorrida
+  let percentage = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+
+  // Altera o fundo do slider para refletir a parte percorrida
+  slider.style.background = `linear-gradient(to right, #e5293f45 ${percentage}%, #ddd ${percentage}%)`;
+}
+
+// Seleciona os sliders e seus respectivos outputs
+const hourWorkedSlider = document.getElementById("easyjur__hours_worked");
+const billedHourSlider = document.getElementById("easyjur__billed_hour");
+const hourWorkedOutput = document.getElementById("hours_worked");
+const billedHourOutput = document.getElementById("billed_hour");
+
+// Aplica a função de atualização a ambos os sliders
+hourWorkedSlider.oninput = function() {
+  updateSlider(hourWorkedSlider, hourWorkedOutput);
+};
+
+billedHourSlider.oninput = function() {
+  updateSlider(billedHourSlider, billedHourOutput);
+};
+
+// Chama a função uma vez para definir o valor inicial
+updateSlider(hourWorkedSlider, hourWorkedOutput);
+updateSlider(billedHourSlider, billedHourOutput);
+
+
 </script>
