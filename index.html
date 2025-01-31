@@ -477,6 +477,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const valorCobradoPorHora = parseFloat(document.getElementById("easyjur__billed_hour").value);
 
     const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
+    //calculo da receita mensal
     const receitaMensal = (horasEconomizadas + horasTrabalhadas) * valorCobradoPorHora;
     const custoMensal = calcularCusto(numeroPessoas, planoAtual);
     const roi = calcularROI(receitaMensal, custoMensal);
