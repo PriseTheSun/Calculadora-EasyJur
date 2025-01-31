@@ -301,12 +301,12 @@
 @media (max-width: 870px) {
   .easyjur-main {
     display: flex;
-    flex-direction: column;
+    flex-direction: column !important;
     justify-content: center;
     align-items: center;
   }
   .easyjur-container {
-    flex-direction: column;
+    flex-direction: column !important;
     height: auto;
     width: 90%;
   }
@@ -321,13 +321,13 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const planos = {
-    sta: { preco: 139, usuariosInclusos: 2, horas: 20 },
-    pre: { preco: 389, usuariosInclusos: 5, horas: 25 },
-    std: { preco: 599, usuariosInclusos: 10, horas: 35 },
-    grw: { preco: 1699, usuariosInclusos: 15, horas: 50 },
-    gpl: { preco: 2799, usuariosInclusos: 30, horas: 60 },
+    sta: { preco: 139, usuariosInclusos: 2, horas: 15 },
+    pre: { preco: 389, usuariosInclusos: 5, horas: 20 },
+    std: { preco: 599, usuariosInclusos: 10, horas: 25 },
+    grw: { preco: 1699, usuariosInclusos: 15, horas: 30 },
+    gpl: { preco: 2799, usuariosInclusos: 30, horas: 35 },
   };
 
   const form = document.getElementById("calculator-form");
@@ -344,13 +344,17 @@
 
   let planoAtual = "sta";
 
-  // Inicializa os valores
+  // Inicializa os valores e destaca o plano "Start"
   iniciarPlanoStart();
 
   // Adiciona listeners
   inputs.forEach((input) => input.addEventListener("input", atualizarCalculos));
   document.querySelectorAll(".easyjur-btn-plan").forEach((btn) =>
     btn.addEventListener("click", () => {
+      // Remove a classe .active de todos os botões
+      document.querySelectorAll(".easyjur-btn-plan").forEach((b) => b.classList.remove("active"));
+      // Adiciona a classe .active ao botão clicado
+      btn.classList.add("active");
       planoAtual = btn.id;
       atualizarCalculos();
     })
@@ -360,6 +364,8 @@
     document.getElementById("number_of_peoples").value = 1;
     document.getElementById("easyjur__hours_worked").value = 2.0;
     document.getElementById("easyjur__billed_hour").value = 30;
+    // Adiciona a classe .active ao botão do plano "Start"
+    document.getElementById("sta").classList.add("active");
     atualizarCalculos();
   }
 
@@ -384,15 +390,15 @@
       currency: "BRL",
     });
     resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
-    resultado.custoMensal.textContent = `R$ ${custoMensal}`;
+    resultado.custoMensal.textContent = `R$ ${custoMensal.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`; // Formata para número inteiro
     resultado.roi.textContent = `${Math.round(roi)}X`;
   }
 
   function calcularCusto(totalUsuarios, plano) {
     const { preco, usuariosInclusos } = planos[plano];
-    if (totalUsuarios <= usuariosInclusos) return preco;
+    if (totalUsuarios <= usuariosInclusos) return Math.round(preco); // Arredonda o valor
     const precoPorUsuarioExtra = preco / usuariosInclusos;
-    return preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra;
+    return Math.round(preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra); // Arredonda o valor
   }
 
   function calcularROI(receita, custo) {
