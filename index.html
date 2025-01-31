@@ -1,3 +1,6 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 <section class="easyjur-calculator">
   <div class="easyjur-main">
     <div class="easyjur-container">
@@ -22,10 +25,10 @@
             <span id="hours_worked">2.0 Horas</span>
             <input
               type="range"
-              min="2.0"
-              max="8.0"
+              min="4.0"
+              max="15"
               step=".5"
-              value="2.0"
+              value="4.0"
               class="easyjur-range-slider"
               id="easyjur__hours_worked"
             />
@@ -310,8 +313,11 @@
     height: auto;
     width: 90%;
   }
+  .easyjur-revenue-content {
+    margin-top: 20px;
+  }
   .easyjur-result, .easyjur-content {
-    width: 100%;
+    width: 90%;
   }
   .easyjur-print-btn,
   .easyjur-plans-selectors{
@@ -362,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function iniciarPlanoStart() {
     document.getElementById("number_of_peoples").value = 1;
-    document.getElementById("easyjur__hours_worked").value = 2.0;
+    document.getElementById("easyjur__hours_worked").value = 4.0;
     document.getElementById("easyjur__billed_hour").value = 30;
     // Adiciona a classe .active ao botão do plano "Start"
     document.getElementById("sta").classList.add("active");
