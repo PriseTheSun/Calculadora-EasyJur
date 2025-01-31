@@ -449,13 +449,9 @@
   }
 
   function calcularReceitaMensal() {
-    const horasEconomizadasElement = document.getElementById(
-      "easyjur__hours_saved"
-    );
+    const horasEconomizadasElement = document.getElementById("easyjur__hours_saved");
     const valorCobradoPorHoraElement = document.getElementById("billed_hour");
-    const receitaMensalElement = document.getElementById(
-      "easyjur__revenue_value"
-    );
+    const receitaMensalElement = document.getElementById("easyjur__revenue_value");
 
     // Extrai o número de horas economizadas (remove "Horas" ou "Anos" do texto)
     const horasEconomizadasTexto = horasEconomizadasElement.textContent;
@@ -465,41 +461,46 @@
     const valorCobradoPorHoraTexto = valorCobradoPorHoraElement.textContent;
     const valorCobradoPorHora = parseFloat(valorCobradoPorHoraTexto) || 0;
 
-  
     // Calcula a receita mensal
     let receitaMensal = horasEconomizadas * valorCobradoPorHora;
-    const horasTrabalhadas = document.querySelector("#easyjur__hours_worked")?.value
-    const horasCobradas = document.querySelector("#easyjur__billed_hour").value
-    if(horasTrabalhadas && horasCobradas){
-      receitaMensal += parseFloat(horasTrabalhadas) * parseFloat(horasCobradas) // Adiciona as horasCobradas
+    const horasTrabalhadas = document.querySelector("#easyjur__hours_worked")?.value;
+    const horasCobradas = document.querySelector("#easyjur__billed_hour").value;
+
+    if (horasTrabalhadas && horasCobradas) {
+        receitaMensal += parseFloat(horasTrabalhadas) * parseFloat(horasCobradas); // Adiciona as horasCobradas
     }
-    const a = document.querySelector(".easyjur-btn-plan.active")
-    if(a){
-      const plan = a.id
-      const totalUsuario = document.querySelector("#number_of_peoples").value
-      const custom = calcularCusto(totalUsuario, plan)
-      let roi = calcularROI(receitaMensal, custom)
-      roi = roi < 0 ? 0 : roi
-      console.log({ 
-        receitaMensal,
-        custom,
-        roi
-      });
-      
-      document.querySelector("#esyjur__return").textContent = `${roi}X`
+
+    const a = document.querySelector(".easyjur-btn-plan.active");
+    if (a) {
+        const plan = a.id;
+        const totalUsuario = document.querySelector("#number_of_peoples").value;
+        const custom = calcularCusto(totalUsuario, plan);
+        let roi = calcularROI(receitaMensal, custom);
+        roi = roi < 0 ? 0 : roi;
+
+        // Arredonda o ROI para o número inteiro mais próximo
+        const roiArredondado = Math.round(roi);
+
+        // Exibe o ROI arredondado
+        document.querySelector("#esyjur__return").textContent = `${roiArredondado}X`;
     }
+
     // Formata o valor em reais (R$) com separadores de milhar e duas casas decimais
     const receitaFormatada = receitaMensal.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
     });
 
     // Atualiza o valor no elemento
     receitaMensalElement.textContent = receitaFormatada;
-  }
+}
 
+// Adiciona listeners para atualizar o ROI quando os valores mudam
+document.getElementById("number_of_peoples").addEventListener("input", calcularReceitaMensal);
+document.getElementById("easyjur__hours_worked").addEventListener("input", calcularReceitaMensal);
+document.getElementById("easyjur__billed_hour").addEventListener("input", calcularReceitaMensal);
   function atualizarReceitaAnual() {
     // Obtém o elemento do valor mensal
     const valorMensalTexto = document.getElementById(
@@ -578,10 +579,11 @@ iniciarPlanoStart();
     return Math.round(custoTotal * 100) / 100; // Arredonda para 2 casas decimais
 }
 
+// Função para calcular o ROI com casas decimais
 function calcularROI(valorReceita, custo) {
     if (custo === 0) {
         throw new Error("O custo não pode ser zero");
     }
-    return Math.round(((valorReceita - custo) / custo) * 100);
+    return ((valorReceita - custo) / custo);
 }
 </script>
