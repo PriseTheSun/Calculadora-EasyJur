@@ -330,6 +330,7 @@
     // Adiciona o evento para atualizar quando o usuário interagir
     slider.addEventListener("input", function () {
       output.textContent = this.value + " Horas";
+      calcularReceitaMensal()
     });
   }
 
@@ -344,6 +345,8 @@
       calcularReceitaMensal(); // Atualiza a receita quando o valor cobrado por hora muda
     });
   }
+
+
   function impedirValorNegativo(inputId) {
     const input = document.getElementById(inputId);
 
@@ -462,9 +465,29 @@
     const valorCobradoPorHoraTexto = valorCobradoPorHoraElement.textContent;
     const valorCobradoPorHora = parseFloat(valorCobradoPorHoraTexto) || 0;
 
+  
     // Calcula a receita mensal
-    const receitaMensal = horasEconomizadas * valorCobradoPorHora;
-
+    let receitaMensal = horasEconomizadas * valorCobradoPorHora;
+    const horasTrabalhadas = document.querySelector("#easyjur__hours_worked")?.value
+    const horasCobradas = document.querySelector("#easyjur__billed_hour").value
+    if(horasTrabalhadas && horasCobradas){
+      receitaMensal += parseFloat(horasTrabalhadas) * parseFloat(horasCobradas) // Adiciona as horasCobradas
+    }
+    const a = document.querySelector(".easyjur-btn-plan.active")
+    if(a){
+      const plan = a.id
+      const totalUsuario = document.querySelector("#number_of_peoples").value
+      const custom = calcularCusto(totalUsuario, plan)
+      let roi = calcularROI(receitaMensal, custom)
+      roi = roi < 0 ? 0 : roi
+      console.log({ 
+        receitaMensal,
+        custom,
+        roi
+      });
+      
+      document.querySelector("#esyjur__return").textContent = `${roi}X`
+    }
     // Formata o valor em reais (R$) com separadores de milhar e duas casas decimais
     const receitaFormatada = receitaMensal.toLocaleString("pt-BR", {
       style: "currency",
@@ -528,4 +551,37 @@ atualizarHorasCobrada();
 calcularReceitaMensal(); // Inicializa o cálculo da receita
 iniciarPlanoStart();
  // Inicializa o cálculo da receita
+
+ function calcularCusto(totalUsuarios, plano) {
+    const planos = {
+        "sta": { preco: 139, usuariosInclusos: 2 },
+        "pre": { preco: 389, usuariosInclusos: 5 },
+        "std": { preco: 599, usuariosInclusos: 10 },
+        "grw": { preco: 1699, usuariosInclusos: 15 },
+        "gpl"	: { preco: 2799, usuariosInclusos: 30 }
+    };
+    
+    if (!planos[plano]) {
+        throw new Error("Plano inválido");
+    }
+    
+    const { preco, usuariosInclusos } = planos[plano];
+    
+    if (totalUsuarios <= usuariosInclusos) {
+        return preco;
+    }
+    
+    const precoPorUsuarioExtra = preco / usuariosInclusos;
+    const usuariosExtras = totalUsuarios - usuariosInclusos;
+    const custoTotal = preco + (usuariosExtras * precoPorUsuarioExtra);
+    
+    return Math.round(custoTotal * 100) / 100; // Arredonda para 2 casas decimais
+}
+
+function calcularROI(valorReceita, custo) {
+    if (custo === 0) {
+        throw new Error("O custo não pode ser zero");
+    }
+    return Math.round(((valorReceita - custo) / custo) * 100);
+}
 </script>
