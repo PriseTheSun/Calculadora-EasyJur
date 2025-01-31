@@ -413,7 +413,7 @@
 </style>
 
 <script>
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   const planos = {
     sta: { preco: 139, usuariosInclusos: 2, horas: 15 },
     pre: { preco: 389, usuariosInclusos: 5, horas: 20 },
@@ -440,16 +440,14 @@
   iniciarPlanoStart();
 
   // Adiciona listeners
-  inputs.forEach((input) =>
-    input.addEventListener("input", atualizarCalculos)
-  );
+  inputs.forEach((input) => input.addEventListener("input", atualizarCalculos));
 
   document.querySelectorAll(".easyjur-btn-plan").forEach((btn) =>
     btn.addEventListener("click", () => {
       // Remove a classe .active de todos os botões
-      document
-        .querySelectorAll(".easyjur-btn-plan")
-        .forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".easyjur-btn-plan").forEach((b) =>
+        b.classList.remove("active")
+      );
       // Adiciona a classe .active ao botão clicado
       btn.classList.add("active");
       planoAtual = btn.id;
@@ -461,114 +459,69 @@
     document.getElementById("number_of_peoples").value = 1;
     document.getElementById("easyjur__hours_worked").value = 4.0;
     document.getElementById("easyjur__billed_hour").value = 30;
-    // Adiciona a classe .active ao botão do plano "Start"
     document.getElementById("sta").classList.add("active");
     atualizarCalculos();
   }
 
-  document
-    .getElementById("number_of_peoples")
-    .addEventListener("input", () => {
-      let numeroPessoas = parseInt(
-        document.getElementById("number_of_peoples").value,
-        10
-      );
-      if (numeroPessoas < 1) {
-        document.getElementById("number_of_peoples").value = 1;
-      }
-      atualizarCalculos();
-    });
+  document.getElementById("number_of_peoples").addEventListener("input", () => {
+    let numeroPessoas = parseInt(document.getElementById("number_of_peoples").value, 10);
+    if (numeroPessoas < 1) {
+      document.getElementById("number_of_peoples").value = 1;
+    }
+    atualizarCalculos();
+  });
 
   function atualizarCalculos() {
-    // Obtém o valor do campo "Número de Pessoas no Escritório"
-    let numeroPessoas = parseInt(
-      document.getElementById("number_of_peoples").value,
-      10
-    );
-    numeroPessoas = Math.max(1, numeroPessoas); // Garantir que seja no mínimo 1
-
-    const horasTrabalhadas = parseFloat(
-      document.getElementById("easyjur__hours_worked").value
-    );
-    const valorCobradoPorHora = parseFloat(
-      document.getElementById("easyjur__billed_hour").value
-    );
+    let numeroPessoas = Math.max(1, parseInt(document.getElementById("number_of_peoples").value, 10));
+    const horasTrabalhadas = parseFloat(document.getElementById("easyjur__hours_worked").value);
+    const valorCobradoPorHora = parseFloat(document.getElementById("easyjur__billed_hour").value);
 
     const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
-    const receitaMensal =
-      (horasEconomizadas + horasTrabalhadas) * valorCobradoPorHora;
+    const receitaMensal = (horasEconomizadas + horasTrabalhadas) * valorCobradoPorHora;
     const custoMensal = calcularCusto(numeroPessoas, planoAtual);
     const roi = calcularROI(receitaMensal, custoMensal);
 
     resultado.horasTrabalhadas.textContent = `${horasTrabalhadas} Horas`;
     resultado.valorCobrado.textContent = `${valorCobradoPorHora} R$`;
-    resultado.receitaMensal.textContent = receitaMensal.toLocaleString(
-      "pt-BR",
-      {
-        style: "currency",
-        currency: "BRL",
-      }
-    );
-    resultado.receitaAnual.textContent = (receitaMensal * 12).toLocaleString(
-      "pt-BR",
-      {
-        style: "currency",
-        currency: "BRL",
-      }
-    );
+    resultado.receitaMensal.textContent = receitaMensal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    resultado.receitaAnual.textContent = (receitaMensal * 12).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
     resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
-    resultado.custoMensal.textContent = `R$ ${custoMensal.toLocaleString(
-      "pt-BR",
-      { maximumFractionDigits: 0 }
-    )}`;
+    resultado.custoMensal.textContent = `R$ ${custoMensal.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`;
     resultado.roi.textContent = `${Math.round(roi)}x`;
   }
 
   function calcularCusto(totalUsuarios, plano) {
     const { preco, usuariosInclusos } = planos[plano];
-    if (totalUsuarios <= usuariosInclusos) return Math.round(preco); // Arredonda o valor
+    if (totalUsuarios <= usuariosInclusos) return Math.round(preco);
     const precoPorUsuarioExtra = preco / usuariosInclusos;
-    return Math.round(
-      preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra
-    ); // Arredonda o valor
+    return Math.round(preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra);
   }
 
   function calcularROI(receita, custo) {
     return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
   }
-});
+  
+  // Função para atualizar a cor de fundo e o valor exibido no slider
+  function updateSlider(slider, output) {
+    output.textContent = `${slider.value} Horas`;
+    let percentage = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+    slider.style.background = `linear-gradient(to right, #e5293f45 ${percentage}%, #ddd ${percentage}%)`;
+  }
 
-// Função para atualizar a cor de fundo e o valor exibido
-function updateSlider(slider, output) {
-  // Atualiza o valor exibido
-  output.textContent = slider.value + " Horas";
+  // Seleciona os sliders e seus respectivos outputs
+  const hourWorkedSlider = document.getElementById("easyjur__hours_worked");
+  const billedHourSlider = document.getElementById("easyjur__billed_hour");
+  const hourWorkedOutput = document.getElementById("hours_worked");
+  const billedHourOutput = document.getElementById("billed_hour");
 
-  // Calcula a porcentagem percorrida
-  let percentage = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+  // Aplica a função de atualização a ambos os sliders
+  hourWorkedSlider.oninput = () => updateSlider(hourWorkedSlider, hourWorkedOutput);
+  billedHourSlider.oninput = () => updateSlider(billedHourSlider, billedHourOutput);
 
-  // Altera o fundo do slider para refletir a parte percorrida
-  slider.style.background = `linear-gradient(to right, #e5293f45 ${percentage}%, #ddd ${percentage}%)`;
-}
-
-// Seleciona os sliders e seus respectivos outputs
-const hourWorkedSlider = document.getElementById("easyjur__hours_worked");
-const billedHourSlider = document.getElementById("easyjur__billed_hour");
-const hourWorkedOutput = document.getElementById("hours_worked");
-const billedHourOutput = document.getElementById("billed_hour");
-
-// Aplica a função de atualização a ambos os sliders
-hourWorkedSlider.oninput = function() {
+  // Chama a função uma vez para definir o valor inicial
   updateSlider(hourWorkedSlider, hourWorkedOutput);
-};
-
-billedHourSlider.oninput = function() {
   updateSlider(billedHourSlider, billedHourOutput);
-};
-
-// Chama a função uma vez para definir o valor inicial
-updateSlider(hourWorkedSlider, hourWorkedOutput);
-updateSlider(billedHourSlider, billedHourOutput);
-
+});
 
 
 </script>
