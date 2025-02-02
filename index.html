@@ -18,6 +18,7 @@
               name="number"
               id="number_of_peoples"
               value="1"
+              placeholder="1"
             />
           </div>
 
@@ -532,10 +533,15 @@
       display: none;
     }
   }
-</style>
+  .multiplicador-extra{
+    color: red !important;
+  }
+  </style>
 
 <script>
+  let multipladorExtra = 1
   document.addEventListener("DOMContentLoaded", () => {
+   
     const planos = {
       sta: { preco: 139, usuariosInclusos: 2, horas: 15 },
       pre: { preco: 389, usuariosInclusos: 5, horas: 20 },
@@ -547,13 +553,13 @@
     const form = document.getElementById("calculator-form");
     const inputs = form.querySelectorAll("input, button");
     const resultado = {
-      horasTrabalhadas: document.getElementById("hours_worked"),
-      valorCobrado: document.getElementById("billed_hour"),
-      receitaMensal: document.getElementById("easyjur__revenue_value"),
-      receitaAnual: document.getElementById("easyjur__annual_revenue"),
-      horasEconomizadas: document.getElementById("easyjur__hours_saved"),
-      custoMensal: document.getElementById("easyjur__cost"),
-      roi: document.getElementById("easyjur__return"),
+      horasTrabalhadas: document.getElementById("hours_worked")  || {textContent: "0"},
+      valorCobrado: document.getElementById("billed_hour") || {textContent: "0"},
+      receitaMensal: document.getElementById("easyjur__revenue_value") || {textContent: "0"},
+      receitaAnual: document.getElementById("easyjur__annual_revenue") || {textContent: "0"},
+      horasEconomizadas: document.getElementById("easyjur__hours_saved") || {textContent: "0"},
+      custoMensal: document.getElementById("easyjur__cost") || {textContent: "0"},
+      roi: document.getElementById("easyjur__return") || {textContent: "0"},
     };
 
     let planoAtual = "sta";
@@ -604,7 +610,7 @@
       let numeroPessoas = Math.max(
         1,
         parseInt(document.getElementById("number_of_peoples").value, 10)
-      );
+      ) || 1;
       const horasTrabalhadas = parseFloat(
         document.getElementById("easyjur__hours_worked").value
       );
@@ -613,9 +619,12 @@
       );
 
       const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
+      const valorHorasTrabalhadas = (horasTrabalhadas * valorCobradoPorHora)  || 0
+      
       //calculo da receita mensal
       const receitaMensal =
-        (horasEconomizadas + horasTrabalhadas) * valorCobradoPorHora;
+        (horasEconomizadas  * valorCobradoPorHora) + valorHorasTrabalhadas;
+
       const custoMensal = calcularCusto(numeroPessoas, planoAtual);
       const roi = calcularROI(receitaMensal, custoMensal);
 
@@ -630,7 +639,7 @@
         { style: "currency", currency: "BRL" }
       );
       resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
-      resultado.custoMensal.textContent = `R$ ${custoMensal.toLocaleString(
+      resultado.custoMensal.innerHTML = `<span class="multiplicador-extra">${multipladorExtra}X</span> - R$ ${custoMensal.toLocaleString(
         "pt-BR",
         { maximumFractionDigits: 0 }
       )}`;
@@ -638,12 +647,11 @@
     }
 
     function calcularCusto(totalUsuarios, plano) {
+      multipladorExtra = 1;
       const { preco, usuariosInclusos } = planos[plano];
       if (totalUsuarios <= usuariosInclusos) return Math.round(preco);
-      const precoPorUsuarioExtra = preco / usuariosInclusos;
-      return Math.round(
-        preco + (totalUsuarios - usuariosInclusos) * precoPorUsuarioExtra
-      );
+      multipladorExtra = Math.ceil(totalUsuarios / usuariosInclusos);
+      return multipladorExtra * preco
     }
 
     //calculo roi
@@ -682,12 +690,16 @@
     .addEventListener("click", function () {
       document.getElementById("easyjur__modal_annual_revenue").textContent =
         document.getElementById("easyjur__annual_revenue").textContent;
+
       document.getElementById("easyjur__modal_revenue_value").textContent =
         document.getElementById("easyjur__revenue_value").textContent;
+
       document.getElementById("easyjur__modal_hours_saved").textContent =
         document.getElementById("easyjur__hours_saved").textContent;
+
       document.getElementById("easyjur__modal_cost").textContent =
         document.getElementById("easyjur__cost").textContent;
+
       document.getElementById("easyjur__modal_return").textContent =
         document.getElementById("easyjur__return").textContent;
 
