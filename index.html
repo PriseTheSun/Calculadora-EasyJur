@@ -163,7 +163,9 @@
         </tbody>
       </table>
     </div>
-    <button id="easyjur__modal_print" class="easyjur-modal-print-btn">Imprimir Relatório</button>
+    <button id="easyjur__modal_print" class="easyjur-modal-print-btn">
+      Imprimir Relatório
+    </button>
   </div>
 </div>
 
@@ -346,7 +348,7 @@
     top: -8px;
   }
 
-  .easyjur-modal-print-btn{
+  .easyjur-modal-print-btn {
     padding: 10px;
     background-color: #e5293f;
     color: #fff;
@@ -533,36 +535,62 @@
       display: none;
     }
   }
-  .multiplicador-extra{
-    color: red !important;
+  .multiplicador-extra {
+    color: #e5293f;
+    border: solid 1px #e5293f;
+    font-size: 0.7rem;
+    padding: 2 5px;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
   }
-  </style>
+</style>
 
 <script>
-  let multipladorExtra = 1
-  document.addEventListener("DOMContentLoaded", () => {
-   
-    const planos = {
-      sta: { preco: 139, usuariosInclusos: 2, horas: 15 },
-      pre: { preco: 389, usuariosInclusos: 5, horas: 20 },
-      std: { preco: 599, usuariosInclusos: 10, horas: 25 },
-      grw: { preco: 1699, usuariosInclusos: 15, horas: 30 },
-      gpl: { preco: 2799, usuariosInclusos: 30, horas: 35 },
-    };
+  const nomesPlanos = {
+    sta: "Start",
+    pre: "Premium",
+    std: "Standard",
+    grw: "Growth",
+    gpl: "Growth Plus",
+  };
 
+  const planos = {
+    sta: { preco: 139, usuariosInclusos: 2, horas: 15 },
+    pre: { preco: 389, usuariosInclusos: 5, horas: 20 },
+    std: { preco: 599, usuariosInclusos: 10, horas: 25 },
+    grw: { preco: 1699, usuariosInclusos: 15, horas: 30 },
+    gpl: { preco: 2799, usuariosInclusos: 30, horas: 35 },
+  };
+
+  let multipladorExtra = 1;
+  let planoAtual = "sta";
+
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("calculator-form");
     const inputs = form.querySelectorAll("input, button");
     const resultado = {
-      horasTrabalhadas: document.getElementById("hours_worked")  || {textContent: "0"},
-      valorCobrado: document.getElementById("billed_hour") || {textContent: "0"},
-      receitaMensal: document.getElementById("easyjur__revenue_value") || {textContent: "0"},
-      receitaAnual: document.getElementById("easyjur__annual_revenue") || {textContent: "0"},
-      horasEconomizadas: document.getElementById("easyjur__hours_saved") || {textContent: "0"},
-      custoMensal: document.getElementById("easyjur__cost") || {textContent: "0"},
-      roi: document.getElementById("easyjur__return") || {textContent: "0"},
+      horasTrabalhadas: document.getElementById("hours_worked") || {
+        textContent: "0",
+      },
+      valorCobrado: document.getElementById("billed_hour") || {
+        textContent: "0",
+      },
+      receitaMensal: document.getElementById("easyjur__revenue_value") || {
+        textContent: "0",
+      },
+      receitaAnual: document.getElementById("easyjur__annual_revenue") || {
+        textContent: "0",
+      },
+      horasEconomizadas: document.getElementById("easyjur__hours_saved") || {
+        textContent: "0",
+      },
+      custoMensal: document.getElementById("easyjur__cost") || {
+        textContent: "0",
+      },
+      roi: document.getElementById("easyjur__return") || { textContent: "0" },
     };
-
-    let planoAtual = "sta";
 
     // Inicializa os valores e destaca o plano "Start"
     iniciarPlanoStart();
@@ -574,24 +602,14 @@
 
     document.querySelectorAll(".easyjur-btn-plan").forEach((btn) =>
       btn.addEventListener("click", () => {
-        // Remove a classe .active de todos os botões
         document
           .querySelectorAll(".easyjur-btn-plan")
           .forEach((b) => b.classList.remove("active"));
-        // Adiciona a classe .active ao botão clicado
         btn.classList.add("active");
         planoAtual = btn.id;
         atualizarCalculos();
       })
     );
-
-    function iniciarPlanoStart() {
-      document.getElementById("number_of_peoples").value = 1;
-      document.getElementById("easyjur__hours_worked").value = 4.0;
-      document.getElementById("easyjur__billed_hour").value = 30;
-      document.getElementById("sta").classList.add("active");
-      atualizarCalculos();
-    }
 
     document
       .getElementById("number_of_peoples")
@@ -600,17 +618,26 @@
           document.getElementById("number_of_peoples").value,
           10
         );
-        if (numeroPessoas < 1) {
+        if (numeroPessoas < 1)
           document.getElementById("number_of_peoples").value = 1;
-        }
         atualizarCalculos();
       });
 
+    // Funções
+    function iniciarPlanoStart() {
+      document.getElementById("number_of_peoples").value = 1;
+      document.getElementById("easyjur__hours_worked").value = 4.0;
+      document.getElementById("easyjur__billed_hour").value = 30;
+      document.getElementById("sta").classList.add("active");
+      atualizarCalculos();
+    }
+
     function atualizarCalculos() {
-      let numeroPessoas = Math.max(
-        1,
-        parseInt(document.getElementById("number_of_peoples").value, 10)
-      ) || 1;
+      const numeroPessoas =
+        Math.max(
+          1,
+          parseInt(document.getElementById("number_of_peoples").value, 10)
+        ) || 1;
       const horasTrabalhadas = parseFloat(
         document.getElementById("easyjur__hours_worked").value
       );
@@ -619,12 +646,10 @@
       );
 
       const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
-      const valorHorasTrabalhadas = (horasTrabalhadas * valorCobradoPorHora)  || 0
-      
-      //calculo da receita mensal
-      const receitaMensal =
-        (horasEconomizadas  * valorCobradoPorHora) + valorHorasTrabalhadas;
+      const valorHorasTrabalhadas = horasTrabalhadas * valorCobradoPorHora || 0;
 
+      const receitaMensal =
+        horasEconomizadas * valorCobradoPorHora + valorHorasTrabalhadas;
       const custoMensal = calcularCusto(numeroPessoas, planoAtual);
       const roi = calcularROI(receitaMensal, custoMensal);
 
@@ -639,10 +664,11 @@
         { style: "currency", currency: "BRL" }
       );
       resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
-      resultado.custoMensal.innerHTML = `<span class="multiplicador-extra">${multipladorExtra}X</span> - R$ ${custoMensal.toLocaleString(
-        "pt-BR",
-        { maximumFractionDigits: 0 }
-      )}`;
+      resultado.custoMensal.innerHTML = `<span class="multiplicador-extra">${multipladorExtra}x ${
+        nomesPlanos[planoAtual]
+      }</span> R$ ${custoMensal.toLocaleString("pt-BR", {
+        maximumFractionDigits: 0,
+      })}`;
       resultado.roi.textContent = `${Math.round(roi)}x`;
     }
 
@@ -651,98 +677,85 @@
       const { preco, usuariosInclusos } = planos[plano];
       if (totalUsuarios <= usuariosInclusos) return Math.round(preco);
       multipladorExtra = Math.ceil(totalUsuarios / usuariosInclusos);
-      return multipladorExtra * preco
+      return multipladorExtra * preco;
     }
 
-    //calculo roi
     function calcularROI(receita, custo) {
       return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
     }
 
-    // Função para atualizar a cor de fundo e o valor exibido no slider
     function updateSlider(slider, output) {
       output.textContent = `${slider.value} Horas`;
-      let percentage =
+      const percentage =
         ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
       slider.style.background = `linear-gradient(to right, #e5293f45 ${percentage}%, #ddd ${percentage}%)`;
     }
 
-    // Seleciona os sliders e seus respectivos outputs
+    // Sliders
     const hourWorkedSlider = document.getElementById("easyjur__hours_worked");
     const billedHourSlider = document.getElementById("easyjur__billed_hour");
     const hourWorkedOutput = document.getElementById("hours_worked");
     const billedHourOutput = document.getElementById("billed_hour");
 
-    // Aplica a função de atualização a ambos os sliders
     hourWorkedSlider.oninput = () =>
       updateSlider(hourWorkedSlider, hourWorkedOutput);
     billedHourSlider.oninput = () =>
       updateSlider(billedHourSlider, billedHourOutput);
 
-    // Chama a função uma vez para definir o valor inicial
     updateSlider(hourWorkedSlider, hourWorkedOutput);
     updateSlider(billedHourSlider, billedHourOutput);
   });
 
-  //impressão do modal
-  document
-    .getElementById("easyjur__print")
-    .addEventListener("click", function () {
-      document.getElementById("easyjur__modal_annual_revenue").textContent =
-        document.getElementById("easyjur__annual_revenue").textContent;
-
-      document.getElementById("easyjur__modal_revenue_value").textContent =
-        document.getElementById("easyjur__revenue_value").textContent;
-
-      document.getElementById("easyjur__modal_hours_saved").textContent =
-        document.getElementById("easyjur__hours_saved").textContent;
-
-      document.getElementById("easyjur__modal_cost").textContent =
-        document.getElementById("easyjur__cost").textContent;
-
-      document.getElementById("easyjur__modal_return").textContent =
-        document.getElementById("easyjur__return").textContent;
-
-      document.getElementById("easyjur__modal").style.display = "flex";
-    });
+  // Modal
+  document.getElementById("easyjur__print").addEventListener("click", () => {
+    document.getElementById("easyjur__modal_annual_revenue").textContent =
+      document.getElementById("easyjur__annual_revenue").textContent;
+    document.getElementById("easyjur__modal_revenue_value").textContent =
+      document.getElementById("easyjur__revenue_value").textContent;
+    document.getElementById("easyjur__modal_hours_saved").textContent =
+      document.getElementById("easyjur__hours_saved").textContent;
+    document.getElementById("easyjur__modal_cost").textContent =
+      document.getElementById("easyjur__cost").textContent;
+    document.getElementById("easyjur__modal_return").textContent =
+      document.getElementById("easyjur__return").textContent;
+    document.getElementById("easyjur__modal").style.display = "flex";
+  });
 
   document
     .querySelector(".easyjur-modal-close")
-    .addEventListener("click", function () {
+    .addEventListener("click", () => {
       document.getElementById("easyjur__modal").style.display = "none";
     });
 
   document
     .getElementById("easyjur__modal_print")
-    .addEventListener("click", function () {
-      var printContent = document.getElementById(
+    .addEventListener("click", () => {
+      const printContent = document.getElementById(
         "easyjur__modal_body"
       ).innerHTML;
-      var originalContent = document.body.innerHTML;
+      const originalContent = document.body.innerHTML;
 
-      var printContent = document.getElementById(
-        "easyjur__modal_body"
-      ).innerHTML;
-      var styles = `
+      const styles = `
     <style>
-    @media print {
-      table {
-        width: 100%;
-        border-collapse: collapse;
+      @media print {
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        th, td {
+          border: 1px solid #000;
+          padding: 8px;
+        }
+        th {
+          background-color: #f2f2f2;
+        }
+        #easyjur__modal_print {
+          display: none;
+        }
       }
-      th, td {
-        border: 1px solid #000;
-        padding: 8px;
-      }
-      th {
-        background-color: #f2f2f2;
-      }
-      #easyjur__modal_print {
-        display: none;
-      }
-    }
-  </style>
-`;
+    </style>
+  `;
+
       document.body.innerHTML =
         styles + "<h2>Relatório de Simulação EasyJur</h2>" + printContent;
       window.print();
