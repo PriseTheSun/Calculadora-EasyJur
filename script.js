@@ -208,7 +208,7 @@ const nomesPlanos = {
           <strong>Plano Recomendado: ${nomesPlanos[planoRecomendadoId]}</strong><br>
           <small>Maximiza seu ROI em ${roiRecomendado}x com ${numeroPessoas} pessoa(s).</small>
         `,
-        duration: 5000,
+        duration: 15000,
         close: true,
         gravity: "top",
         position: "left",
