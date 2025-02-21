@@ -225,7 +225,7 @@
     color: #e5293f;
     border: solid 1px #e5293f;
     font-size: 0.7rem;
-    padding: 2 5px;
+    padding: 2px 5px;
     border-radius: 3px;
     text-align: center;
     text-transform: uppercase;
@@ -402,6 +402,23 @@
     font-weight: 600;
   }
 
+  .recommended-roi {
+    background-color: #80929B !important; /* Cor de fundo adaptada */
+    color: #fff !important; /* Cor do texto mantida em branco para contraste */
+    border: 2px solid #6A7F8B !important; /* Cor da borda adaptada (um tom mais escuro) */
+    box-shadow: 0 0 5px rgba(128, 146, 155, 0.5); /* Sombra adaptada */
+    transition: all 0.3s ease; /* Transição mantida */
+}
+
+
+.easyjur-toast {
+    background: #7F919A !important; /* Substitui o gradiente pela cor sólida */
+    color: #fff !important; /* Mantém o texto branco para contraste */
+    font-family: "borna-medium-webfont", sans-serif !important;
+    border-radius: 5px !important;
+    padding: 15px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  }
   /*-----------------------Responsividade--------------------------------------*/
   @media (max-width: 870px) {
     .easyjur-calculator {

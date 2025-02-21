@@ -14,47 +14,56 @@ const nomesPlanos = {
     gpl: { preco: 2799, usuariosInclusos: 30, horas: 35 },
   };
 
-  // Porcentagens de economia por funcionalidade para cada plano (somam 100%)
   const porcentagensPorFuncionalidade = {
     sta: {
-      "Gestão de Processos": 40,    // 40%
-      "Controle de Tarefas": 30,    // 30%
-      "Relatórios Básicos": 30,     // 30%
+      "Gestão de Processos": 40,
+      "Controle de Tarefas": 30,
+      "Relatórios Básicos": 30,
     },
     pre: {
-      "Gestão de Processos": 30,    // 30%
-      "Controle de Tarefas": 25,    // 25%
-      "Relatórios Avançados": 20,   // 20%
-      "Automação de Documentos": 25,// 25%
+      "Gestão de Processos": 30,
+      "Controle de Tarefas": 25,
+      "Relatórios Avançados": 20,
+      "Automação de Documentos": 25,
     },
     std: {
-      "Gestão de Processos": 25,    // 25%
-      "Controle de Tarefas": 20,    // 20%
-      "Relatórios Avançados": 20,   // 20%
-      "Automação de Documentos": 20,// 20%
-      "Integração com APIs": 15,    // 15%
+      "Gestão de Processos": 25,
+      "Controle de Tarefas": 20,
+      "Relatórios Avançados": 20,
+      "Automação de Documentos": 20,
+      "Integração com APIs": 15,
     },
     grw: {
-      "Gestão de Processos": 20,    // 20%
-      "Controle de Tarefas": 15,    // 15%
-      "Relatórios Avançados": 15,   // 15%
-      "Automação de Documentos": 20,// 20%
-      "Integração com APIs": 15,    // 15%
-      "Suporte Prioritário": 15,    // 15%
+      "Gestão de Processos": 20,
+      "Controle de Tarefas": 15,
+      "Relatórios Avançados": 15,
+      "Automação de Documentos": 20,
+      "Integração com APIs": 15,
+      "Suporte Prioritário": 15,
     },
     gpl: {
-      "Gestão de Processos": 20,    // 20%
-      "Controle de Tarefas": 15,    // 15%
-      "Relatórios Avançados": 15,   // 15%
-      "Automação de Documentos": 15,// 15%
-      "Integração com APIs": 15,    // 15%
-      "Suporte Prioritário": 10,    // 10%
-      "Treinamento Personalizado": 10,// 10%
+      "Gestão de Processos": 20,
+      "Controle de Tarefas": 15,
+      "Relatórios Avançados": 15,
+      "Automação de Documentos": 15,
+      "Integração com APIs": 15,
+      "Suporte Prioritário": 10,
+      "Treinamento Personalizado": 10,
     },
   };
 
   let multipladorExtra = 1;
   let planoAtual = "sta";
+  let toastAtual = null;
+
+  // Função de debounce
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("calculator-form");
@@ -69,11 +78,12 @@ const nomesPlanos = {
       roi: document.getElementById("easyjur__return"),
     };
 
-    // Inicializa os valores e destaca o plano "Start"
     iniciarPlanoStart();
 
-    // Adiciona listeners
-    inputs.forEach((input) => input.addEventListener("input", atualizarCalculos));
+    // Aplicar debounce na função atualizarCalculos
+    const atualizarCalculosDebounced = debounce(atualizarCalculos, 300);
+
+    inputs.forEach((input) => input.addEventListener("input", atualizarCalculosDebounced));
 
     document.querySelectorAll(".easyjur-btn-plan").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -88,10 +98,9 @@ const nomesPlanos = {
     document.getElementById("number_of_peoples").addEventListener("input", () => {
       let numeroPessoas = parseInt(document.getElementById("number_of_peoples").value, 10);
       if (numeroPessoas < 1) document.getElementById("number_of_peoples").value = 1;
-      atualizarCalculos();
+      atualizarCalculosDebounced();
     });
 
-    // Funções
     function iniciarPlanoStart() {
       document.getElementById("number_of_peoples").value = 1;
       document.getElementById("easyjur__hours_worked").value = 4.0;
@@ -122,6 +131,7 @@ const nomesPlanos = {
       resultado.roi.textContent = `${Math.round(roi)}x`;
 
       atualizarHorasPorFuncionalidade(horasEconomizadas);
+      recomendarPlano(numeroPessoas, horasTrabalhadas, valorCobradoPorHora);
     }
 
     function calcularCusto(totalUsuarios, plano) {
@@ -163,7 +173,6 @@ const nomesPlanos = {
         const porcentagem = porcentagens[funcionalidade] / 100;
         let horas = Math.round(horasEconomizadas * porcentagem);
 
-        // Se for a última funcionalidade, ajusta para garantir que a soma seja igual às horas totais
         if (index === spans.length - 1) {
           horas = horasRestantes - somaHorasCalculadas;
         } else {
@@ -174,7 +183,42 @@ const nomesPlanos = {
       });
     }
 
-    // Sliders
+    function recomendarPlano(numeroPessoas, horasTrabalhadas, valorCobradoPorHora) {
+      const rois = {};
+      Object.keys(planos).forEach((planoId) => {
+        const horasEconomizadas = numeroPessoas * planos[planoId].horas;
+        const receitaMensal = horasEconomizadas * valorCobradoPorHora + horasTrabalhadas * valorCobradoPorHora;
+        const custoMensal = calcularCusto(numeroPessoas, planoId);
+        const roi = calcularROI(receitaMensal, custoMensal);
+        rois[planoId] = roi;
+      });
+
+      const planoRecomendadoId = Object.keys(rois).reduce((a, b) => rois[a] > rois[b] ? a : b);
+      const roiRecomendado = Math.round(rois[planoRecomendadoId]);
+
+      document.querySelectorAll(".easyjur-btn-plan").forEach((btn) => btn.classList.remove("recommended-roi"));
+      document.getElementById(planoRecomendadoId).classList.add("recommended-roi");
+
+      if (toastAtual) {
+        toastAtual.hideToast();
+      }
+
+      toastAtual = Toastify({
+        text: `
+          <strong>Plano Recomendado: ${nomesPlanos[planoRecomendadoId]}</strong><br>
+          <small>Maximiza seu ROI em ${roiRecomendado}x com ${numeroPessoas} pessoa(s).</small>
+        `,
+        duration: 5000,
+        close: true,
+        gravity: "top",
+        position: "left",
+        className: "easyjur-toast",
+        stopOnFocus: true,
+        escapeMarkup: false,
+      });
+      toastAtual.showToast();
+    }
+
     const hourWorkedSlider = document.getElementById("easyjur__hours_worked");
     const billedHourSlider = document.getElementById("easyjur__billed_hour");
     const hourWorkedOutput = document.getElementById("hours_worked");
@@ -187,7 +231,6 @@ const nomesPlanos = {
     updateSlider(billedHourSlider, billedHourOutput);
   });
 
-  // Modal
   document.getElementById("easyjur__print").addEventListener("click", function () {
     const numPessoas = document.getElementById("number_of_peoples").value;
     const horasTrabalhadas = document.getElementById("easyjur__hours_worked").value;
