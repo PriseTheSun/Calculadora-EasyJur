@@ -70,6 +70,14 @@
               <button type="button" id="gpl" class="easyjur-btn-plan">
                 Growth Plus
               </button>
+              <div class="easyjur-to-plans">
+                <span>Para mais informações,</span>
+                <a id="easyjur__link__to__plan" style="text-decoration: underline; margin-left: 5px;" href="https://easyjur.com/planos/" target="_blank">veja nossos planos.
+                
+                <svg id="easyjur__svg__move" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15"><path fill="#e5293f" d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414"/></svg>
+              </a>
+              </div>
+
             </div>
           </div>
         </form>
@@ -108,7 +116,7 @@
           </div>
 
           <button type="button" id="easyjur__print" class="easyjur-print-btn">
-            Gerar Relatório
+            Baixar Relatório
           </button>
         </form>
       </div>
@@ -117,9 +125,7 @@
     <!-- Rodapé -->
     <div class="easyjur-caption">
       <p>
-        Este cálculo reinveste horas economizadas em atividades faturáveis. Para
-        mais informações,
-        <a href="https://easyjur.com/" target="_blank">veja nosso FAQ.</a>
+        Este cálculo reinveste horas economizadas em atividades faturáveis.
       </p>
     </div>
   </div>
@@ -127,8 +133,14 @@
 
 <div id="easyjur__modal" class="easyjur-modal">
   <div class="easyjur-modal-content">
+      <div class="easyjur-img-on-print">
+         
+          <img src="https://easyjur.com/blog/wp-content/uploads/2023/05/logo-easyjur-01.png">
+        
+      </div>
     <span class="easyjur-modal-close">&times;</span>
-    <h2>Relatório de Simulação</h2>
+    <h2>Veja quanto poderia estar lucrando</h2>
+    <p style="margin-top: 20px;">Esta é a sua estimativa de retorno ao utilizar o EasyJur.</p>
     <div id="easyjur__modal_body">
       <table>
         <thead>
@@ -163,8 +175,17 @@
         </tbody>
       </table>
     </div>
+    
+    <h4 class="easyjur-text--to-print"> Em caso de dúvidas, entre em contato com um de nossos especialistas.</h4>
+    
+    <div class="easyjur-img-qrcode-on-print">
+     <img src="https://easyjur.com/blog/wp-content/uploads/2025/02/QRCode_Facil-1.png">
+     </div>
+    
+    
+    
     <button id="easyjur__modal_print" class="easyjur-modal-print-btn">
-      Imprimir Relatório
+      Baixar Relatório
     </button>
   </div>
 </div>
@@ -192,6 +213,7 @@
   .easyjur-main {
     background-color: #f4f4f4;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 
   .easyjur-container {
@@ -199,8 +221,8 @@
     align-items: center;
     gap: 20px;
     padding: 20px;
-    height: 450px;
-    width: 800px;
+    height: 640px;
+    width: 1000px;
   }
 
   .easyjur-caption p {
@@ -253,8 +275,7 @@
   }
 
   .easyjur-plans-selectors {
-    position: absolute;
-    bottom: -140px;
+    width: 100%;
   }
 
   .easyjur-grid-plans {
@@ -265,7 +286,7 @@
 
   .easyjur-btn-plan {
     padding: 10px;
-    color: #e5293f;
+    color: #e5293f !important;
     border: #e5293f solid 1px;
     background: transparent;
     border-radius: 5px;
@@ -279,11 +300,18 @@
 
   .easyjur-btn-plan:hover,
   .easyjur-btn-plan.active {
-    background-color: #e5293f;
-    color: #fff;
+    background-color: #e5293f !important;
+    color: #fff !important;
     font-weight: 700;
   }
-
+    
+  .easyjur-to-plans{
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: -35px;
+  }
+    
   .easyjur-result {
     display: flex;
     flex-direction: column;
@@ -311,6 +339,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 20px;
   }
 
   .easyjur-label-revenue {
@@ -357,20 +386,18 @@
     cursor: pointer;
     text-transform: uppercase;
     transition: 0.8s;
-    position: relative;
-    top: 20px;
     width: 100%;
   }
   .easyjur-modal-print-btn:hover {
     background-color: transparent;
-    color: #e5293f;
+    color: #e5293f !important;
     font-weight: 700;
   }
 
   .easyjur-print-btn {
     padding: 10px;
     background-color: #e5293f;
-    color: #fff;
+    color: #fff !important;
     border: #e5293f solid 1px;
     border-radius: 40px;
     cursor: pointer;
@@ -383,7 +410,7 @@
 
   .easyjur-print-btn:hover {
     background-color: transparent;
-    color: #e5293f;
+    color: #e5293f !important;
     font-weight: 700;
   }
 
@@ -440,7 +467,53 @@
   .easyjur-range-slider:hover::-moz-range-thumb {
     background: #e5293f;
   }
+  
+  /* Defina a animação fadeInLeft */
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
 
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/* Aplique a animação ao #easyjur__svg__move quando #easyjur__link__to__plan estiver em hover */
+#easyjur__link__to__plan:hover #easyjur__svg__move {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+#easyjur__link__to__plan:hover #easyjur__svg__move path {
+  fill: #767d92 !important; /* Cor desejada */
+}
+
+
+.easyjur-img-on-print,
+.easyjur-text--to-print,
+.easyjur-img-qrcode-on-print{
+    display: none;
+}
   /*modal*/
   .easyjur-modal {
     display: none;
@@ -460,7 +533,7 @@
     background: #fff;
     padding: 20px;
     border-radius: 10px;
-    height: 400px;
+    height: auto;
     width: 600px;
     text-align: center;
   }
@@ -495,6 +568,13 @@
   }
 
   /*Responsividade*/
+    @media(max-width: 1366px){
+.easyjur-container {
+    height: 500px;
+    width: 850px;
+}
+  }
+  
 
   @media (max-width: 870px) {
     .easyjur-calculator {
@@ -513,14 +593,15 @@
     .easyjur-container {
       flex-direction: column !important;
       height: auto;
-      width: 90%;
+      width: 100%;
     }
     .easyjur-revenue-content {
       margin-top: 20px;
     }
     .easyjur-result,
     .easyjur-content {
-      width: 90%;
+     width: 100%;
+     padding: 20px;
     }
     .easyjur-print-btn,
     .easyjur-plans-selectors {
@@ -540,20 +621,93 @@
     }
     .easyjur-modal-content{
       height: 75dvh;
-      width: 80%;
+    }
+    .easyjur-to-plans{
+        flex-wrap: wrap;
+        position: unset;
+        margin: 10px 0;
     }
 
   }
+  
+
   @media print {
-    body * {
-      /* Oculta tudo na página */
-      visibility: hidden;
-    }
-    /* Oculta o botão de impressão */
-    #easyjur__modal_print {
-      display: none;
-    }
+  body * {
+    visibility: hidden; /* Oculta tudo na página */
   }
+
+  .easyjur-modal,
+  .easyjur-modal * {
+    visibility: visible; /* Torna o modal e seu conteúdo visível */
+  }
+
+  .easyjur-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .easyjur-modal-close{
+      display: none;
+  }
+
+  .easyjur-modal-content {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: none;
+    border: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  #easyjur__modal_print {
+    display: none; /* Oculta o botão de impressão durante a impressão */
+  }
+  .easyjur-text--to-print{
+    display: block;
+    }
+    .easyjur-img-qrcode-on-print{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .easyjur-img-on-print{
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    .easyjur-img-qrcode-on-print img{
+         width: 200px;
+         height: 200px;
+    }
+    .easyjur-img-on-print img{
+        width: 200px;
+    }
+}
 </style>
 
 <script>
@@ -716,59 +870,97 @@
   });
 
   // Modal
-  document.getElementById("easyjur__print").addEventListener("click", () => {
-    document.getElementById("easyjur__modal_annual_revenue").textContent =
-      document.getElementById("easyjur__annual_revenue").textContent;
-    document.getElementById("easyjur__modal_revenue_value").textContent =
-      document.getElementById("easyjur__revenue_value").textContent;
-    document.getElementById("easyjur__modal_hours_saved").textContent =
-      document.getElementById("easyjur__hours_saved").textContent;
-    document.getElementById("easyjur__modal_cost").textContent =
-      document.getElementById("easyjur__cost").textContent;
-    document.getElementById("easyjur__modal_return").textContent =
-      document.getElementById("easyjur__return").textContent;
-    document.getElementById("easyjur__modal").style.display = "flex";
-  });
+  document.getElementById("easyjur__print").addEventListener("click", function () {
+  // Capturar os valores do formulário
+  const numPessoas = document.getElementById("number_of_peoples").value;
+  const horasTrabalhadas = document.getElementById("easyjur__hours_worked").value;
+  const valorHora = document.getElementById("easyjur__billed_hour").value;
+  const planoSelecionado = document.querySelector(".easyjur-btn-plan.active")?.textContent || "Nenhum";
 
-  document
-    .querySelector(".easyjur-modal-close")
-    .addEventListener("click", () => {
-      document.getElementById("easyjur__modal").style.display = "none";
-    });
+  // Capturar os valores de resultado
+  const receitaAnual = document.getElementById("easyjur__annual_revenue").textContent;
+  const receitaMensal = document.getElementById("easyjur__revenue_value").textContent;
+  const horasEconomizadas = document.getElementById("easyjur__hours_saved").textContent;
+  const custoMensal = document.getElementById("easyjur__cost").textContent;
+  const retornoInvestimento = document.getElementById("easyjur__return").textContent;
 
-  document
-    .getElementById("easyjur__modal_print")
-    .addEventListener("click", () => {
-      const printContent = document.getElementById(
-        "easyjur__modal_body"
-      ).innerHTML;
-      const originalContent = document.body.innerHTML;
-
-      const styles = `
-    <style>
-      @media print {
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-        th, td {
-          border: 1px solid #000;
-          padding: 8px;
-        }
-        th {
-          background-color: #f2f2f2;
-        }
-        #easyjur__modal_print {
-          display: none;
-        }
-      }
-    </style>
+  // Atualizar o modal com os valores do formulário antes dos resultados
+  document.getElementById("easyjur__modal_body").innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Número de Pessoas no Escritório:</strong></td>
+          <td>${numPessoas}</td>
+        </tr>
+        <tr>
+          <td><strong>Horas Trabalhadas por Dia:</strong></td>
+          <td>${horasTrabalhadas} Horas</td>
+        </tr>
+        <tr>
+          <td><strong>Valor Cobrado por Hora:</strong></td>
+          <td>R$ ${valorHora},00</td>
+        </tr>
+        <tr>
+          <td><strong>Plano Selecionado:</strong></td>
+          <td>${planoSelecionado}</td>
+        </tr>
+        <tr>
+          <td><strong>Estimativa de Receita Anual:</strong></td>
+          <td>${receitaAnual}</td>
+        </tr>
+        <tr>
+          <td><strong>Estimativa de Receita Mensal:</strong></td>
+          <td>${receitaMensal}</td>
+        </tr>
+        <tr>
+          <td><strong>Horas Mensais Economizadas:</strong></td>
+          <td>${horasEconomizadas}</td>
+        </tr>
+        <tr>
+          <td><strong>Custo Mensal do EasyJur:</strong></td>
+          <td>${custoMensal}</td>
+        </tr>
+        <tr>
+          <td><strong>Retorno sobre o Investimento:</strong></td>
+          <td>${retornoInvestimento}</td>
+        </tr>
+      </tbody>
+    </table>
   `;
 
-      document.body.innerHTML =
-        styles + "<h2>Relatório de Simulação EasyJur</h2>" + printContent;
-      window.print();
-      document.body.innerHTML = originalContent;
-      location.reload();
-    });
+  // Abrir o modal
+  document.getElementById("easyjur__modal").style.display = "flex";
+
+  // Fechar o modal ao clicar no botão de fechar
+  document.querySelector(".easyjur-modal-close").addEventListener("click", function () {
+    document.getElementById("easyjur__modal").style.display = "none";
+  });
+
+  // Fechar o modal ao clicar fora da área do modal
+  window.addEventListener("click", function (event) {
+    if (event.target === document.getElementById("easyjur__modal")) {
+      document.getElementById("easyjur__modal").style.display = "none";
+    }
+  });
+
+  // Adicionar evento de impressão ao botão de impressão no modal
+  document.getElementById("easyjur__modal_print").addEventListener("click", function () {
+    // Abrir a caixa de diálogo de impressão
+    window.print();
+
+    // Fechar o modal após a impressão ou cancelamento
+    window.addEventListener("afterprint", function () {
+      document.getElementById("easyjur__modal").style.display = "none";
+    }, { once: true }); // O evento é removido após ser executado uma vez
+  });
+});
+
+
+
 </script>
