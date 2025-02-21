@@ -1,0 +1,537 @@
+@font-face {
+    font-family: "borna-medium-webfont";
+    src: url("borna/borna-medium.otf") format("otf");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  * {
+    font-family: "borna-medium-webfont";
+  }
+
+  .easyjur-calculator {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .easyjur-main {
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+
+  .easyjur-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    height: auto;
+    width: 1000px;
+  }
+
+  .easyjur-caption p {
+    text-align: center;
+    color: #495a63;
+    word-break: break-word;
+    padding: 0 15px;
+  }
+
+  .easyjur-result,
+  .easyjur-content {
+    width: 50%;
+  }
+
+  .easyjur-content form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .easyjur-content label {
+    font-size: 1.2em;
+    color: #495a63;
+  }
+
+  .easyjur-content input {
+    width: 100%;
+  }
+
+  .easyjur-range-item {
+    position: relative;
+  }
+
+  .easyjur-range-item span {
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #495a63;
+  }
+
+  .easyjur-input-amount-peoples {
+    padding: 10px 5px;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    outline: #80929b;
+    font-size: 20px;
+    color: #495a63;
+  }
+
+  .easyjur-plans-selectors {
+    width: 100%;
+  }
+
+  .easyjur-grid-plans {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .easyjur-btn-plan {
+    padding: 10px;
+    color: #e5293f !important;
+    border: #e5293f solid 1px;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.5s;
+    font-size: 11px;
+    font-weight: 600;
+    flex: calc(33% - 10px);
+  }
+
+  .easyjur-btn-plan:hover,
+  .easyjur-btn-plan.active {
+    background-color: #e5293f !important;
+    color: #fff !important;
+    font-weight: 700;
+  }
+    
+  .easyjur-to-plans{
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: -35px;
+  }
+    
+  .easyjur-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    padding: 0 20px;
+    height: 800px;
+    border-radius: 7px;
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+      rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  }
+
+  .easyjur-result form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .label-evidence {
+    font-weight: 700;
+  }
+
+  .easyjur-revenue-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .easyjur-label-revenue {
+    font-size: 1.2em;
+    color: #495a63;
+  }
+
+  .easyjur-value-revenue {
+    font-size: 2.3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #495a63;
+  }
+
+  .easyjur-revenue-item {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding-top: 8px;
+    color: #495a63;
+  }
+
+  .easyjur-revenue-item span {
+    font-weight: 600;
+  }
+
+  .easyjur-revenue-item::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #acbac2;
+    margin-bottom: 100px;
+    position: absolute;
+    top: -8px;
+  }
+
+  .easyjur-modal-print-btn {
+    padding: 10px;
+    background-color: #e5293f;
+    color: #fff;
+    border: #e5293f solid 1px;
+    border-radius: 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.8s;
+    width: 100%;
+  }
+  .easyjur-modal-print-btn:hover {
+    background-color: transparent;
+    color: #e5293f !important;
+    font-weight: 700;
+  }
+
+  .easyjur-print-btn {
+    padding: 10px;
+    background-color: #e5293f;
+    color: #fff !important;
+    border: #e5293f solid 1px;
+    border-radius: 40px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.8s;
+    position: absolute;
+    bottom: -65px;
+    width: 100%;
+  }
+
+  .easyjur-print-btn:hover {
+    background-color: transparent;
+    color: #e5293f !important;
+    font-weight: 700;
+  }
+
+  .multiplicador-extra {
+    color: #e5293f;
+    border: solid 1px #e5293f;
+    font-size: 0.7rem;
+    padding: 2 5px;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  /* Estilos para o controle deslizante (input[type="range"]) */
+  .easyjur-range-slider {
+    -webkit-appearance: none;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+  }
+
+  /* Estilos para o botão (thumb) do range */
+  .easyjur-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #e5293f;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .easyjur-range-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #e5293f;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  /* Efeito quando o slider é interagido */
+  .easyjur-range-slider:focus {
+    background: #e5293f45;
+  }
+
+  .easyjur-range-slider:hover::-webkit-slider-thumb {
+    background: #e5293f;
+  }
+
+  .easyjur-range-slider:hover::-moz-range-thumb {
+    background: #e5293f;
+  }
+  
+  /* Defina a animação fadeInLeft */
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/* Aplique a animação ao #easyjur__svg__move quando #easyjur__link__to__plan estiver em hover */
+#easyjur__link__to__plan:hover #easyjur__svg__move {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+#easyjur__link__to__plan:hover #easyjur__svg__move path {
+  fill: #767d92 !important; /* Cor desejada */
+}
+
+
+.easyjur-img-on-print,
+.easyjur-text--to-print,
+.easyjur-img-qrcode-on-print{
+    display: none;
+}
+  /*modal*/
+  .easyjur-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .easyjur-modal-content {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    height: auto;
+    width: 600px;
+    text-align: center;
+  }
+
+  .easyjur-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  /* Estilos para a tabela */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  thead {
+    background-color: #f5f5f5;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+
+  .easyjur__li__plan_name {
+    font-weight: bold;
+    color: #495a63;
+    margin-bottom: 10px;
+  }
+
+  .easyjur-result ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .easyjur-result li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    color: #495a63;
+  }
+
+  .easyjur__span__func {
+    font-weight: 500;
+  }
+
+  .hours-per-feature {
+    font-weight: 600;
+  }
+
+  /*-----------------------Responsividade--------------------------------------*/
+  @media (max-width: 870px) {
+    .easyjur-calculator {
+      height: 100dvh;
+      overflow: auto;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .easyjur-main {
+      display: flex;
+      flex-direction: column !important;
+      justify-content: center;
+      align-items: center;
+    }
+    .easyjur-container {
+      flex-direction: column !important;
+      height: auto;
+      width: 100%;
+    }
+    .easyjur-revenue-content {
+      margin-top: 20px;
+    }
+    .easyjur-result,
+    .easyjur-content {
+     width: 100%;
+     padding: 20px;
+    }
+    .easyjur-print-btn,
+    .easyjur-plans-selectors {
+      position: unset;
+    }
+    .easyjur-range-item span {
+      top: -12px;
+    }
+  }
+
+  @media (max-width: 765px) {
+    .easyjur-calculator {
+      height: auto;
+    }
+    .easyjur-revenue-item {
+      flex-wrap: wrap;
+    }
+    .easyjur-modal-content{
+      height: 75dvh;
+    }
+    .easyjur-to-plans{
+        flex-wrap: wrap;
+        position: unset;
+        margin: 10px 0;
+    }
+
+  }
+  
+
+  @media print {
+  body * {
+    visibility: hidden; /* Oculta tudo na página */
+  }
+
+  .easyjur-modal,
+  .easyjur-modal * {
+    visibility: visible; /* Torna o modal e seu conteúdo visível */
+  }
+
+  .easyjur-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .easyjur-modal-close{
+      display: none;
+  }
+
+  .easyjur-modal-content {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: none;
+    border: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  #easyjur__modal_print {
+    display: none; /* Oculta o botão de impressão durante a impressão */
+  }
+  .easyjur-text--to-print{
+    display: block;
+    }
+    .easyjur-img-qrcode-on-print{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    .easyjur-img-on-print{
+        display: flex;
+        width: 100%;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+    .easyjur-img-qrcode-on-print img{
+         width: 200px;
+         height: 200px;
+    }
+    .easyjur-img-on-print img{
+        width: 200px;
+    }
+}
