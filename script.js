@@ -223,10 +223,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+
         toastAtual = Toastify({
             text: `
                 <strong>Plano Recomendado: ${nomesPlanos[planoRecomendadoId]}</strong><br>
-                <small>Maximiza seu ROI em ${roiRecomendado}x com ${numeroPessoas} pessoa(s).</small>
+                <small>Maximiza seu retorno em ${roiRecomendado}X com ${numeroPessoas} pessoa(s).</small>
             `,
             duration: 15000,
             close: true,
@@ -238,7 +239,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         toastAtual.showToast();
     }
-
     // Configuração dos sliders
     const sliderHorasTrabalhadas = document.getElementById("easyjur__hours_worked");
     const sliderValorHora = document.getElementById("easyjur__billed_hour");
