@@ -230,12 +230,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <small>Maximiza seu retorno em ${roiRecomendado}X com ${numeroPessoas} pessoa(s).</small>
             `,
             duration: 15000,
-            close: true,
-            gravity: "top",
+            close: false,
+            gravity: "bottom",
             position: "left",
             className: "easyjur-toast",
             stopOnFocus: true,
             escapeMarkup: false,
+            onClick: function() { 
+                toastAtual.hideToast();
+            }
         });
         toastAtual.showToast();
     }
@@ -252,6 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
     atualizarSlider(sliderValorHora, outputValorHora);
 });
 
+
 // Configuração do modal de impressão
 document.getElementById("easyjur__print").addEventListener("click", function () {
     const numPessoas = document.getElementById("number_of_peoples").value;
@@ -264,9 +268,20 @@ document.getElementById("easyjur__print").addEventListener("click", function () 
     const custoMensal = document.getElementById("easyjur__cost").textContent;
     const retornoInvestimento = document.getElementById("easyjur__return").textContent;
 
+    // Obter as funcionalidades e horas economizadas do plano atual
+    const listaId = planoAtual.replace("sta", "start").replace("pre", "premium").replace("std", "standard").replace("grw", "growth").replace("gpl", "growthplus");
+    const funcionalidades = document.querySelectorAll(`#easyjur__ul__${listaId} li:not(.easyjur__li__plan_name)`);
+    let funcionalidadesHTML = '';
+    funcionalidades.forEach((li) => {
+        const funcionalidade = li.querySelector(".easyjur__span__func").textContent.replace(":", "").trim();
+        const horas = li.querySelector(".hours-per-feature").textContent;
+        funcionalidadesHTML += `<tr><td><strong>${funcionalidade}:</strong></td><td>${horas}</td></tr>`;
+    });
+
+    // Construir o conteúdo do modal com as funcionalidades
     document.getElementById("easyjur__modal_body").innerHTML = `
         <table>
-            <thead>
+            <thead class="easyjur-table-head--to-print">
                 <tr>
                     <th>Descrição</th>
                     <th>Valor</th>
@@ -280,24 +295,29 @@ document.getElementById("easyjur__print").addEventListener("click", function () 
                 <tr><td><strong>Estimativa de Receita Anual:</strong></td><td>${receitaAnual}</td></tr>
                 <tr><td><strong>Estimativa de Receita Mensal:</strong></td><td>${receitaMensal}</td></tr>
                 <tr><td><strong>Horas Mensais Economizadas:</strong></td><td>${horasEconomizadas}</td></tr>
+                ${funcionalidadesHTML}
                 <tr><td><strong>Custo Mensal do EasyJur:</strong></td><td>${custoMensal}</td></tr>
                 <tr><td><strong>Retorno sobre o Investimento:</strong></td><td>${retornoInvestimento}</td></tr>
             </tbody>
         </table>
     `;
 
+    // Exibir o modal
     document.getElementById("easyjur__modal").style.display = "flex";
 
+    // Fechar o modal ao clicar no "X"
     document.querySelector(".easyjur-modal-close").addEventListener("click", function () {
         document.getElementById("easyjur__modal").style.display = "none";
     });
 
+    // Fechar o modal ao clicar fora dele
     window.addEventListener("click", function (event) {
         if (event.target === document.getElementById("easyjur__modal")) {
             document.getElementById("easyjur__modal").style.display = "none";
         }
     });
 
+    // Imprimir e fechar o modal após a impressão
     document.getElementById("easyjur__modal_print").addEventListener("click", function () {
         window.print();
         window.addEventListener("afterprint", function () {

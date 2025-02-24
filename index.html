@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="stylesheet" href="style.css">
   <title>Calculadora EasyJur</title>
@@ -154,12 +156,16 @@
       <div class="easyjur-img-on-print">
         <img src="https://easyjur.com/blog/wp-content/uploads/2023/05/logo-easyjur-01.png">
       </div>
-      <span class="easyjur-modal-close">×</span>
+      <span class="easyjur-modal-close">
+
+        <i class="fa-solid fa-xmark" title="Clique aqui para fechar"></i>
+
+      </span>
       <h2>Veja quanto poderia estar lucrando</h2>
-      <p style="margin-top: 20px;">Esta é a sua estimativa de retorno ao utilizar o EasyJur.</p>
+      <p>Esta é a sua estimativa de retorno ao utilizar o EasyJur.</p>
       <div id="easyjur__modal_body">
         <table>
-          <thead>
+          <thead class="easyjur-table-head--to-print">
             <tr>
               <th>Descrição</th>
               <th>Valor</th>

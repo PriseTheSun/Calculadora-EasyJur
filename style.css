@@ -383,31 +383,44 @@
 /* Estilo do botão de fechar o modal */
 .easyjur-modal-close {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
+  top: 20px;
+  right: 20px;
+  font-size: 15px;
   cursor: pointer;
 }
-
+.easyjur-modal-close i{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s ease;
+}
+.easyjur-modal-close i:hover{
+  background-color: #80929b;
+  color: #fff;
+  
+}
 /* Estilo da tabela genérica */
-table {
+#easyjur__modal table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-thead {
+#easyjur__modal thead {
   background-color: #f5f5f5; /* Fundo do cabeçalho */
 }
 
-th,
-td {
+#easyjur__modal th,
+#easyjur__modal td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd; /* Linha divisória */
 }
 
-th {
+#easyjur__modal th {
   font-weight: bold;
 }
 
@@ -462,6 +475,57 @@ th {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Sombra destacada */
 }
 
+
+#easyjur__modal_body{
+  overflow-y: auto;
+  height: 490px;
+}
+
+/* Estilização do scroll no conteúdo do modal */
+
+
+/* Estilização do scroll no corpo interno do modal (tabela) */
+#easyjur__modal_body {
+  max-height: 60vh; /* Limita a altura do corpo interno, se necessário */
+  overflow-y: auto; /* Ativa o scroll vertical no corpo */
+}
+
+/* Personalização da barra de rolagem para navegadores Webkit */
+.easyjur-modal-content::-webkit-scrollbar,
+#easyjur__modal_body::-webkit-scrollbar {
+  width: 8px; /* Largura da barra de rolagem */
+}
+
+.easyjur-modal-content::-webkit-scrollbar-track,
+#easyjur__modal_body::-webkit-scrollbar-track {
+  background: #f4f4f4; /* Cor do fundo da pista (track) */
+  border-radius: 10px; /* Bordas arredondadas na pista */
+}
+
+.easyjur-modal-content::-webkit-scrollbar-thumb,
+#easyjur__modal_body::-webkit-scrollbar-thumb {
+  background: #e5293f; /* Cor do thumb (parte que você arrasta) */
+  border-radius: 10px; /* Bordas arredondadas no thumb */
+  transition: background 0.3s ease; /* Transição suave */
+}
+
+.easyjur-modal-content::-webkit-scrollbar-thumb:hover,
+#easyjur__modal_body::-webkit-scrollbar-thumb:hover {
+  background: #c12335; /* Cor mais escura no hover */
+}
+
+/* Personalização para Firefox */
+.easyjur-modal-content,
+#easyjur__modal_body {
+  scrollbar-width: thin; /* Define a largura como fina */
+  scrollbar-color: #e5293f #f4f4f4; /* Cor do thumb e da pista */
+}
+
+
+.easyjur-table-head--to-print{
+  position: sticky;
+  top: 0;
+}
 /* Responsividade para telas menores que 870px */
 @media (max-width: 870px) {
   .easyjur-calculator {
@@ -509,7 +573,7 @@ th {
       flex-wrap: wrap;
   }
   .easyjur-modal-content {
-      height: 75dvh;
+    height: auto;
   }
   .easyjur-to-plans {
       flex-wrap: wrap;
@@ -549,18 +613,18 @@ th {
       box-shadow: none;
       border: none;
   }
-  table {
+  #easyjur__modal table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 20px;
   }
-  th,
-  td {
+  #easyjur__modal th,
+  #easyjur__modal td {
       padding: 12px;
       text-align: left;
       border-bottom: 1px solid #ddd;
   }
-  th {
+  #easyjur__modal th {
       font-weight: bold;
   }
   #easyjur__modal_print {
@@ -587,4 +651,13 @@ th {
   .easyjur-img-on-print img {
       width: 200px;
   }
+  #easyjur__modal_body{
+    max-height: unset;
+    overflow-y: hidden !important;
+    height: auto;
+  }
+  
+  .easyjur-table-head--to-print {
+    position: unset;
+}
 }
