@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-  
+
   <link rel="stylesheet" href="style.css">
 
-  
-  
+
+
   <title>Calculadora EasyJur</title>
 </head>
+
 <body>
   <section class="easyjur-calculator">
     <div class="easyjur-main">
@@ -21,25 +23,32 @@
 
           <form id="calculator-form">
             <div class="easyjur-selected-recommended">
-              <div class="easyjur-selected"><p>Plano Selecionado:</p> <i class="fa-solid fa-circle"></i></div>
-              <div class="easyjur-recommended"><p>Plano Recomendado:</p> <i class="fa-solid fa-circle"></i></div>
+              <div class="easyjur-selected">
+                <p>Plano Selecionado:</p> <i class="fa-solid fa-circle"></i>
+              </div>
+              <div class="easyjur-recommended">
+                <p>Plano Recomendado:</p> <i class="fa-solid fa-circle"></i>
+              </div>
             </div>
-            
+
             <div>
               <label for="number_of_peoples">Número de Pessoas no Escritório:</label>
-              <input class="easyjur-input-amount-peoples" type="number" min="1" max="31" name="number" id="number_of_peoples" value="1" placeholder="1" />
+              <input class="easyjur-input-amount-peoples" type="number" min="1" max="31" name="number"
+                id="number_of_peoples" value="1" placeholder="1" />
             </div>
 
             <div class="easyjur-range-item">
               <label for="easyjur__hours_worked">Horas Trabalhadas no Escritório</label>
               <span id="hours_worked">4.0 Horas</span>
-              <input id="easyjur__hours_worked" class="easyjur-range-slider" type="range" min="4.0" max="15" step=".5" value="4.0"   title="Use as setas do teclado para ajustar o valor após clicar na barra" />
+              <input id="easyjur__hours_worked" class="easyjur-range-slider" type="range" min="4.0" max="15" step=".5"
+                value="4.0" title="Use as setas do teclado para ajustar o valor após clicar na barra" />
             </div>
 
             <div class="easyjur-range-item">
               <label for="easyjur__billed_hour">Valor Cobrado por Hora</label>
               <span id="billed_hour">30 R$</span>
-              <input id="easyjur__billed_hour" class="easyjur-range-slider" type="range" min="30" max="1000" step="1" value="30"   title="Use as setas do teclado para ajustar o valor após clicar na barra" />
+              <input id="easyjur__billed_hour" class="easyjur-range-slider" type="range" min="30" max="1000" step="1"
+                value="30" title="Use as setas do teclado para ajustar o valor após clicar na barra" />
             </div>
 
             <div class="easyjur-plans-selectors">
@@ -52,10 +61,13 @@
                 <button type="button" id="gpl" class="easyjur-btn-plan">Growth Plus</button>
                 <div class="easyjur-to-plans">
                   <span>Para mais informações,</span>
-                  <a id="easyjur__link__to__plan" style="text-decoration: underline; margin-left: 5px;" href="https://easyjur.com/planos/" target="_blank">
+                  <a id="easyjur__link__to__plan" style="text-decoration: underline; margin-left: 5px;"
+                    href="https://easyjur.com/planos/" target="_blank">
                     veja nossos planos.
-                    <svg id="easyjur__svg__move" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15">
-                      <path fill="#e5293f" d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414" />
+                    <svg id="easyjur__svg__move" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                      viewBox="0 0 15 15">
+                      <path fill="#e5293f"
+                        d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414" />
                     </svg>
                   </a>
                 </div>
@@ -67,6 +79,17 @@
         <!-- Resultados -->
         <div class="easyjur-result">
           <form>
+
+            <div id="easyjur__ul__plan__tags">
+              <ul id="easyjur__tags" class="easyjur__ul__tags">
+                <li id="start__tag">START </li>
+                <li id="premium__tag" style="display: none;">PREMIUM</li>
+                <li id="standard__tag" style="display: none;">STANDARD</li>
+                <li id="growth__tag" style="display: none;">GROWTH</li>
+                <li id="growthplus__tag" style="display: none;">GROWTH PLUS</li>
+              </ul>
+            </div>
+
             <div class="easyjur-revenue-content">
               <label class="easyjur-label-revenue">Estimativa de receita anual:</label>
               <span class="easyjur-value-revenue" id="easyjur__annual_revenue">0</span>
@@ -85,56 +108,77 @@
             <!-- Horas economizadas por funcionalidade -->
             <div id="easyjur__ul__start">
               <ul>
-                <li class="easyjur__li__plan_name">Plano Start</li>
-                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span class="easyjur__span__start hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span class="easyjur__span__start hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Relatórios Básicos:</span> <span class="easyjur__span__start hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span
+                    class="easyjur__span__start hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span
+                    class="easyjur__span__start hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Relatórios Básicos:</span> <span
+                    class="easyjur__span__start hours-per-feature"></span></li>
               </ul>
             </div>
 
             <div id="easyjur__ul__premium" style="display: none;">
               <ul>
                 <li class="easyjur__li__plan_name">Plano Premium</li>
-                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span class="easyjur__span__premium hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span class="easyjur__span__premium hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span class="easyjur__span__premium hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span class="easyjur__span__premium hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span
+                    class="easyjur__span__premium hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span
+                    class="easyjur__span__premium hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span
+                    class="easyjur__span__premium hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span
+                    class="easyjur__span__premium hours-per-feature"></span></li>
               </ul>
             </div>
 
             <div id="easyjur__ul__standard" style="display: none;">
               <ul>
-                <li class="easyjur__li__plan_name">Plano Standard</li>
-                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span class="easyjur__span__standard hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span class="easyjur__span__standard hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span class="easyjur__span__standard hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span class="easyjur__span__standard hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Integração com APIs:</span> <span class="easyjur__span__standard hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span
+                    class="easyjur__span__standard hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span
+                    class="easyjur__span__standard hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span
+                    class="easyjur__span__standard hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span
+                    class="easyjur__span__standard hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Integração com APIs:</span> <span
+                    class="easyjur__span__standard hours-per-feature"></span></li>
               </ul>
             </div>
 
             <div id="easyjur__ul__growth" style="display: none;">
               <ul>
-                <li class="easyjur__li__plan_name">Plano Growth</li>
-                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span class="easyjur__span__growth hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span class="easyjur__span__growth hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span class="easyjur__span__growth hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span class="easyjur__span__growth hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Integração com APIs:</span> <span class="easyjur__span__growth hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Suporte Prioritário:</span> <span class="easyjur__span__growth hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span
+                    class="easyjur__span__growth hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span
+                    class="easyjur__span__growth hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span
+                    class="easyjur__span__growth hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span
+                    class="easyjur__span__growth hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Integração com APIs:</span> <span
+                    class="easyjur__span__growth hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Suporte Prioritário:</span> <span
+                    class="easyjur__span__growth hours-per-feature"></span></li>
               </ul>
             </div>
 
             <div id="easyjur__ul__growthplus" style="display: none;">
               <ul>
-                <li class="easyjur__li__plan_name">Plano Growth Plus</li>
-                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span class="easyjur__span__growthplus hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span class="easyjur__span__growthplus hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span class="easyjur__span__growthplus hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span class="easyjur__span__growthplus hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Integração com APIs:</span> <span class="easyjur__span__growthplus hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Suporte Prioritário:</span> <span class="easyjur__span__growthplus hours-per-feature"></span></li>
-                <li><span class="easyjur__span__func">Treinamento Personalizado:</span> <span class="easyjur__span__growthplus hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Gestão de Processos:</span> <span
+                    class="easyjur__span__growthplus hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Controle de Tarefas:</span> <span
+                    class="easyjur__span__growthplus hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Relatórios Avançados:</span> <span
+                    class="easyjur__span__growthplus hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Automação de Documentos:</span> <span
+                    class="easyjur__span__growthplus hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Integração com APIs:</span> <span
+                    class="easyjur__span__growthplus hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Suporte Prioritário:</span> <span
+                    class="easyjur__span__growthplus hours-per-feature"></span></li>
+                <li><span class="easyjur__span__func">Treinamento Personalizado:</span> <span
+                    class="easyjur__span__growthplus hours-per-feature"></span></li>
               </ul>
             </div>
 
@@ -148,10 +192,10 @@
               <span id="easyjur__return">0x</span>
             </div>
 
-            <div >
-              <ul>
-                <li><span class="easyjur__span__func " style="font-weight: 700;">Retorno Liquido sobre o Investimento:</span> <span id="value-liquid-return" class="hours-per-feature">0R$</span></li>
-              </ul>
+            <div class="easyjur-revenue-item">
+              <label class="label-evidence">Estimativa de receita liquida
+                anual:</label>
+              <span id="value-liquid-return" class="hours-per-feature">0R$</span>
             </div>
 
             <button type="button" id="easyjur__print" class="easyjur-print-btn">Baixar Relatório</button>
@@ -197,6 +241,6 @@
     </div>
   </div>
 
-  
+
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="script.js"></script>

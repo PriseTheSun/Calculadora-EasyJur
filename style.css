@@ -146,8 +146,8 @@
   padding: 0 20px;
   height: 800px; /* Altura fixa */
   border-radius: 7px;
-  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, /* Sombra sutil */
-              rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+    /* Sombra sutil */ rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 
 /* Estilo do formulário dentro do resultado */
@@ -310,27 +310,27 @@
 /* Animação de entrada à esquerda */
 @-webkit-keyframes fadeInLeft {
   0% {
-      opacity: 0;
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
   100% {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
   }
 }
 
 @keyframes fadeInLeft {
   0% {
-      opacity: 0;
-      -webkit-transform: translate3d(-100%, 0, 0);
-      transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
   }
   100% {
-      opacity: 1;
-      -webkit-transform: none;
-      transform: none;
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
   }
 }
 
@@ -388,19 +388,18 @@
   font-size: 15px;
   cursor: pointer;
 }
-.easyjur-modal-close i{
+.easyjur-modal-close i {
   height: 20px;
   width: 20px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: .5s ease;
+  transition: 0.5s ease;
 }
-.easyjur-modal-close i:hover{
+.easyjur-modal-close i:hover {
   background-color: #80929b;
   color: #fff;
-  
 }
 /* Estilo da tabela genérica */
 #easyjur__modal table {
@@ -458,16 +457,16 @@
 
 /* Estilo do plano recomendado */
 .recommended-roi {
-  background-color: #80929B !important; /* Cor de fundo personalizada */
+  background-color: #80929b !important; /* Cor de fundo personalizada */
   color: #fff !important;
-  border: 2px solid #6A7F8B !important; /* Borda mais escura */
+  border: 2px solid #6a7f8b !important; /* Borda mais escura */
   box-shadow: 0 0 5px rgba(128, 146, 155, 0.5); /* Sombra sutil */
   transition: all 0.3s ease;
 }
 
 /* Estilo do toast de notificação */
 .easyjur-toast {
-  background: #7F919A !important; /* Cor sólida de fundo */
+  background: #7f919a !important; /* Cor sólida de fundo */
   color: #fff !important;
   font-family: "borna-medium-webfont", sans-serif !important;
   border-radius: 5px !important;
@@ -475,14 +474,12 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Sombra destacada */
 }
 
-
-#easyjur__modal_body{
+#easyjur__modal_body {
   overflow-y: auto;
   height: 490px;
 }
 
 /* Estilização do scroll no conteúdo do modal */
-
 
 /* Estilização do scroll no corpo interno do modal (tabela) */
 #easyjur__modal_body {
@@ -521,13 +518,12 @@
   scrollbar-color: #e5293f #f4f4f4; /* Cor do thumb e da pista */
 }
 
-
-.easyjur-table-head--to-print{
+.easyjur-table-head--to-print {
   position: sticky;
   top: 0;
 }
 
-.easyjur-selected-recommended{
+.easyjur-selected-recommended {
   position: absolute;
   top: -250px;
   display: flex;
@@ -535,57 +531,77 @@
   color: #8f8f8f;
   align-items: center;
 }
-.easyjur-selected-recommended div{
+.easyjur-selected-recommended div {
   display: contents;
 }
 .easyjur-selected,
-.easyjur-recommended{
+.easyjur-recommended {
   height: 20px;
   width: 20px;
   border-radius: 50%;
 }
-.easyjur-selected i{
+.easyjur-selected i {
   color: #e5293f;
 }
-.easyjur-recommended i{
-  color: #80929B;
+.easyjur-recommended i {
+  color: #80929b;
 }
 
+#easyjur__ul__plan__tags {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+}
+#start__tag,
+#premium__tag,
+#standard__tag,
+#growth__tag,
+#growthplus__tag {
+  background-color: #e5293f;
+  color: #FFF;
+  padding: 5px 20px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+}
 /* Responsividade para telas menores que 870px */
 @media (max-width: 870px) {
   .easyjur-calculator {
-      height: 100dvh;
-      overflow: auto;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    height: 100dvh;
+    overflow: auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .easyjur-main {
-      display: flex;
-      flex-direction: column !important;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
   }
   .easyjur-container {
-      flex-direction: column !important;
-      height: auto;
-      width: 100%;
+    flex-direction: column !important;
+    height: auto;
+    width: 100%;
   }
   .easyjur-revenue-content {
-      margin-top: 20px;
+    margin-top: 20px;
   }
   .easyjur-result,
   .easyjur-content {
-      width: 90%;
-      padding: 20px;
-      height: auto;
+    width: 90%;
+    padding: 20px;
+    height: auto;
   }
   .easyjur-print-btn,
   .easyjur-plans-selectors {
-      position: unset;
+    position: unset;
   }
   .easyjur-range-item span {
-      top: -12px;
+    top: -12px;
   }
   .easyjur-selected-recommended {
     position: unset !important;
@@ -597,97 +613,97 @@
 /* Ajustes para telas menores que 765px */
 @media (max-width: 765px) {
   .easyjur-calculator {
-      height: auto;
+    height: auto;
   }
   .easyjur-revenue-item {
-      flex-wrap: wrap;
+    flex-wrap: wrap;
   }
   .easyjur-modal-content {
     height: auto;
   }
   .easyjur-to-plans {
-      flex-wrap: wrap;
-      position: unset;
-      margin: 10px 0;
+    flex-wrap: wrap;
+    position: unset;
+    margin: 10px 0;
   }
 }
 
 /* Estilos para impressão */
 @media print {
   body * {
-      visibility: hidden; /* Oculta tudo na página */
+    visibility: hidden; /* Oculta tudo na página */
   }
   .easyjur-modal,
   .easyjur-modal * {
-      visibility: visible; /* Exibe apenas o modal */
+    visibility: visible; /* Exibe apenas o modal */
   }
   .easyjur-modal {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      box-shadow: none;
-      border: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    border: none;
   }
   .easyjur-modal-close {
-      display: none; /* Oculta o botão de fechar */
+    display: none; /* Oculta o botão de fechar */
   }
   .easyjur-modal-content {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 20px;
-      box-shadow: none;
-      border: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px;
+    box-shadow: none;
+    border: none;
   }
   #easyjur__modal table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
   }
   #easyjur__modal th,
   #easyjur__modal td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
   }
   #easyjur__modal th {
-      font-weight: bold;
+    font-weight: bold;
   }
   #easyjur__modal_print {
-      display: none; /* Oculta o botão de impressão */
+    display: none; /* Oculta o botão de impressão */
   }
   .easyjur-text--to-print {
-      display: block; /* Exibe texto específico na impressão */
+    display: block; /* Exibe texto específico na impressão */
   }
   .easyjur-img-qrcode-on-print {
-      display: flex;
-      width: 100%;
-      justify-content: center;
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
   .easyjur-img-on-print {
-      display: flex;
-      width: 100%;
-      margin-bottom: 20px;
-      justify-content: center;
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    justify-content: center;
   }
   .easyjur-img-qrcode-on-print img {
-      width: 200px;
-      height: 200px;
+    width: 200px;
+    height: 200px;
   }
   .easyjur-img-on-print img {
-      width: 200px;
+    width: 200px;
   }
-  #easyjur__modal_body{
+  #easyjur__modal_body {
     max-height: unset;
     overflow-y: hidden !important;
     height: auto;
   }
-  
+
   .easyjur-table-head--to-print {
     position: unset;
-}
+  }
 }
