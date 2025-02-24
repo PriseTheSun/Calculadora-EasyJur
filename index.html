@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  
   <link rel="stylesheet" href="style.css">
+
+  
+  
   <title>Calculadora EasyJur</title>
 </head>
 <body>
@@ -30,13 +33,13 @@
             <div class="easyjur-range-item">
               <label for="easyjur__hours_worked">Horas Trabalhadas no Escritório</label>
               <span id="hours_worked">4.0 Horas</span>
-              <input type="range" min="4.0" max="15" step=".5" value="4.0" class="easyjur-range-slider" id="easyjur__hours_worked" />
+              <input id="easyjur__hours_worked" class="easyjur-range-slider" type="range" min="4.0" max="15" step=".5" value="4.0"   title="Use as setas do teclado para ajustar o valor após clicar na barra" />
             </div>
 
             <div class="easyjur-range-item">
               <label for="easyjur__billed_hour">Valor Cobrado por Hora</label>
               <span id="billed_hour">30 R$</span>
-              <input type="range" min="30" max="1000" step="1" value="30" class="easyjur-range-slider" id="easyjur__billed_hour" />
+              <input id="easyjur__billed_hour" class="easyjur-range-slider" type="range" min="30" max="1000" step="1" value="30"   title="Use as setas do teclado para ajustar o valor após clicar na barra" />
             </div>
 
             <div class="easyjur-plans-selectors">
@@ -145,6 +148,12 @@
               <span id="easyjur__return">0x</span>
             </div>
 
+            <div >
+              <ul>
+                <li><span class="easyjur__span__func " style="font-weight: 700;">Retorno Liquido sobre o Investimento:</span> <span id="value-liquid-return" class="hours-per-feature">0R$</span></li>
+              </ul>
+            </div>
+
             <button type="button" id="easyjur__print" class="easyjur-print-btn">Baixar Relatório</button>
           </form>
         </div>
@@ -188,5 +197,6 @@
     </div>
   </div>
 
+  
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="script.js"></script>

@@ -124,26 +124,34 @@ document.addEventListener("DOMContentLoaded", () => {
         const numeroPessoas = Math.max(1, parseInt(document.getElementById("number_of_peoples").value, 10)) || 1;
         const horasTrabalhadas = parseFloat(document.getElementById("easyjur__hours_worked").value);
         const valorCobradoPorHora = parseFloat(document.getElementById("easyjur__billed_hour").value);
-
+    
         const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
         const valorHorasTrabalhadas = horasTrabalhadas * valorCobradoPorHora || 0;
-
+    
         const receitaMensal = horasEconomizadas * valorCobradoPorHora + valorHorasTrabalhadas;
         const custoMensal = calcularCusto(numeroPessoas, planoAtual);
         const roi = calcularROI(receitaMensal, custoMensal);
-
+    
+        // Cálculo do retorno líquido anual
+        const receitaAnual = receitaMensal * 12;
+        const custoAnual = custoMensal * 12;
+        const retornoLiquidoAnual = Math.max(0, receitaAnual - custoAnual); // Garante que não seja negativo
+    
+        // Atualizando os elementos existentes
         resultado.horasTrabalhadas.textContent = `${horasTrabalhadas} Horas`;
         resultado.valorCobrado.textContent = `${valorCobradoPorHora} R$`;
         resultado.receitaMensal.textContent = receitaMensal.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-        resultado.receitaAnual.textContent = (receitaMensal * 12).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+        resultado.receitaAnual.textContent = receitaAnual.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
         resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
         resultado.custoMensal.innerHTML = `<span class="multiplicador-extra">${multiplicadorExtra}x ${nomesPlanos[planoAtual]}</span> R$ ${custoMensal.toLocaleString("pt-BR", { maximumFractionDigits: 0 })}`;
         resultado.roi.textContent = `${Math.round(roi)}x`;
-
+    
+        // Atualizando o retorno líquido anual, sem valores negativos
+        document.getElementById("value-liquid-return").textContent = retornoLiquidoAnual.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    
         atualizarHorasPorFuncionalidade(horasEconomizadas);
         recomendarPlano(numeroPessoas, horasTrabalhadas, valorCobradoPorHora);            
     }
-
     // Calcula o custo mensal baseado no número de usuários
     function calcularCusto(totalUsuarios, plano) {
         multiplicadorExtra = 1;
@@ -253,7 +261,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     atualizarSlider(sliderHorasTrabalhadas, outputHorasTrabalhadas);
     atualizarSlider(sliderValorHora, outputValorHora);
+
 });
+
 
 
 // Configuração do modal de impressão
@@ -267,6 +277,8 @@ document.getElementById("easyjur__print").addEventListener("click", function () 
     const horasEconomizadas = document.getElementById("easyjur__hours_saved").textContent;
     const custoMensal = document.getElementById("easyjur__cost").textContent;
     const retornoInvestimento = document.getElementById("easyjur__return").textContent;
+    // Capturando o retorno líquido anual
+    const retornoLiquidoAnual = document.getElementById("value-liquid-return").textContent;
 
     // Obter as funcionalidades e horas economizadas do plano atual
     const listaId = planoAtual.replace("sta", "start").replace("pre", "premium").replace("std", "standard").replace("grw", "growth").replace("gpl", "growthplus");
@@ -278,7 +290,7 @@ document.getElementById("easyjur__print").addEventListener("click", function () 
         funcionalidadesHTML += `<tr><td><strong>${funcionalidade}:</strong></td><td>${horas}</td></tr>`;
     });
 
-    // Construir o conteúdo do modal com as funcionalidades
+    // Construir o conteúdo do modal com as funcionalidades e o retorno líquido anual
     document.getElementById("easyjur__modal_body").innerHTML = `
         <table>
             <thead class="easyjur-table-head--to-print">
@@ -298,6 +310,7 @@ document.getElementById("easyjur__print").addEventListener("click", function () 
                 ${funcionalidadesHTML}
                 <tr><td><strong>Custo Mensal do EasyJur:</strong></td><td>${custoMensal}</td></tr>
                 <tr><td><strong>Retorno sobre o Investimento:</strong></td><td>${retornoInvestimento}</td></tr>
+                <tr><td><strong>Retorno Líquido Anual:</strong></td><td>${retornoLiquidoAnual}</td></tr>
             </tbody>
         </table>
     `;
