@@ -526,6 +526,31 @@
   position: sticky;
   top: 0;
 }
+
+.easyjur-selected-recommended{
+  position: absolute;
+  top: -250px;
+  display: flex;
+  gap: 20px;
+  color: #8f8f8f;
+  align-items: center;
+}
+.easyjur-selected-recommended div{
+  display: contents;
+}
+.easyjur-selected,
+.easyjur-recommended{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+.easyjur-selected i{
+  color: #e5293f;
+}
+.easyjur-recommended i{
+  color: #80929B;
+}
+
 /* Responsividade para telas menores que 870px */
 @media (max-width: 870px) {
   .easyjur-calculator {
@@ -561,6 +586,11 @@
   }
   .easyjur-range-item span {
       top: -12px;
+  }
+  .easyjur-selected-recommended {
+    position: unset !important;
+    flex-wrap: wrap;
+    gap: 5px;
   }
 }
 
