@@ -567,6 +567,11 @@
   font-size: 12px;
   font-weight: 700;
 }
+
+.easyjur__span__func__title{
+  font-weight: 500;
+  color: #495a63;
+}
 /* Responsividade para telas menores que 870px */
 @media (max-width: 870px) {
   .easyjur-calculator {
