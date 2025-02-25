@@ -375,7 +375,6 @@ document
     const custoMensal = document.getElementById("easyjur__cost").textContent;
     const retornoInvestimento =
       document.getElementById("easyjur__return").textContent;
-    // Capturando o retorno líquido anual
     const retornoLiquidoAnual = document.getElementById(
       "value-liquid-return"
     ).textContent;
@@ -400,7 +399,7 @@ document
       funcionalidadesHTML += `<tr><td><strong>${funcionalidade}:</strong></td><td>${horas}</td></tr>`;
     });
 
-    // Construir o conteúdo do modal com as funcionalidades e o retorno líquido anual
+    // Construir o conteúdo do modal com o título e as funcionalidades
     document.getElementById("easyjur__modal_body").innerHTML = `
         <table>
             <thead class="easyjur-table-head--to-print">
@@ -417,10 +416,12 @@ document
                 <tr><td><strong>Estimativa de Receita Anual:</strong></td><td>${receitaAnual}</td></tr>
                 <tr><td><strong>Estimativa de Receita Mensal:</strong></td><td>${receitaMensal}</td></tr>
                 <tr><td><strong>Horas Mensais Economizadas:</strong></td><td>${horasEconomizadas}</td></tr>
+                <tr><td><strong>Estimativa de Receita Líquida Anual:</strong></td><td>${retornoLiquidoAnual}</td></tr>
+                <tr style="background-color: #f5f5f5;"><td colspan="2"><strong>Horas Economizadas por Funcionalidade</strong></td></tr>
                 ${funcionalidadesHTML}
                 <tr><td><strong>Custo Mensal do EasyJur:</strong></td><td>${custoMensal}</td></tr>
                 <tr><td><strong>Retorno sobre o Investimento:</strong></td><td>${retornoInvestimento}</td></tr>
-                <tr><td><strong>Estimativa de receita liquida anual:</strong></td><td>${retornoLiquidoAnual}</td></tr>
+                
             </tbody>
         </table>
     `;
