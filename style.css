@@ -608,6 +608,10 @@
     flex-wrap: wrap;
     gap: 5px;
   }
+  #easyjur__ul__plan__tags {
+    position: relative;
+    top: 0;
+  }
 }
 
 /* Ajustes para telas menores que 765px */
