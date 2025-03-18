@@ -8,11 +8,11 @@ const nomesPlanos = {
 };
 
 const planos = {
-  sta: { preco: 139, usuariosInclusos: 2, horas: 10 }, //15 horas - 35% = 9,75 horas
-  pre: { preco: 389, usuariosInclusos: 5, horas: 13 }, //20 horas - 35% = 13 horas
-  std: { preco: 599, usuariosInclusos: 10, horas: 16 }, //25 horas - 35% = 16,25 horas
-  grw: { preco: 1699, usuariosInclusos: 15, horas: 19 }, //30 horas - 35% = 19,5 horas
-  gpl: { preco: 2799, usuariosInclusos: 30, horas: 22 }, //35 horas - 35% = 22,75 horas
+  sta: { preco: 139, usuariosInclusos: 2, horas: 12 }, //15 horas - 20% = 12 horas
+  pre: { preco: 389, usuariosInclusos: 5, horas: 16 }, //20 horas - 20% = 16 horas
+  std: { preco: 599, usuariosInclusos: 10, horas: 20 },//25 horas - 20% = 20 horas
+  grw: { preco: 1699, usuariosInclusos: 15, horas: 24 }, //30 horas - 20% = 24 horas
+  gpl: { preco: 2799, usuariosInclusos: 30, horas: 28 }, //35 horas - 20% = 28 horas
 };
 
 const porcentagensPorFuncionalidade = {
