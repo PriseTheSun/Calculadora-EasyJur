@@ -2,1621 +2,1662 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 
 
-  <title>Calculadora EasyJur</title>
+    <title>Calculadora EasyJur</title>
 </head>
 
 <body>
-  <section class="easyjur-calculator">
-    <div class="easyjur-main">
-      <div class="easyjur-container">
-        <!-- Formulário de Entrada -->
-        <div class="easyjur-content">
+    <section class="easyjur-calculator">
+        <div class="easyjur-main">
+            <div class="easyjur-container">
+                <!-- Formulário de Entrada -->
+                <div class="easyjur-content">
 
-          <form id="calculator-form">
-            <div class="easyjur-selected-recommended">
-              <div class="easyjur-selected">
-                <p>Plano Selecionado:</p> <i class="fa-solid fa-circle"></i>
-              </div>
-              <div class="easyjur-recommended">
-                <p>Plano Recomendado:</p> <i class="fa-solid fa-circle"></i>
-              </div>
-            </div>
+                    <form id="calculator-form">
+                        <div class="easyjur-selected-recommended">
+                            <div class="easyjur-selected">
+                                <p>Plano Selecionado:</p> <i class="fa-solid fa-circle"></i>
+                            </div>
+                            <div class="easyjur-recommended">
+                                <p>Plano Recomendado:</p> <i class="fa-solid fa-circle"></i>
+                            </div>
+                        </div>
 
-            <div>
-              <label for="number_of_peoples">Número de Pessoas no Escritório:</label>
-              <input class="easyjur-input-amount-peoples" type="number" min="1" max="31" name="number"
-                id="number_of_peoples" value="1" placeholder="1" />
-            </div>
+                        <div>
+                            <label for="number_of_peoples">Número de Pessoas no Escritório:</label>
+                            <input class="easyjur-input-amount-peoples" type="number" min="1" max="31" name="number"
+                                id="number_of_peoples" value="1" placeholder="1" />
+                        </div>
 
-            <div class="easyjur-range-item">
-              <label for="easyjur__hours_worked">Horas Trabalhadas no Escritório</label>
-              <span id="hours_worked">4.0 Horas</span>
-              <input id="easyjur__hours_worked" class="easyjur-range-slider" type="range" min="4.0" max="15" step=".5"
-                value="4.0" title="Use as setas do teclado para ajustar o valor após clicar na barra" />
-            </div>
+                        <div class="easyjur-range-item">
+                            <label for="easyjur__hours_worked">Horas Trabalhadas no Escritório</label>
+                            <span id="hours_worked">4.0 Horas</span>
+                            <input id="easyjur__hours_worked" class="easyjur-range-slider" type="range" min="4.0"
+                                max="15" step=".5" value="4.0"
+                                title="Use as setas do teclado para ajustar o valor após clicar na barra" />
+                        </div>
 
-            <div class="easyjur-range-item">
-              <label for="easyjur__billed_hour">Valor Cobrado por Hora</label>
-              <span id="billed_hour">30 R$</span>
-              <input id="easyjur__billed_hour" class="easyjur-range-slider" type="range" min="30" max="1000" step="1"
-                value="30" title="Use as setas do teclado para ajustar o valor após clicar na barra" />
-            </div>
+                        <div class="easyjur-range-item">
+                            <label for="easyjur__billed_hour">Valor Cobrado por Hora</label>
+                            <span id="billed_hour">30 R$</span>
+                            <input id="easyjur__billed_hour" class="easyjur-range-slider" type="range" min="30"
+                                max="1000" step="1" value="30"
+                                title="Use as setas do teclado para ajustar o valor após clicar na barra" />
+                        </div>
 
-            <div class="easyjur-plans-selectors">
-              <label>Planos</label>
-              <div class="easyjur-grid-plans">
-                <button type="button" id="sta" class="easyjur-btn-plan">Start</button>
-                <button type="button" id="pre" class="easyjur-btn-plan">Premium</button>
-                <button type="button" id="std" class="easyjur-btn-plan">Standard</button>
-                <button type="button" id="grw" class="easyjur-btn-plan">Growth</button>
-                <button type="button" id="gpl" class="easyjur-btn-plan">Growth Plus</button>
-                <div class="easyjur-to-plans">
-                  <span>Para mais informações,</span>
-                  <a id="easyjur__link__to__plan" style="text-decoration: underline; margin-left: 5px;"
-                    href="https://easyjur.com/planos/" target="_blank">
-                    veja nossos planos.
-                    <svg id="easyjur__svg__move" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
-                      viewBox="0 0 15 15">
-                      <path fill="#e5293f"
-                        d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414" />
-                    </svg>
-                  </a>
+                        <div class="easyjur-plans-selectors">
+                            <label>Planos</label>
+                            <div class="easyjur-grid-plans">
+                                <button type="button" id="sta" class="easyjur-btn-plan">Start</button>
+                                <button type="button" id="pre" class="easyjur-btn-plan">Premium</button>
+                                <button type="button" id="std" class="easyjur-btn-plan">Standard</button>
+                                <button type="button" id="grw" class="easyjur-btn-plan">Growth</button>
+                                <button type="button" id="gpl" class="easyjur-btn-plan">Growth Plus</button>
+                                <div class="easyjur-to-plans">
+                                    <span>Para mais informações,</span>
+                                    <a id="easyjur__link__to__plan"
+                                        style="text-decoration: underline; margin-left: 5px;"
+                                        href="https://easyjur.com/#planos" target="_blank">
+                                        veja nossos planos.
+                                        <svg id="easyjur__svg__move" xmlns="http://www.w3.org/2000/svg" width="15"
+                                            height="15" viewBox="0 0 15 15">
+                                            <path fill="#e5293f"
+                                                d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
+
+                <!-- Resultados -->
+                <div class="easyjur-result">
+                    <form>
+
+                        <div id="easyjur__ul__plan__tags">
+                            <ul id="easyjur__tags" class="easyjur__ul__tags">
+                                <li id="start__tag">START</li>
+                                <li id="premium__tag" style="display: none;">PREMIUM</li>
+                                <li id="standard__tag" style="display: none;">STANDARD</li>
+                                <li id="growth__tag" style="display: none;">GROWTH</li>
+                                <li id="growthplus__tag" style="display: none;">GROWTH PLUS</li>
+                            </ul>
+                        </div>
+
+                        <div class="easyjur-revenue-content">
+                            <label class="easyjur-label-revenue">Estimativa De Receita Anual:</label>
+                            <span class="easyjur-value-revenue" id="easyjur__annual_revenue">0</span>
+                        </div>
+
+                        <div class="easyjur-revenue-item">
+                            <label>Estimativa de Receita Mensal:</label>
+                            <span id="easyjur__revenue_value">R$ 0</span>
+                        </div>
+
+
+                        <div class="easyjur-revenue-item">
+                            <label>Horas Economizadas Anuais:</label>
+                            <span id="easyjur__annual_hours_saved">0 Horas/Ano</span>
+                        </div>
+
+
+                        <div class="easyjur-revenue-item">
+                            <label>Horas Economizadas Mensais:</label>
+                            <span id="easyjur__hours_saved">0 Horas/Mês</span>
+                        </div>
+
+
+                        <!-- Horas economizadas por funcionalidade -->
+                        <!--Start -->
+                        <div class="easyjur-revenue-item" id="easyjur__ul__start">
+                            <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
+                            <ul>
+                                <li>
+                                    <span class="easyjur__span__func">Agenda de prazos</span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Push de andamentos</span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">
+                                        JurisAI: Inteligência Artificial para Advogados
+                                    </span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--Premium -->
+                        <div class="easyjur-revenue-item" id="easyjur__ul__premium" style="display: none;">
+                            <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
+                            <ul>
+                                <li>
+                                    <span class="easyjur__span__func">Agenda de prazos</span>
+                                    <span class="easyjur__span__premium hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Push de andamentos</span>
+                                    <span class="easyjur__span__premium hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
+                                    <span class="easyjur__span__premium hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Controle de contratos</span>
+                                    <span class="easyjur__span__premium hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">
+                                        JurisAI: Inteligência Artificial para Advogados
+                                    </span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--Standard -->
+                        <div class="easyjur-revenue-item" id="easyjur__ul__standard" style="display: none;">
+                            <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
+                            <ul>
+                                <li>
+                                    <span class="easyjur__span__func">Agenda de prazos</span>
+                                    <span class="easyjur__span__standard hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Push de andamentos</span>
+                                    <span class="easyjur__span__standard hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
+                                    <span class="easyjur__span__standard hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Controle de contratos</span>
+                                    <span class="easyjur__span__standard hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Workflow avançado de tarefas ágil</span>
+                                    <span class="easyjur__span__standard hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">
+                                        JurisAI: Inteligência Artificial para Advogados
+                                    </span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--Growth -->
+                        <div class="easyjur-revenue-item" id="easyjur__ul__growth" style="display: none;">
+                            <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
+                            <ul>
+                                <li>
+                                    <span class="easyjur__span__func">Agenda de prazos</span>
+                                    <span class="easyjur__span__growth hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Push de andamentos</span>
+                                    <span class="easyjur__span__growth hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
+                                    <span class="easyjur__span__growth hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Controle de contratos</span>
+                                    <span class="easyjur__span__growth hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Regras de cobrança automática</span>
+                                    <span class="easyjur__span__growth hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">
+                                        JurisAI: Inteligência Artificial para Advogados
+                                    </span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--GrowthPlus -->
+                        <div class="easyjur-revenue-item" id="easyjur__ul__growthplus" style="display: none;">
+                            <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
+                            <ul>
+                                <li>
+                                    <span class="easyjur__span__func">Agenda de prazos</span>
+                                    <span class="easyjur__span__growthplus hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Push de andamentos</span>
+                                    <span class="easyjur__span__growthplus hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
+                                    <span class="easyjur__span__growthplus hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Controle de contratos</span>
+                                    <span class="easyjur__span__growthplus hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Regras de cobrança automática</span>
+                                    <span class="easyjur__span__growthplus hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Controladoria Jurídica + IA</span>
+                                    <span class="easyjur__span__growthplus hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">Relatórios avançados (envio automático)</span>
+                                    <span class="easyjur__span__growthplus hours-per-feature"></span>
+                                </li>
+
+                                <li>
+                                    <span class="easyjur__span__func">
+                                        JurisAI: Inteligência Artificial para Advogados
+                                    </span>
+                                    <span class="easyjur__span__start hours-per-feature"></span>
+                                </li>
+                            </ul>
+                        </div>
+
+
+
+                        <div class="easyjur-revenue-item">
+                            <label>Custo Anual do EasyJur:</label>
+                            <span id="easyjur__annual_cost">R$ 0/Ano</span>
+                        </div>
+
+                        <div class="easyjur-revenue-item">
+                            <label>Custo Mensal do EasyJur:</label>
+                            <span id="easyjur__cost">R$ 0/Mês</span>
+                        </div>
+                        
+                        <div class="easyjur-revenue-item">
+                            <label class="label-evidence">Retorno sobre o Investimento:</label>
+                            <span id="easyjur__return">0x</span>
+                        </div>
+
+                        <div class="easyjur-revenue-item">
+                            <label class="label-evidence">Estimativa de receita líquida
+                                anual:</label>
+                            <span id="value-liquid-return" class="hours-per-feature">0R$</span>
+                        </div>
+
+                        <button type="button" id="easyjur__print" class="easyjur-print-btn">Baixar Relatório</button>
+                    </form>
+                </div>
             </div>
-          </form>
+
+            <!-- Rodapé -->
+            <div class="easyjur-caption">
+                <p>Este cálculo reinveste horas economizadas em atividades faturáveis.</p>
+            </div>
         </div>
+    </section>
 
-        <!-- Resultados -->
-        <div class="easyjur-result">
-          <form>
-
-            <div id="easyjur__ul__plan__tags">
-              <ul id="easyjur__tags" class="easyjur__ul__tags">
-                <li id="start__tag">START</li>
-                <li id="premium__tag" style="display: none;">PREMIUM</li>
-                <li id="standard__tag" style="display: none;">STANDARD</li>
-                <li id="growth__tag" style="display: none;">GROWTH</li>
-                <li id="growthplus__tag" style="display: none;">GROWTH PLUS</li>
-              </ul>
+    <div id="easyjur__modal" class="easyjur-modal">
+        <div class="easyjur-modal-content">
+            <div class="easyjur-img-on-print">
+                <img src="https://easyjur.com/blog/wp-content/uploads/2023/05/logo-easyjur-01.png">
             </div>
+            <span class="easyjur-modal-close">
 
-            <div class="easyjur-revenue-content">
-              <label class="easyjur-label-revenue">Estimativa De Receita Anual:</label>
-              <span class="easyjur-value-revenue" id="easyjur__annual_revenue">0</span>
+                <i class="fa-solid fa-xmark" title="Clique aqui para fechar"></i>
+
+            </span>
+            <h2>Veja quanto poderia estar lucrando</h2>
+            <p>Esta é a sua estimativa de retorno ao utilizar o EasyJur.</p>
+            <div id="easyjur__modal_body">
+                <table>
+                    <thead class="easyjur-table-head--to-print">
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
-
-            <div class="easyjur-revenue-item">
-              <label>Estimativa de Receita Mensal:</label>
-              <span id="easyjur__revenue_value">R$ 0</span>
+            <h4 class="easyjur-text--to-print">Em caso de dúvidas, entre em contato com um de nossos especialistas.</h4>
+            <div class="easyjur-img-qrcode-on-print">
+                <img src="https://easyjur.com/blog/wp-content/uploads/2025/02/QRCode_Facil-1.png">
             </div>
-
-            <div class="easyjur-revenue-item">
-              <label>Horas Mensais Economizadas:</label>
-              <span id="easyjur__hours_saved">0 Horas</span>
-            </div>
-
-            <!-- Horas economizadas por funcionalidade -->
-            <!--Start -->
-            <div id="easyjur__ul__start">
-              <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
-              <ul>
-                <li>
-                  <span class="easyjur__span__func">Agenda de prazos</span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Push de andamentos</span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">
-                    JurisAI: Inteligência Artificial para Advogados
-                  </span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-              </ul>
-            </div>
-
-            <!--Premium -->
-            <div id="easyjur__ul__premium" style="display: none;">
-              <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
-              <ul>
-                <li>
-                  <span class="easyjur__span__func">Agenda de prazos</span>
-                  <span class="easyjur__span__premium hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Push de andamentos</span>
-                  <span class="easyjur__span__premium hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
-                  <span class="easyjur__span__premium hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Controle de contratos</span>
-                  <span class="easyjur__span__premium hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">
-                    JurisAI: Inteligência Artificial para Advogados
-                  </span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-              </ul>
-            </div>
-
-            <!--Standard -->
-            <div id="easyjur__ul__standard" style="display: none;">
-              <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
-              <ul>
-                <li>
-                  <span class="easyjur__span__func">Agenda de prazos</span>
-                  <span class="easyjur__span__standard hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Push de andamentos</span>
-                  <span class="easyjur__span__standard hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
-                  <span class="easyjur__span__standard hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Controle de contratos</span>
-                  <span class="easyjur__span__standard hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Workflow avançado de tarefas ágil</span>
-                  <span class="easyjur__span__standard hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">
-                    JurisAI: Inteligência Artificial para Advogados
-                  </span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-              </ul>
-            </div>
-
-            <!--Growth -->
-            <div id="easyjur__ul__growth" style="display: none;">
-              <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
-              <ul>
-                <li>
-                  <span class="easyjur__span__func">Agenda de prazos</span>
-                  <span class="easyjur__span__growth hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Push de andamentos</span>
-                  <span class="easyjur__span__growth hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
-                  <span class="easyjur__span__growth hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Controle de contratos</span>
-                  <span class="easyjur__span__growth hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Regras de cobrança automática</span>
-                  <span class="easyjur__span__growth hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">
-                    JurisAI: Inteligência Artificial para Advogados
-                  </span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-              </ul>
-            </div>
-
-            <!--GrowthPlus -->
-            <div id="easyjur__ul__growthplus" style="display: none;">
-              <span class="easyjur__span__func__title">Horas Economizadas por Funcionalidade:</span>
-              <ul>
-                <li>
-                  <span class="easyjur__span__func">Agenda de prazos</span>
-                  <span class="easyjur__span__growthplus hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Push de andamentos</span>
-                  <span class="easyjur__span__growthplus hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Publicações e Intimações Eletrônicas</span>
-                  <span class="easyjur__span__growthplus hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Controle de contratos</span>
-                  <span class="easyjur__span__growthplus hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Regras de cobrança automática</span>
-                  <span class="easyjur__span__growthplus hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Controladoria Jurídica + IA</span>
-                  <span class="easyjur__span__growthplus hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">Relatórios avançados (envio automático)</span>
-                  <span class="easyjur__span__growthplus hours-per-feature"></span>
-                </li>
-
-                <li>
-                  <span class="easyjur__span__func">
-                    JurisAI: Inteligência Artificial para Advogados
-                  </span>
-                  <span class="easyjur__span__start hours-per-feature"></span>
-                </li>
-              </ul>
-            </div>
-
-            <div class="easyjur-revenue-item">
-              <label>Custo Mensal do EasyJur:</label>
-              <span id="easyjur__cost">R$ 0</span>
-            </div>
-
-            <div class="easyjur-revenue-item">
-              <label class="label-evidence">Retorno sobre o Investimento:</label>
-              <span id="easyjur__return">0x</span>
-            </div>
-
-            <div class="easyjur-revenue-item">
-              <label class="label-evidence">Estimativa de receita líquida
-                anual:</label>
-              <span id="value-liquid-return" class="hours-per-feature">0R$</span>
-            </div>
-
-            <button type="button" id="easyjur__print" class="easyjur-print-btn">Baixar Relatório</button>
-          </form>
+            <button id="easyjur__modal_print" class="easyjur-modal-print-btn">Baixar Relatório</button>
         </div>
-      </div>
-
-      <!-- Rodapé -->
-      <div class="easyjur-caption">
-        <p>Este cálculo reinveste horas economizadas em atividades faturáveis.</p>
-      </div>
     </div>
-  </section>
-
-  <div id="easyjur__modal" class="easyjur-modal">
-    <div class="easyjur-modal-content">
-      <div class="easyjur-img-on-print">
-        <img src="https://easyjur.com/blog/wp-content/uploads/2023/05/logo-easyjur-01.png">
-      </div>
-      <span class="easyjur-modal-close">
-
-        <i class="fa-solid fa-xmark" title="Clique aqui para fechar"></i>
-
-      </span>
-      <h2>Veja quanto poderia estar lucrando</h2>
-      <p>Esta é a sua estimativa de retorno ao utilizar o EasyJur.</p>
-      <div id="easyjur__modal_body">
-        <table>
-          <thead class="easyjur-table-head--to-print">
-            <tr>
-              <th>Descrição</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-      <h4 class="easyjur-text--to-print">Em caso de dúvidas, entre em contato com um de nossos especialistas.</h4>
-      <div class="easyjur-img-qrcode-on-print">
-        <img src="https://easyjur.com/blog/wp-content/uploads/2025/02/QRCode_Facil-1.png">
-      </div>
-      <button id="easyjur__modal_print" class="easyjur-modal-print-btn">Baixar Relatório</button>
-    </div>
-  </div>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-  <style>
-
-    /* Aplicação da fonte globalmente */
-    /* Estilo do container principal da calculadora */
-    .easyjur-calculator {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Estilo da seção principal */
-    .easyjur-main {
-      background-color: #f4f4f4;
-      /* Cor de fundo suave */
-      border-radius: 10px;
-      /* Bordas arredondadas */
-      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-      /* Sombra leve */
-    }
-
-    /* Container interno com flexbox */
-    .easyjur-container {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      /* Espaçamento entre elementos */
-      padding: 20px;
-      height: auto;
-      width: 1200px;
-      /* Largura fixa */
-    }
-
-    /* Estilo do texto de legenda */
-    .easyjur-caption p {
-      text-align: center;
-      color: #495a63;
-      /* Cor do texto */
-      word-break: break-word;
-      /* Quebra de palavras para responsividade */
-      padding: 0 15px;
-    }
-
-    /* Divisão de largura entre resultado e conteúdo */
-    .easyjur-result,
-    .easyjur-content {
-      width: 50%;
-    }
-
-    /* Estilo do formulário dentro do conteúdo */
-    .easyjur-content form {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      /* Espaçamento entre elementos do formulário */
-    }
-
-    /* Estilo dos rótulos no conteúdo */
-    .easyjur-content label {
-      font-size: 1.2em;
-      color: #495a63;
-      /* Cor padrão do texto */
-    }
-
-    /* Estilo dos inputs no conteúdo */
-    .easyjur-content input {
-      width: 100%;
-    }
-
-    /* Container do item de range (slider) */
-    .easyjur-range-item {
-      position: relative;
-    }
-
-    /* Estilo do texto ao lado do slider */
-    .easyjur-range-item span {
-      position: absolute;
-      right: 0;
-      font-size: 15px;
-      font-weight: 600;
-      color: #495a63;
-    }
-
-    /* Estilo do input de quantidade de pessoas */
-    .easyjur-input-amount-peoples {
-      padding: 10px 5px;
-      border-radius: 7px;
-      border: 1px solid #ccc;
-      /* Borda padrão */
-      outline: #80929b;
-      /* Cor do foco */
-      font-size: 20px;
-      color: #495a63;
-    }
-
-    /* Container dos seletores de planos */
-    .easyjur-plans-selectors {
-      width: 100%;
-    }
-
-    /* Grid para os botões de planos */
-    .easyjur-grid-plans {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      /* Espaçamento entre botões */
-    }
-
-    /* Estilo padrão dos botões de planos */
-    .easyjur-btn-plan {
-      padding: 10px;
-      color: #e5293f !important;
-      /* Cor principal */
-      border: #e5293f solid 1px;
-      background: transparent;
-      border-radius: 5px;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: 0.5s;
-      /* Transição suave */
-      font-size: 11px;
-      font-weight: 600;
-      flex: calc(33% - 10px);
-      /* Distribuição em 3 colunas */
-    }
-
-    /* Efeito hover e estado ativo dos botões de planos */
-    .easyjur-btn-plan:hover,
-    .easyjur-btn-plan.active {
-      background-color: #e5293f !important;
-      color: #fff !important;
-      font-weight: 700;
-    }
-
-    /* Container do link para planos */
-    .easyjur-to-plans {
-      display: flex;
-      align-items: center;
-      position: absolute;
-      bottom: -35px;
-    }
-
-    /* Estilo da seção de resultados */
-    .easyjur-result {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background-color: #fff;
-      padding: 0 20px;
-      height: 800px;
-      /* Altura fixa */
-      border-radius: 7px;
-      box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
-        /* Sombra sutil */
-        rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
-    }
-
-    /* Estilo do formulário dentro do resultado */
-    .easyjur-result form {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    /* Estilo para rótulos em destaque */
-    .label-evidence {
-      font-weight: 700;
-    }
-
-    /* Container dos itens de receita */
-    .easyjur-revenue-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    /* Estilo dos rótulos de receita */
-    .easyjur-label-revenue {
-      font-size: 1.2em;
-      color: #495a63;
-    }
-
-    /* Estilo dos valores de receita */
-    .easyjur-value-revenue {
-      font-size: 2.3em;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #495a63;
-    }
-
-    /* Estilo dos itens de receita */
-    .easyjur-revenue-item {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      padding-top: 8px;
-      color: #495a63;
-    }
-
-    /* Estilo do texto dentro dos itens de receita */
-    .easyjur-revenue-item span {
-      font-weight: 600;
-    }
-
-    /* Linha divisória antes de cada item de receita */
-    .easyjur-revenue-item::before {
-      content: "";
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: #acbac2;
-      margin-bottom: 100px;
-      position: absolute;
-      top: -8px;
-    }
-
-    /* Estilo do botão de impressão no modal */
-    .easyjur-modal-print-btn {
-      padding: 10px;
-      background-color: #e5293f;
-      color: #fff;
-      border: #e5293f solid 1px;
-      border-radius: 40px;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: 0.8s;
-      width: 100%;
-    }
-
-    /* Efeito hover do botão de impressão no modal */
-    .easyjur-modal-print-btn:hover {
-      background-color: transparent;
-      color: #e5293f !important;
-      font-weight: 700;
-    }
-
-    /* Estilo do botão de impressão geral */
-    .easyjur-print-btn {
-      padding: 10px;
-      background-color: #e5293f;
-      color: #fff !important;
-      border: #e5293f solid 1px;
-      border-radius: 40px;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: 0.8s;
-      position: absolute;
-      bottom: -65px;
-      width: 100%;
-    }
-
-    /* Efeito hover do botão de impressão geral */
-    .easyjur-print-btn:hover {
-      background-color: transparent;
-      color: #e5293f !important;
-      font-weight: 700;
-    }
-
-    /* Estilo do multiplicador extra */
-    .multiplicador-extra {
-      color: #e5293f;
-      border: solid 1px #e5293f;
-      font-size: 0.7rem;
-      padding: 2px 5px;
-      border-radius: 3px;
-      text-align: center;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    /* Estilo base do slider */
-    .easyjur-range-slider {
-      -webkit-appearance: none;
-      background: #ddd;
-      /* Cor de fundo padrão */
-      border-radius: 5px;
-      outline: none;
-      transition: background 0.3s;
-    }
-
-    /* Estilo do thumb do slider (Chrome/Safari) */
-    .easyjur-range-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      background: #e5293f;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    /* Estilo do thumb do slider (Firefox) */
-    .easyjur-range-slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      background: #e5293f;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    /* Efeito do slider ao receber foco */
-    .easyjur-range-slider:focus {
-      background: #e5293f45;
-      /* Cor semitransparente */
-    }
-
-    /* Efeito hover no thumb do slider */
-    .easyjur-range-slider:hover::-webkit-slider-thumb,
-    .easyjur-range-slider:hover::-moz-range-thumb {
-      background: #e5293f;
-    }
-
-    /* Animação de entrada à esquerda */
-    @-webkit-keyframes fadeInLeft {
-      0% {
-        opacity: 0;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-      }
-
-      100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none;
-      }
-    }
-
-    @keyframes fadeInLeft {
-      0% {
-        opacity: 0;
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-      }
-
-      100% {
-        opacity: 1;
-        -webkit-transform: none;
-        transform: none;
-      }
-    }
-
-    /* Aplicação da animação ao SVG no hover do link */
-    #easyjur__link__to__plan:hover #easyjur__svg__move {
-      -webkit-animation-name: fadeInLeft;
-      animation-name: fadeInLeft;
-      -webkit-animation-duration: 1s;
-      animation-duration: 1s;
-      -webkit-animation-fill-mode: both;
-      animation-fill-mode: both;
-    }
-
-    #easyjur__link__to__plan:hover #easyjur__svg__move path {
-      fill: #767d92 !important;
-      /* Cor do ícone no hover */
-    }
-
-    /* Elementos ocultos na tela, visíveis apenas na impressão */
-    .easyjur-img-on-print,
-    .easyjur-text--to-print,
-    .easyjur-img-qrcode-on-print {
-      display: none;
-    }
-
-    /* Estilo do modal */
-    .easyjur-modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      /* Fundo semitransparente */
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Estilo do conteúdo do modal */
-    .easyjur-modal-content {
-      position: relative;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      height: auto;
-      width: 600px;
-      text-align: center;
-    }
-
-    /* Estilo do botão de fechar o modal */
-    .easyjur-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .easyjur-modal-close i {
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: 0.5s ease;
-    }
-
-    .easyjur-modal-close i:hover {
-      background-color: #80929b;
-      color: #fff;
-    }
-
-    /* Estilo da tabela genérica */
-    #easyjur__modal table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    #easyjur__modal thead {
-      background-color: #f5f5f5;
-      /* Fundo do cabeçalho */
-    }
-
-    #easyjur__modal th,
-    #easyjur__modal td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-      /* Linha divisória */
-    }
-
-    #easyjur__modal th {
-      font-weight: bold;
-    }
-
-    /* Estilo do nome do plano na lista */
-    .easyjur__li__plan_name {
-      font-weight: bold;
-      color: #495a63;
-      margin-bottom: 10px;
-    }
-
-    /* Estilo da lista no resultado */
-    .easyjur-result ul {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-    }
-
-    /* Estilo dos itens da lista no resultado */
-    .easyjur-result li {
-      display: flex;
-      justify-content: space-between;
-      padding: 5px 0;
-      color: #495a63;
-    }
-
-    /* Estilo dos spans de funcionalidades */
-    .easyjur__span__func {
-      font-weight: 500;
-    }
-
-    /* Estilo das horas por funcionalidade */
-    .hours-per-feature {
-      font-weight: 600;
-    }
-
-    /* Estilo do plano recomendado */
-    .recommended-roi {
-      background-color: #80929b !important;
-      /* Cor de fundo personalizada */
-      color: #fff !important;
-      border: 2px solid #6a7f8b !important;
-      /* Borda mais escura */
-      box-shadow: 0 0 5px rgba(128, 146, 155, 0.5);
-      /* Sombra sutil */
-      transition: all 0.3s ease;
-    }
-
-    /* Estilo do toast de notificação */
-    .easyjur-toast {
-      background: #7f919a !important;
-      /* Cor sólida de fundo */
-      color: #fff !important;
-      font-family: "borna-medium-webfont", sans-serif !important;
-      border-radius: 5px !important;
-      padding: 15px !important;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
-      /* Sombra destacada */
-    }
-
-    #easyjur__modal_body {
-      overflow-y: auto;
-      height: 490px;
-    }
-
-    /* Estilização do scroll no conteúdo do modal */
-
-    /* Estilização do scroll no corpo interno do modal (tabela) */
-    #easyjur__modal_body {
-      max-height: 60vh;
-      /* Limita a altura do corpo interno, se necessário */
-      overflow-y: auto;
-      /* Ativa o scroll vertical no corpo */
-    }
-
-    /* Personalização da barra de rolagem para navegadores Webkit */
-    .easyjur-modal-content::-webkit-scrollbar,
-    #easyjur__modal_body::-webkit-scrollbar {
-      width: 8px;
-      /* Largura da barra de rolagem */
-    }
-
-    .easyjur-modal-content::-webkit-scrollbar-track,
-    #easyjur__modal_body::-webkit-scrollbar-track {
-      background: #f4f4f4;
-      /* Cor do fundo da pista (track) */
-      border-radius: 10px;
-      /* Bordas arredondadas na pista */
-    }
-
-    .easyjur-modal-content::-webkit-scrollbar-thumb,
-    #easyjur__modal_body::-webkit-scrollbar-thumb {
-      background: #e5293f;
-      /* Cor do thumb (parte que você arrasta) */
-      border-radius: 10px;
-      /* Bordas arredondadas no thumb */
-      transition: background 0.3s ease;
-      /* Transição suave */
-    }
-
-    .easyjur-modal-content::-webkit-scrollbar-thumb:hover,
-    #easyjur__modal_body::-webkit-scrollbar-thumb:hover {
-      background: #c12335;
-      /* Cor mais escura no hover */
-    }
-
-    /* Personalização para Firefox */
-    .easyjur-modal-content,
-    #easyjur__modal_body {
-      scrollbar-width: thin;
-      /* Define a largura como fina */
-      scrollbar-color: #e5293f #f4f4f4;
-      /* Cor do thumb e da pista */
-    }
-
-    .easyjur-table-head--to-print {
-      position: sticky;
-      top: 0;
-    }
-
-    .easyjur-selected-recommended {
-      position: absolute;
-      top: -250px;
-      display: flex;
-      gap: 20px;
-      color: #8f8f8f;
-      align-items: center;
-    }
-
-    .easyjur-selected-recommended div {
-      display: contents;
-    }
-
-    .easyjur-selected,
-    .easyjur-recommended {
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-    }
-
-    .easyjur-selected i {
-      color: #e5293f;
-    }
-
-    .easyjur-recommended i {
-      color: #80929b;
-    }
-
-    #easyjur__ul__plan__tags {
-      display: flex;
-      justify-content: center;
-      position: absolute;
-      top: -40px;
-      left: 0;
-      width: 100%;
-    }
-
-    #start__tag,
-    #premium__tag,
-    #standard__tag,
-    #growth__tag,
-    #growthplus__tag {
-      background-color: #e5293f;
-      color: #FFF;
-      padding: 5px 20px;
-      border-radius: 50px;
-      font-size: 12px;
-      font-weight: 700;
-      position: relative;
-      top: -15px;
-    }
-
-    .easyjur__span__func__title {
-      font-weight: 500;
-      color: #495a63;
-    }
-
-    .easyjur__span__func {
-      margin-left: 10px;
-      margin-top: -5px;
-    }
-
-
-
-    /* Responsividade para telas menores que 870px */
-    @media (max-width: 870px) {
-      .easyjur-calculator {
-        height: 100dvh;
-        overflow: auto;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .easyjur-main {
-        display: flex;
-        flex-direction: column !important;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .easyjur-container {
-        flex-direction: column !important;
-        height: auto;
-        width: 100%;
-      }
-
-      .easyjur-revenue-content {
-        margin-top: 20px;
-      }
-
-      .easyjur-result,
-      .easyjur-content {
-        width: 90%;
-        padding: 20px;
-        height: auto;
-      }
-
-      .easyjur-print-btn,
-      .easyjur-plans-selectors {
-        position: unset;
-      }
-
-      .easyjur-range-item span {
-        top: -12px;
-      }
-
-      .easyjur-selected-recommended {
-        position: unset !important;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-
-      #easyjur__ul__plan__tags {
-        position: relative;
-        top: 0;
-      }
-    }
-
-    /* Ajustes para telas menores que 765px */
-    @media (max-width: 765px) {
-      .easyjur-calculator {
-        height: auto;
-      }
-
-      .easyjur-revenue-item {
-        flex-wrap: wrap;
-      }
-
-      .easyjur-modal-content {
-        height: auto;
-      }
-
-      .easyjur-to-plans {
-        flex-wrap: wrap;
-        position: unset;
-        margin: 10px 0;
-      }
-    }
-
-    /* Estilos para impressão */
-    @media print {
-      body * {
-        visibility: hidden;
-        /* Oculta tudo na página */
-      }
-
-      .easyjur-modal,
-      .easyjur-modal * {
-        visibility: visible;
-        /* Exibe apenas o modal */
-      }
-
-      .easyjur-modal {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        box-shadow: none;
-        border: none;
-      }
-
-      .easyjur-modal-close {
-        display: none;
-        /* Oculta o botão de fechar */
-      }
-
-      .easyjur-modal-content {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 20px;
-        box-shadow: none;
-        border: none;
-      }
-
-      #easyjur__modal table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-
-      #easyjur__modal th,
-      #easyjur__modal td {
-        padding: 12px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-      }
-
-      #easyjur__modal th {
-        font-weight: bold;
-      }
-
-      #easyjur__modal_print {
-        display: none;
-        /* Oculta o botão de impressão */
-      }
-
-      .easyjur-text--to-print {
-        display: block;
-        /* Exibe texto específico na impressão */
-      }
-
-      .easyjur-img-qrcode-on-print {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-      }
-
-      .easyjur-img-on-print {
-        display: flex;
-        width: 100%;
-        margin-bottom: 20px;
-        justify-content: center;
-      }
-
-      .easyjur-img-qrcode-on-print img {
-        width: 200px;
-        height: 200px;
-      }
-
-      .easyjur-img-on-print img {
-        width: 200px;
-      }
-
-      #easyjur__modal_body {
-        max-height: unset;
-        overflow-y: hidden !important;
-        height: auto;
-      }
-
-      .easyjur-table-head--to-print {
-        position: unset;
-      }
-    }
-  </style>
-
-
-
-  <script>
-
-    let primeiraExecucaoToast = 1; // Controla a primeira execução do toast
-    const nomesPlanos = {
-      sta: "Start",
-      pre: "Premium",
-      std: "Standard",
-      grw: "Growth",
-      gpl: "Growth Plus",
-    };
-
-    const planos = {
-      sta: { preco: 139, usuariosInclusos: 2, horas: 10 }, //15 horas - 35% = 9,75 horas
-      pre: { preco: 389, usuariosInclusos: 5, horas: 13 }, //20 horas - 35% = 13 horas
-      std: { preco: 599, usuariosInclusos: 10, horas: 16 }, //25 horas - 35% = 16,25 horas
-      grw: { preco: 1699, usuariosInclusos: 15, horas: 19 }, //30 horas - 35% = 19,5 horas
-      gpl: { preco: 2799, usuariosInclusos: 30, horas: 22 }, //35 horas - 35% = 22,75 horas
-    };
-
-    const porcentagensPorFuncionalidade = {
-      sta: {
-        "Agenda de prazos": 25,
-        "Push de andamentos": 15,
-        "Publicações e Intimações Eletrônicas": 25,
-        "JurisAI: Inteligência Artificial para Advogados": 35,
-      },
-      pre: {
-        "Agenda de prazos": 10,
-        "Push de andamentos": 15,
-        "Publicações e Intimações Eletrônicas": 20,
-        "Controle de contratos": 20,
-        "JurisAI: Inteligência Artificial para Advogados": 35,
-      },
-      std: {
-        "Agenda de prazos": 10,
-        "Push de andamentos": 10,
-        "Publicações e Intimações Eletrônicas": 15,
-        "Controle de contratos": 15,
-        "Workflow avançado de tarefas ágil": 15,
-        "JurisAI: Inteligência Artificial para Advogados": 35,
-      },
-      grw: {
-        "Agenda de prazos": 10,
-        "Push de andamentos": 10,
-        "Publicações e Intimações Eletrônicas": 15,
-        "Controle de contratos": 15,
-        "Regras de cobrança automática": 20,
-        "JurisAI: Inteligência Artificial para Advogados": 30,
-      },
-      gpl: {
-        "Agenda de prazos": 6,
-        "Push de andamentos": 6,
-        "Publicações e Intimações Eletrônicas": 6,
-        "Controle de contratos": 6,
-        "Regras de cobrança automática": 15,
-        "Controladoria Jurídica + IA": 15,
-        "Relatórios avançados (envio automático)": 10,
-        "JurisAI: Inteligência Artificial para Advogados": 36,
-      },
-    };
-
-    // Função para exibir a tag correspondente ao plano selecionado
-    function exibirTagPlano(planoId) {
-      const tags = {
-        sta: "start__tag",
-        pre: "premium__tag",
-        std: "standard__tag",
-        grw: "growth__tag",
-        gpl: "growthplus__tag",
-      };
-
-      // Oculta todas as tags
-      Object.values(tags).forEach((tagId) => {
-        document.getElementById(tagId).style.display = "none";
-      });
-
-      // Exibe apenas a tag do plano selecionado
-      document.getElementById(tags[planoId]).style.display = "block";
-    }
-
-    let multiplicadorExtra = 1;
-    let planoAtual = "sta";
-    let toastAtual = null;
-
-    // Função que implementa debounce para evitar execuções excessivas
-    function debounce(func, wait) {
-      let timeout;
-      return function (...args) {
-        const context = this;
-        const later = function () {
-          timeout = null;
-          func.apply(context, args);
+
+
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <style>
+        /* Aplicação da fonte globalmente */
+        /* Estilo do container principal da calculadora */
+        .easyjur-calculator {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilo da seção principal */
+        .easyjur-main {
+            background-color: #f4f4f4;
+            /* Cor de fundo suave */
+            border-radius: 10px;
+            /* Bordas arredondadas */
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            /* Sombra leve */
+        }
+
+        /* Container interno com flexbox */
+        .easyjur-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            /* Espaçamento entre elementos */
+            padding: 20px;
+            height: auto;
+            width: 1200px;
+            /* Largura fixa */
+        }
+
+        /* Estilo do texto de legenda */
+        .easyjur-caption p {
+            text-align: center;
+            color: #495a63;
+            /* Cor do texto */
+            word-break: break-word;
+            /* Quebra de palavras para responsividade */
+            padding: 0 15px;
+        }
+
+        /* Divisão de largura entre resultado e conteúdo */
+        .easyjur-result,
+        .easyjur-content {
+            width: 50%;
+        }
+
+        /* Estilo do formulário dentro do conteúdo */
+        .easyjur-content form {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* Espaçamento entre elementos do formulário */
+        }
+
+        /* Estilo dos rótulos no conteúdo */
+        .easyjur-content label {
+            font-size: 1.2em;
+            color: #495a63;
+            /* Cor padrão do texto */
+        }
+
+        /* Estilo dos inputs no conteúdo */
+        .easyjur-content input {
+            width: 100%;
+        }
+
+        /* Container do item de range (slider) */
+        .easyjur-range-item {
+            position: relative;
+        }
+
+        /* Estilo do texto ao lado do slider */
+        .easyjur-range-item span {
+            position: absolute;
+            right: 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: #495a63;
+        }
+
+        /* Estilo do input de quantidade de pessoas */
+        .easyjur-input-amount-peoples {
+            padding: 10px 5px;
+            border-radius: 7px;
+            border: 1px solid #ccc;
+            /* Borda padrão */
+            outline: #80929b;
+            /* Cor do foco */
+            font-size: 20px;
+            color: #495a63;
+        }
+
+        /* Container dos seletores de planos */
+        .easyjur-plans-selectors {
+            width: 100%;
+        }
+
+        /* Grid para os botões de planos */
+        .easyjur-grid-plans {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            /* Espaçamento entre botões */
+        }
+
+        /* Estilo padrão dos botões de planos */
+        .easyjur-btn-plan {
+            padding: 10px;
+            color: #e5293f !important;
+            /* Cor principal */
+            border: #e5293f solid 1px;
+            background: transparent;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.5s;
+            /* Transição suave */
+            font-size: 11px;
+            font-weight: 600;
+            flex: calc(33% - 10px);
+            /* Distribuição em 3 colunas */
+        }
+
+        /* Efeito hover e estado ativo dos botões de planos */
+        .easyjur-btn-plan:hover,
+        .easyjur-btn-plan.active {
+            background-color: #e5293f !important;
+            color: #fff !important;
+            font-weight: 700;
+        }
+
+        /* Container do link para planos */
+        .easyjur-to-plans {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            bottom: -35px;
+        }
+
+        /* Estilo da seção de resultados */
+        .easyjur-result {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #fff;
+            padding: 0 20px;
+            height: 850px;
+            /* Altura fixa */
+            border-radius: 7px;
+            box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+                /* Sombra sutil */
+                rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+        }
+
+        /* Estilo do formulário dentro do resultado */
+        .easyjur-result form {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Estilo para rótulos em destaque */
+        .label-evidence {
+            font-weight: 700;
+        }
+
+        /* Container dos itens de receita */
+        .easyjur-revenue-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Estilo dos rótulos de receita */
+        .easyjur-label-revenue {
+            font-size: 1.2em;
+            color: #495a63;
+        }
+
+        /* Estilo dos valores de receita */
+        .easyjur-value-revenue {
+            font-size: 2.3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #495a63;
+        }
+
+        /* Estilo dos itens de receita */
+        .easyjur-revenue-item {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 8px;
+            color: #495a63;
+        }
+
+        /* Estilo do texto dentro dos itens de receita */
+        .easyjur-revenue-item span {
+            font-weight: 600;
+        }
+
+        /* Linha divisória antes de cada item de receita */
+        .easyjur-revenue-item::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 1px;
+            background-color: #acbac2;
+            margin-bottom: 100px;
+            position: absolute;
+            top: -8px;
+        }
+
+        /* Estilo do botão de impressão no modal */
+        .easyjur-modal-print-btn {
+            padding: 10px;
+            background-color: #e5293f;
+            color: #fff;
+            border: #e5293f solid 1px;
+            border-radius: 40px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.8s;
+            width: 100%;
+        }
+
+        /* Efeito hover do botão de impressão no modal */
+        .easyjur-modal-print-btn:hover {
+            background-color: transparent;
+            color: #e5293f !important;
+            font-weight: 700;
+        }
+
+        /* Estilo do botão de impressão geral */
+        .easyjur-print-btn {
+            padding: 10px;
+            background-color: #e5293f;
+            color: #fff !important;
+            border: #e5293f solid 1px;
+            border-radius: 40px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.8s;
+            position: absolute;
+            bottom: -65px;
+            width: 100%;
+        }
+
+        /* Efeito hover do botão de impressão geral */
+        .easyjur-print-btn:hover {
+            background-color: transparent;
+            color: #e5293f !important;
+            font-weight: 700;
+        }
+
+        /* Estilo do multiplicador extra */
+        .multiplicador-extra {
+            color: #e5293f;
+            border: solid 1px #e5293f;
+            font-size: 0.7rem;
+            padding: 2px 5px;
+            border-radius: 3px;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* Estilo base do slider */
+        .easyjur-range-slider {
+            -webkit-appearance: none;
+            background: #ddd;
+            /* Cor de fundo padrão */
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.3s;
+        }
+
+        /* Estilo do thumb do slider (Chrome/Safari) */
+        .easyjur-range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #e5293f;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        /* Estilo do thumb do slider (Firefox) */
+        .easyjur-range-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #e5293f;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        /* Efeito do slider ao receber foco */
+        .easyjur-range-slider:focus {
+            background: #e5293f45;
+            /* Cor semitransparente */
+        }
+
+        /* Efeito hover no thumb do slider */
+        .easyjur-range-slider:hover::-webkit-slider-thumb,
+        .easyjur-range-slider:hover::-moz-range-thumb {
+            background: #e5293f;
+        }
+
+        /* Animação de entrada à esquerda */
+        @-webkit-keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                -webkit-transform: translate3d(-100%, 0, 0);
+                transform: translate3d(-100%, 0, 0);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: none;
+                transform: none;
+            }
+        }
+
+        /* Aplicação da animação ao SVG no hover do link */
+        #easyjur__link__to__plan:hover #easyjur__svg__move {
+            -webkit-animation-name: fadeInLeft;
+            animation-name: fadeInLeft;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+
+        #easyjur__link__to__plan:hover #easyjur__svg__move path {
+            fill: #767d92 !important;
+            /* Cor do ícone no hover */
+        }
+
+        /* Elementos ocultos na tela, visíveis apenas na impressão */
+        .easyjur-img-on-print,
+        .easyjur-text--to-print,
+        .easyjur-img-qrcode-on-print {
+            display: none;
+        }
+
+        /* Estilo do modal */
+        .easyjur-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fundo semitransparente */
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilo do conteúdo do modal */
+        .easyjur-modal-content {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            height: auto;
+            width: 600px;
+            text-align: center;
+        }
+
+        /* Estilo do botão de fechar o modal */
+        .easyjur-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .easyjur-modal-close i {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s ease;
+        }
+
+        .easyjur-modal-close i:hover {
+            background-color: #80929b;
+            color: #fff;
+        }
+
+        /* Estilo da tabela genérica */
+        #easyjur__modal table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #easyjur__modal thead {
+            background-color: #f5f5f5;
+            /* Fundo do cabeçalho */
+        }
+
+        #easyjur__modal th,
+        #easyjur__modal td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            /* Linha divisória */
+        }
+
+        #easyjur__modal th {
+            font-weight: bold;
+        }
+
+        /* Estilo do nome do plano na lista */
+        .easyjur__li__plan_name {
+            font-weight: bold;
+            color: #495a63;
+            margin-bottom: 10px;
+        }
+
+        /* Estilo da lista no resultado */
+        .easyjur-result ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        /* Estilo dos itens da lista no resultado */
+        .easyjur-result li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            color: #495a63;
+        }
+
+        /* Estilo dos spans de funcionalidades */
+        .easyjur__span__func {
+            font-weight: 500;
+        }
+
+        /* Estilo das horas por funcionalidade */
+        .hours-per-feature {
+            font-weight: 600;
+        }
+
+        /* Estilo do plano recomendado */
+        .recommended-roi {
+            background-color: #80929b !important;
+            /* Cor de fundo personalizada */
+            color: #fff !important;
+            border: 2px solid #6a7f8b !important;
+            /* Borda mais escura */
+            box-shadow: 0 0 5px rgba(128, 146, 155, 0.5);
+            /* Sombra sutil */
+            transition: all 0.3s ease;
+        }
+
+        /* Estilo do toast de notificação */
+        .easyjur-toast {
+            background: #7f919a !important;
+            /* Cor sólida de fundo */
+            color: #fff !important;
+            font-family: "borna-medium-webfont", sans-serif !important;
+            border-radius: 5px !important;
+            padding: 15px !important;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+            /* Sombra destacada */
+        }
+
+        #easyjur__modal_body {
+            overflow-y: auto;
+            height: 490px;
+        }
+
+        /* Estilização do scroll no conteúdo do modal */
+
+        /* Estilização do scroll no corpo interno do modal (tabela) */
+        #easyjur__modal_body {
+            max-height: 60vh;
+            /* Limita a altura do corpo interno, se necessário */
+            overflow-y: auto;
+            /* Ativa o scroll vertical no corpo */
+        }
+
+        /* Personalização da barra de rolagem para navegadores Webkit */
+        .easyjur-modal-content::-webkit-scrollbar,
+        #easyjur__modal_body::-webkit-scrollbar {
+            width: 8px;
+            /* Largura da barra de rolagem */
+        }
+
+        .easyjur-modal-content::-webkit-scrollbar-track,
+        #easyjur__modal_body::-webkit-scrollbar-track {
+            background: #f4f4f4;
+            /* Cor do fundo da pista (track) */
+            border-radius: 10px;
+            /* Bordas arredondadas na pista */
+        }
+
+        .easyjur-modal-content::-webkit-scrollbar-thumb,
+        #easyjur__modal_body::-webkit-scrollbar-thumb {
+            background: #e5293f;
+            /* Cor do thumb (parte que você arrasta) */
+            border-radius: 10px;
+            /* Bordas arredondadas no thumb */
+            transition: background 0.3s ease;
+            /* Transição suave */
+        }
+
+        .easyjur-modal-content::-webkit-scrollbar-thumb:hover,
+        #easyjur__modal_body::-webkit-scrollbar-thumb:hover {
+            background: #c12335;
+            /* Cor mais escura no hover */
+        }
+
+        /* Personalização para Firefox */
+        .easyjur-modal-content,
+        #easyjur__modal_body {
+            scrollbar-width: thin;
+            /* Define a largura como fina */
+            scrollbar-color: #e5293f #f4f4f4;
+            /* Cor do thumb e da pista */
+        }
+
+        .easyjur-table-head--to-print {
+            position: sticky;
+            top: 0;
+        }
+
+        .easyjur-selected-recommended {
+            position: absolute;
+            top: -240px;
+            display: flex;
+            gap: 20px;
+            color: #8f8f8f;
+           
+        }
+
+        .easyjur-selected-recommended div {
+            display: contents;
+        }
+
+        .easyjur-selected,
+        .easyjur-recommended {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+        }
+
+        .easyjur-selected i {
+            color: #e5293f;
+        }
+
+        .easyjur-recommended i {
+            color: #80929b;
+        }
+
+        #easyjur__ul__plan__tags {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            top: -40px;
+            left: 0;
+            width: 100%;
+        }
+
+        #start__tag,
+        #premium__tag,
+        #standard__tag,
+        #growth__tag,
+        #growthplus__tag {
+            background-color: #e5293f;
+            color: #FFF;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            position: relative;
+            top: -15px;
+        }
+
+        .easyjur__span__func__title {
+            font-weight: 500;
+            color: #495a63;
+        }
+
+        .easyjur__span__func {
+            margin-left: 10px;
+            margin-top: -5px;
+        }
+
+
+
+        /* Responsividade para telas menores que 870px */
+        @media (max-width: 870px) {
+            .easyjur-calculator {
+                height: auto;
+                overflow: auto;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .easyjur-main {
+                display: flex;
+                flex-direction: column !important;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .easyjur-container {
+                flex-direction: column !important;
+                height: auto;
+                width: 100%;
+            }
+
+            .easyjur-revenue-content {
+                margin-top: 20px;
+            }
+
+            .easyjur-result,
+            .easyjur-content {
+                width: 90%;
+                padding: 20px;
+                height: auto;
+            }
+
+            .easyjur-print-btn,
+            .easyjur-plans-selectors {
+                position: unset;
+            }
+
+            .easyjur-range-item span {
+                top: -12px;
+            }
+
+            .easyjur-selected-recommended {
+                position: unset !important;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            #easyjur__ul__plan__tags {
+                position: relative;
+                top: 0;
+            }
+
+            #start__tag,
+            #premium__tag,
+            #standard__tag,
+            #growth__tag,
+            #growthplus__tag {
+                top: 25px;
+            }
+        }
+
+        /* Ajustes para telas menores que 765px */
+        @media (max-width: 765px) {
+            .easyjur-calculator {
+                height: auto;
+            }
+
+            .easyjur-revenue-item {
+                flex-wrap: wrap;
+            }
+
+            .easyjur-modal-content {
+                height: auto;
+            }
+
+            .easyjur-to-plans {
+                flex-wrap: wrap;
+                position: unset;
+                margin: 10px 0;
+            }
+        }
+
+        /* Estilos para impressão */
+        @media print {
+            body * {
+                visibility: hidden;
+                /* Oculta tudo na página */
+            }
+
+            .easyjur-modal,
+            .easyjur-modal * {
+                visibility: visible;
+                /* Exibe apenas o modal */
+            }
+
+            .easyjur-modal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+                border: none;
+            }
+
+            .easyjur-modal-close {
+                display: none;
+                /* Oculta o botão de fechar */
+            }
+
+            .easyjur-modal-content {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 20px;
+                box-shadow: none;
+                border: none;
+            }
+
+            #easyjur__modal table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            #easyjur__modal th,
+            #easyjur__modal td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            #easyjur__modal th {
+                font-weight: bold;
+            }
+
+            #easyjur__modal_print {
+                display: none;
+                /* Oculta o botão de impressão */
+            }
+
+            .easyjur-text--to-print {
+                display: block;
+                /* Exibe texto específico na impressão */
+            }
+
+            .easyjur-img-qrcode-on-print {
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .easyjur-img-on-print {
+                display: flex;
+                width: 100%;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+
+            .easyjur-img-qrcode-on-print img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .easyjur-img-on-print img {
+                width: 200px;
+            }
+
+            #easyjur__modal_body {
+                max-height: unset;
+                overflow-y: hidden !important;
+                height: auto;
+            }
+
+            .easyjur-table-head--to-print {
+                position: unset;
+            }
+        }
+    </style>
+
+
+
+    <script>
+
+        let primeiraExecucaoToast = 1; // Controla a primeira execução do toast
+        const nomesPlanos = {
+            sta: "Start",
+            pre: "Premium",
+            std: "Standard",
+            grw: "Growth",
+            gpl: "Growth Plus",
         };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const form = document.getElementById("calculator-form");
-      const inputs = form.querySelectorAll("input, button");
-      const resultado = {
-        horasTrabalhadas: document.getElementById("hours_worked"),
-        valorCobrado: document.getElementById("billed_hour"),
-        receitaMensal: document.getElementById("easyjur__revenue_value"),
-        receitaAnual: document.getElementById("easyjur__annual_revenue"),
-        horasEconomizadas: document.getElementById("easyjur__hours_saved"),
-        custoMensal: document.getElementById("easyjur__cost"),
-        roi: document.getElementById("easyjur__return"),
-      };
+        const planos = {
+            sta: { preco: 139, usuariosInclusos: 2, horas: 12 }, //15 horas - 20% = 12 horas
+            pre: { preco: 389, usuariosInclusos: 5, horas: 16 }, //20 horas - 20% = 16 horas
+            std: { preco: 599, usuariosInclusos: 10, horas: 20 },//25 horas - 20% = 20 horas
+            grw: { preco: 1699, usuariosInclusos: 15, horas: 24 }, //30 horas - 20% = 24 horas
+            gpl: { preco: 2799, usuariosInclusos: 30, horas: 28 }, //35 horas - 20% = 28 horas
+        };
 
-      iniciarPlanoInicial();
+        const porcentagensPorFuncionalidade = {
+            sta: {
+                "Agenda de prazos": 25,
+                "Push de andamentos": 15,
+                "Publicações e Intimações Eletrônicas": 25,
+                "JurisAI: Inteligência Artificial para Advogados": 35,
+            },
+            pre: {
+                "Agenda de prazos": 10,
+                "Push de andamentos": 15,
+                "Publicações e Intimações Eletrônicas": 20,
+                "Controle de contratos": 20,
+                "JurisAI: Inteligência Artificial para Advogados": 35,
+            },
+            std: {
+                "Agenda de prazos": 10,
+                "Push de andamentos": 10,
+                "Publicações e Intimações Eletrônicas": 15,
+                "Controle de contratos": 15,
+                "Workflow avançado de tarefas ágil": 15,
+                "JurisAI: Inteligência Artificial para Advogados": 35,
+            },
+            grw: {
+                "Agenda de prazos": 10,
+                "Push de andamentos": 10,
+                "Publicações e Intimações Eletrônicas": 15,
+                "Controle de contratos": 15,
+                "Regras de cobrança automática": 20,
+                "JurisAI: Inteligência Artificial para Advogados": 30,
+            },
+            gpl: {
+                "Agenda de prazos": 6,
+                "Push de andamentos": 6,
+                "Publicações e Intimações Eletrônicas": 6,
+                "Controle de contratos": 6,
+                "Regras de cobrança automática": 15,
+                "Controladoria Jurídica + IA": 15,
+                "Relatórios avançados (envio automático)": 10,
+                "JurisAI: Inteligência Artificial para Advogados": 36,
+            },
+        };
 
-      const atualizarCalculosDebounced = debounce(atualizarCalculos, 300);
+        // Função para exibir a tag correspondente ao plano selecionado
+        function exibirTagPlano(planoId) {
+            const tags = {
+                sta: "start__tag",
+                pre: "premium__tag",
+                std: "standard__tag",
+                grw: "growth__tag",
+                gpl: "growthplus__tag",
+            };
 
-      inputs.forEach((input) =>
-        input.addEventListener("input", atualizarCalculosDebounced)
-      );
+            // Oculta todas as tags
+            Object.values(tags).forEach((tagId) => {
+                document.getElementById(tagId).style.display = "none";
+            });
 
-      // Adiciona eventos aos botões de seleção de plano
-      document.querySelectorAll(".easyjur-btn-plan").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          document
-            .querySelectorAll(".easyjur-btn-plan")
-            .forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          planoAtual = btn.id;
-          atualizarCalculos();
-          exibirListaPlano(planoAtual);
-          exibirTagPlano(planoAtual); // Adiciona a exibição da tag
-        });
-      });
-
-      // Validação do input de número de pessoas
-      document.getElementById("number_of_peoples").addEventListener("input", () => {
-        let numeroPessoas = parseInt(
-          document.getElementById("number_of_peoples").value,
-          10
-        );
-        if (numeroPessoas < 1)
-          document.getElementById("number_of_peoples").value = 1;
-        atualizarCalculosDebounced();
-      });
-      // Inicializa com valores padrão do plano Start
-      function iniciarPlanoInicial() {
-        document.getElementById("number_of_peoples").value = 1;
-        document.getElementById("easyjur__hours_worked").value = 4.0;
-        document.getElementById("easyjur__billed_hour").value = 30;
-        document.getElementById("sta").classList.add("active");
-        atualizarCalculos();
-        exibirListaPlano("sta");
-        exibirTagPlano("sta"); // Exibe a tag do plano inicial
-      }
-
-      // Atualiza todos os cálculos com base nos inputs
-      function atualizarCalculos() {
-        const numeroPessoas =
-          Math.max(
-            1,
-            parseInt(document.getElementById("number_of_peoples").value, 10)
-          ) || 1;
-        const horasTrabalhadas = parseFloat(
-          document.getElementById("easyjur__hours_worked").value
-        );
-        const valorCobradoPorHora = parseFloat(
-          document.getElementById("easyjur__billed_hour").value
-        );
-
-        const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
-        const valorHorasTrabalhadas = horasTrabalhadas * valorCobradoPorHora || 0;
-
-        const receitaMensal =
-          horasEconomizadas * valorCobradoPorHora + valorHorasTrabalhadas;
-        const custoMensal = calcularCusto(numeroPessoas, planoAtual);
-        const roi = calcularROI(receitaMensal, custoMensal);
-
-        // Cálculo do retorno líquido anual
-        const receitaAnual = receitaMensal * 12;
-        const custoAnual = custoMensal * 12;
-        const retornoLiquidoAnual = Math.max(0, receitaAnual - custoAnual); // Garante que não seja negativo
-
-        // Atualizando os elementos existentes
-        resultado.horasTrabalhadas.textContent = `${horasTrabalhadas} Horas`;
-        resultado.valorCobrado.textContent = `${valorCobradoPorHora} R$`;
-        resultado.receitaMensal.textContent = receitaMensal.toLocaleString(
-          "pt-BR",
-          { style: "currency", currency: "BRL" }
-        );
-        resultado.receitaAnual.textContent = receitaAnual.toLocaleString("pt-BR", {
-          style: "currency",
-          currency: "BRL",
-        });
-        resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas`;
-        resultado.custoMensal.innerHTML = `<span class="multiplicador-extra">${multiplicadorExtra}x ${nomesPlanos[planoAtual]
-          }</span> R$ ${custoMensal.toLocaleString("pt-BR", {
-            maximumFractionDigits: 0,
-          })}`;
-        resultado.roi.textContent = `${Math.round(roi)}x`;
-
-        // Atualizando o retorno líquido anual, sem valores negativos
-        document.getElementById("value-liquid-return").textContent =
-          retornoLiquidoAnual.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          });
-
-        atualizarHorasPorFuncionalidade(horasEconomizadas);
-        recomendarPlano(numeroPessoas, horasTrabalhadas, valorCobradoPorHora);
-      }
-      // Calcula o custo mensal baseado no número de usuários
-      function calcularCusto(totalUsuarios, plano) {
-        multiplicadorExtra = 1;
-        const { preco, usuariosInclusos } = planos[plano];
-        if (totalUsuarios <= usuariosInclusos) return Math.round(preco);
-        multiplicadorExtra = Math.ceil(totalUsuarios / usuariosInclusos);
-        return multiplicadorExtra * preco;
-      }
-
-      // Calcula o Retorno sobre Investimento (ROI)
-      function calcularROI(receita, custo) {
-        return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
-      }
-
-      // Atualiza a aparência do slider
-      function atualizarSlider(slider, output) {
-        output.textContent =
-          slider.id === "easyjur__hours_worked"
-            ? `${slider.value} Horas`
-            : `${slider.value} R$`;
-        const percentage =
-          ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
-        slider.style.background = `linear-gradient(to right, #e5293f45 ${percentage}%, #ddd ${percentage}%)`;
-      }
-
-      // Exibe a lista de funcionalidades do plano selecionado
-      function exibirListaPlano(planoId) {
-        const listas = ["start", "premium", "standard", "growth", "growthplus"];
-        listas.forEach((lista) => {
-          const elemento = document.getElementById(`easyjur__ul__${lista}`);
-          elemento.style.display =
-            lista ===
-              planoId
-                .replace("sta", "start")
-                .replace("pre", "premium")
-                .replace("std", "standard")
-                .replace("grw", "growth")
-                .replace("gpl", "growthplus")
-              ? "block"
-              : "none";
-        });
-      }
-
-      // Distribui horas economizadas entre funcionalidades
-      function atualizarHorasPorFuncionalidade(horasEconomizadas) {
-        const porcentagens = porcentagensPorFuncionalidade[planoAtual];
-        const listaId = planoAtual
-          .replace("sta", "start")
-          .replace("pre", "premium")
-          .replace("std", "standard")
-          .replace("grw", "growth")
-          .replace("gpl", "growthplus");
-        const spans = document.querySelectorAll(
-          `#easyjur__ul__${listaId} .hours-per-feature`
-        );
-
-        let horasRestantes = horasEconomizadas;
-        let somaHorasCalculadas = 0;
-
-        spans.forEach((span, index) => {
-          const funcionalidade = span.previousElementSibling.textContent
-            .replace(":", "")
-            .trim();
-          const porcentagem = porcentagens[funcionalidade] / 100;
-          let horas = Math.round(horasEconomizadas * porcentagem);
-
-          if (index === spans.length - 1) {
-            horas = horasRestantes - somaHorasCalculadas;
-          } else {
-            somaHorasCalculadas += horas;
-          }
-
-          span.textContent = `${horas} Horas`;
-        });
-      }
-
-      // Recomenda o melhor plano com base no ROI
-      function recomendarPlano(
-        numeroPessoas,
-        horasTrabalhadas,
-        valorCobradoPorHora
-      ) {
-        const rois = {};
-        Object.keys(planos).forEach((planoId) => {
-          const horasEconomizadas = numeroPessoas * planos[planoId].horas;
-          const receitaMensal =
-            horasEconomizadas * valorCobradoPorHora +
-            horasTrabalhadas * valorCobradoPorHora;
-          const custoMensal = calcularCusto(numeroPessoas, planoId);
-          const roi = calcularROI(receitaMensal, custoMensal);
-          rois[planoId] = roi;
-        });
-
-        const planoRecomendadoId = Object.keys(rois).reduce((a, b) =>
-          rois[a] > rois[b] ? a : b
-        );
-        const roiRecomendado = Math.round(rois[planoRecomendadoId]);
-
-        document
-          .querySelectorAll(".easyjur-btn-plan")
-          .forEach((btn) => btn.classList.remove("recommended-roi"));
-        document
-          .getElementById(planoRecomendadoId)
-          .classList.add("recommended-roi");
-
-        if (toastAtual) {
-          toastAtual.hideToast();
-        }
-        if (primeiraExecucaoToast <= 1) {
-          primeiraExecucaoToast += 1;
-          return;
+            // Exibe apenas a tag do plano selecionado
+            document.getElementById(tags[planoId]).style.display = "block";
         }
 
-        toastAtual = Toastify({
-          text: `
-                <strong>Plano Recomendado: ${nomesPlanos[planoRecomendadoId]}</strong><br>
-                <small>Maximiza seu retorno em ${roiRecomendado}X com ${numeroPessoas} pessoa(s).</small>
-            `,
-          duration: 15000,
-          close: false,
-          gravity: "bottom",
-          position: "left",
-          className: "easyjur-toast",
-          stopOnFocus: true,
-          escapeMarkup: false,
-          onClick: function () {
-            toastAtual.hideToast();
-          },
-        });
-        toastAtual.showToast();
-      }
-      // Configuração dos sliders
-      const sliderHorasTrabalhadas = document.getElementById(
-        "easyjur__hours_worked"
-      );
-      const sliderValorHora = document.getElementById("easyjur__billed_hour");
-      const outputHorasTrabalhadas = document.getElementById("hours_worked");
-      const outputValorHora = document.getElementById("billed_hour");
+        let multiplicadorExtra = 1;
+        let planoAtual = "sta";
+        let toastAtual = null;
 
-      sliderHorasTrabalhadas.oninput = () =>
-        atualizarSlider(sliderHorasTrabalhadas, outputHorasTrabalhadas);
-      sliderValorHora.oninput = () =>
-        atualizarSlider(sliderValorHora, outputValorHora);
+        // Função que implementa debounce para evitar execuções excessivas
+        function debounce(func, wait) {
+            let timeout;
+            return function (...args) {
+                const context = this;
+                const later = function () {
+                    timeout = null;
+                    func.apply(context, args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
 
-      atualizarSlider(sliderHorasTrabalhadas, outputHorasTrabalhadas);
-      atualizarSlider(sliderValorHora, outputValorHora);
-    });
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("calculator-form");
+            const inputs = form.querySelectorAll("input, button");
+            const resultado = {
+                horasTrabalhadas: document.getElementById("hours_worked"),
+                valorCobrado: document.getElementById("billed_hour"),
+                receitaMensal: document.getElementById("easyjur__revenue_value"),
+                receitaAnual: document.getElementById("easyjur__annual_revenue"),
+                horasEconomizadas: document.getElementById("easyjur__hours_saved"),
+                custoMensal: document.getElementById("easyjur__cost"),
+                roi: document.getElementById("easyjur__return"),
+                // Novas adições
+                horasEconomizadasAnuais: document.getElementById("easyjur__annual_hours_saved"),
+                custoAnual: document.getElementById("easyjur__annual_cost"),
+            };
 
-    // Configuração do modal de impressão
-    document
-      .getElementById("easyjur__print")
-      .addEventListener("click", function () {
-        const numPessoas = document.getElementById("number_of_peoples").value;
-        const horasTrabalhadas = document.getElementById(
-          "easyjur__hours_worked"
-        ).value;
-        const valorHora = document.getElementById("easyjur__billed_hour").value;
-        const planoSelecionado =
-          document.querySelector(".easyjur-btn-plan.active")?.textContent ||
-          "Nenhum";
-        const receitaAnual = document.getElementById(
-          "easyjur__annual_revenue"
-        ).textContent;
-        const receitaMensal = document.getElementById(
-          "easyjur__revenue_value"
-        ).textContent;
-        const horasEconomizadas = document.getElementById(
-          "easyjur__hours_saved"
-        ).textContent;
-        const custoMensal = document.getElementById("easyjur__cost").textContent;
-        const retornoInvestimento =
-          document.getElementById("easyjur__return").textContent;
-        const retornoLiquidoAnual = document.getElementById(
-          "value-liquid-return"
-        ).textContent;
+            iniciarPlanoInicial();
 
-        // Obter as funcionalidades e horas economizadas do plano atual
-        const listaId = planoAtual
-          .replace("sta", "start")
-          .replace("pre", "premium")
-          .replace("std", "standard")
-          .replace("grw", "growth")
-          .replace("gpl", "growthplus");
-        const funcionalidades = document.querySelectorAll(
-          `#easyjur__ul__${listaId} li:not(.easyjur__li__plan_name)`
-        );
-        let funcionalidadesHTML = "";
-        funcionalidades.forEach((li) => {
-          const funcionalidade = li
-            .querySelector(".easyjur__span__func")
-            .textContent.replace(":", "")
-            .trim();
-          const horas = li.querySelector(".hours-per-feature").textContent;
-          funcionalidadesHTML += `<tr><td><strong>${funcionalidade}:</strong></td><td>${horas}</td></tr>`;
-        });
+            const atualizarCalculosDebounced = debounce(atualizarCalculos, 300);
 
-        // Construir o conteúdo do modal com o título e as funcionalidades
-        document.getElementById("easyjur__modal_body").innerHTML = `
-        <table>
-            <thead class="easyjur-table-head--to-print">
-                <tr>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><td><strong>Número de Pessoas no Escritório:</strong></td><td>${numPessoas}</td></tr>
-                <tr><td><strong>Horas Trabalhadas por Dia:</strong></td><td>${horasTrabalhadas} Horas</td></tr>
-                <tr><td><strong>Valor Cobrado por Hora:</strong></td><td>R$ ${valorHora},00</td></tr>
-                <tr><td><strong>Plano Selecionado:</strong></td><td>${planoSelecionado}</td></tr>
-                <tr><td><strong>Estimativa de Receita Anual:</strong></td><td>${receitaAnual}</td></tr>
-                <tr><td><strong>Estimativa de Receita Mensal:</strong></td><td>${receitaMensal}</td></tr>
-                <tr><td><strong>Horas Mensais Economizadas:</strong></td><td>${horasEconomizadas}</td></tr>
-                <tr><td><strong>Estimativa de Receita Líquida Anual:</strong></td><td>${retornoLiquidoAnual}</td></tr>
-                <tr style="background-color: #f5f5f5;"><td colspan="2"><strong>Horas Economizadas por Funcionalidade</strong></td></tr>
-                ${funcionalidadesHTML}
-                <tr><td><strong>Custo Mensal do EasyJur:</strong></td><td>${custoMensal}</td></tr>
-                <tr><td><strong>Retorno sobre o Investimento:</strong></td><td>${retornoInvestimento}</td></tr>
-                
-            </tbody>
-        </table>
-    `;
-
-        // Exibir o modal
-        document.getElementById("easyjur__modal").style.display = "flex";
-
-        // Fechar o modal ao clicar no "X"
-        document
-          .querySelector(".easyjur-modal-close")
-          .addEventListener("click", function () {
-            document.getElementById("easyjur__modal").style.display = "none";
-          });
-
-        // Fechar o modal ao clicar fora dele
-        window.addEventListener("click", function (event) {
-          if (event.target === document.getElementById("easyjur__modal")) {
-            document.getElementById("easyjur__modal").style.display = "none";
-          }
-        });
-
-        // Imprimir e fechar o modal após a impressão
-        document
-          .getElementById("easyjur__modal_print")
-          .addEventListener("click", function () {
-            window.print();
-            window.addEventListener(
-              "afterprint",
-              function () {
-                document.getElementById("easyjur__modal").style.display = "none";
-              },
-              { once: true }
+            inputs.forEach((input) =>
+                input.addEventListener("input", atualizarCalculosDebounced)
             );
-          });
-      });
+
+            // Adiciona eventos aos botões de seleção de plano
+            document.querySelectorAll(".easyjur-btn-plan").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    document
+                        .querySelectorAll(".easyjur-btn-plan")
+                        .forEach((b) => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    planoAtual = btn.id;
+                    atualizarCalculos();
+                    exibirListaPlano(planoAtual);
+                    exibirTagPlano(planoAtual); // Adiciona a exibição da tag
+                });
+            });
+
+            // Validação do input de número de pessoas
+            document.getElementById("number_of_peoples").addEventListener("input", () => {
+                let numeroPessoas = parseInt(
+                    document.getElementById("number_of_peoples").value,
+                    10
+                );
+                if (numeroPessoas < 1)
+                    document.getElementById("number_of_peoples").value = 1;
+                atualizarCalculosDebounced();
+            });
+            // Inicializa com valores padrão do plano Start
+            function iniciarPlanoInicial() {
+                document.getElementById("number_of_peoples").value = 1;
+                document.getElementById("easyjur__hours_worked").value = 4.0;
+                document.getElementById("easyjur__billed_hour").value = 30;
+                document.getElementById("sta").classList.add("active");
+                atualizarCalculos();
+                exibirListaPlano("sta");
+                exibirTagPlano("sta"); // Exibe a tag do plano inicial
+            }
+
+            // Atualiza todos os cálculos com base nos inputs
+            function atualizarCalculos() {
+                const numeroPessoas =
+                    Math.max(
+                        1,
+                        parseInt(document.getElementById("number_of_peoples").value, 10)
+                    ) || 1;
+                const horasTrabalhadas = parseFloat(
+                    document.getElementById("easyjur__hours_worked").value
+                );
+                const valorCobradoPorHora = parseFloat(
+                    document.getElementById("easyjur__billed_hour").value
+                );
+
+                const horasEconomizadas = numeroPessoas * planos[planoAtual].horas;
+                const valorHorasTrabalhadas = horasTrabalhadas * valorCobradoPorHora || 0;
+
+                const receitaMensal =
+                    horasEconomizadas * valorCobradoPorHora + valorHorasTrabalhadas;
+                const custoMensal = calcularCusto(numeroPessoas, planoAtual);
+                const roi = calcularROI(receitaMensal, custoMensal);
+
+                // Cálculo do retorno líquido anual
+                const receitaAnual = receitaMensal * 12;
+                const custoAnual = custoMensal * 12;
+                const retornoLiquidoAnual = Math.max(0, receitaAnual - custoAnual);
+
+                // Novos cálculos
+                const horasEconomizadasAnuais = horasEconomizadas * 12;
+
+                // Atualizando os elementos existentes
+                resultado.horasTrabalhadas.textContent = `${horasTrabalhadas} Horas`;
+                resultado.valorCobrado.textContent = `${valorCobradoPorHora} R$`;
+                resultado.receitaMensal.textContent = receitaMensal.toLocaleString(
+                    "pt-BR",
+                    { style: "currency", currency: "BRL" }
+                );
+                resultado.receitaAnual.textContent = receitaAnual.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                });
+                resultado.horasEconomizadas.textContent = `${horasEconomizadas} Horas/Mês`;
+                resultado.custoMensal.innerHTML = `<span class="multiplicador-extra">${multiplicadorExtra}x ${nomesPlanos[planoAtual]}</span> R$ ${custoMensal.toLocaleString("pt-BR", {
+                    maximumFractionDigits: 0,
+                })}/Mês`;
+                resultado.roi.textContent = `${Math.round(roi)}x`;
+
+                // Atualizando os novos elementos
+                document.getElementById("easyjur__annual_hours_saved").textContent = `${horasEconomizadasAnuais} Horas/Ano`;
+                document.getElementById("easyjur__annual_cost").textContent = `${custoAnual.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL"
+                })}/Ano`;
+
+                // Atualizando o retorno líquido anual
+                document.getElementById("value-liquid-return").textContent =
+                    retornoLiquidoAnual.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                    });
+
+                atualizarHorasPorFuncionalidade(horasEconomizadas);
+                recomendarPlano(numeroPessoas, horasTrabalhadas, valorCobradoPorHora);
+            }
 
 
-  </script>
+            // Calcula o custo mensal baseado no número de usuários
+            function calcularCusto(totalUsuarios, plano) {
+                multiplicadorExtra = 1;
+                const { preco, usuariosInclusos } = planos[plano];
+                if (totalUsuarios <= usuariosInclusos) return Math.round(preco);
+                multiplicadorExtra = Math.ceil(totalUsuarios / usuariosInclusos);
+                return multiplicadorExtra * preco;
+            }
+
+            // Calcula o Retorno sobre Investimento (ROI)
+            function calcularROI(receita, custo) {
+                return custo === 0 ? 0 : Math.max(0, (receita - custo) / custo);
+            }
+
+            // Atualiza a aparência do slider
+            function atualizarSlider(slider, output) {
+                output.textContent =
+                    slider.id === "easyjur__hours_worked"
+                        ? `${slider.value} Horas`
+                        : `${slider.value} R$`;
+                const percentage =
+                    ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+                slider.style.background = `linear-gradient(to right, #e5293f45 ${percentage}%, #ddd ${percentage}%)`;
+            }
+
+            // Exibe a lista de funcionalidades do plano selecionado
+            function exibirListaPlano(planoId) {
+                const listas = ["start", "premium", "standard", "growth", "growthplus"];
+                listas.forEach((lista) => {
+                    const elemento = document.getElementById(`easyjur__ul__${lista}`);
+                    elemento.style.display =
+                        lista ===
+                            planoId
+                                .replace("sta", "start")
+                                .replace("pre", "premium")
+                                .replace("std", "standard")
+                                .replace("grw", "growth")
+                                .replace("gpl", "growthplus")
+                            ? "block"
+                            : "none";
+                });
+            }
+
+            // Distribui horas economizadas entre funcionalidades
+            function atualizarHorasPorFuncionalidade(horasEconomizadas) {
+                const porcentagens = porcentagensPorFuncionalidade[planoAtual];
+                const listaId = planoAtual
+                    .replace("sta", "start")
+                    .replace("pre", "premium")
+                    .replace("std", "standard")
+                    .replace("grw", "growth")
+                    .replace("gpl", "growthplus");
+                const spans = document.querySelectorAll(
+                    `#easyjur__ul__${listaId} .hours-per-feature`
+                );
+
+                let horasRestantes = horasEconomizadas;
+                let somaHorasCalculadas = 0;
+
+                spans.forEach((span, index) => {
+                    const funcionalidade = span.previousElementSibling.textContent
+                        .replace(":", "")
+                        .trim();
+                    const porcentagem = porcentagens[funcionalidade] / 100;
+                    let horas = Math.round(horasEconomizadas * porcentagem);
+
+                    if (index === spans.length - 1) {
+                        horas = horasRestantes - somaHorasCalculadas;
+                    } else {
+                        somaHorasCalculadas += horas;
+                    }
+
+                    span.textContent = `${horas} Horas`;
+                });
+            }
+
+            // Recomenda o melhor plano com base no ROI
+            function recomendarPlano(
+                numeroPessoas,
+                horasTrabalhadas,
+                valorCobradoPorHora
+            ) {
+                const rois = {};
+                Object.keys(planos).forEach((planoId) => {
+                    const horasEconomizadas = numeroPessoas * planos[planoId].horas;
+                    const receitaMensal =
+                        horasEconomizadas * valorCobradoPorHora +
+                        horasTrabalhadas * valorCobradoPorHora;
+                    const custoMensal = calcularCusto(numeroPessoas, planoId);
+                    const roi = calcularROI(receitaMensal, custoMensal);
+                    rois[planoId] = roi;
+                });
+
+                const planoRecomendadoId = Object.keys(rois).reduce((a, b) =>
+                    rois[a] > rois[b] ? a : b
+                );
+                const roiRecomendado = Math.round(rois[planoRecomendadoId]);
+
+                document
+                    .querySelectorAll(".easyjur-btn-plan")
+                    .forEach((btn) => btn.classList.remove("recommended-roi"));
+                document
+                    .getElementById(planoRecomendadoId)
+                    .classList.add("recommended-roi");
+
+                if (toastAtual) {
+                    toastAtual.hideToast();
+                }
+                if (primeiraExecucaoToast <= 1) {
+                    primeiraExecucaoToast += 1;
+                    return;
+                }
+
+                toastAtual = Toastify({
+                    text: `
+                <strong>Plano Recomendado: ${nomesPlanos[planoRecomendadoId]}</strong><br>
+                <small>Maximiza seu retorno em ${roiRecomendado}X com ${numeroPessoas} Colaboradores.</small>
+            `,
+                    duration: 15000,
+                    close: false,
+                    gravity: "bottom",
+                    position: "left",
+                    className: "easyjur-toast",
+                    stopOnFocus: true,
+                    escapeMarkup: false,
+                    onClick: function () {
+                        toastAtual.hideToast();
+                    },
+                });
+                toastAtual.showToast();
+            }
+            // Configuração dos sliders
+            const sliderHorasTrabalhadas = document.getElementById(
+                "easyjur__hours_worked"
+            );
+            const sliderValorHora = document.getElementById("easyjur__billed_hour");
+            const outputHorasTrabalhadas = document.getElementById("hours_worked");
+            const outputValorHora = document.getElementById("billed_hour");
+
+            sliderHorasTrabalhadas.oninput = () =>
+                atualizarSlider(sliderHorasTrabalhadas, outputHorasTrabalhadas);
+            sliderValorHora.oninput = () =>
+                atualizarSlider(sliderValorHora, outputValorHora);
+
+            atualizarSlider(sliderHorasTrabalhadas, outputHorasTrabalhadas);
+            atualizarSlider(sliderValorHora, outputValorHora);
+        });
+
+        // Configuração do modal de impressão
+        document
+            .getElementById("easyjur__print")
+            .addEventListener("click", function () {
+                const numPessoas = document.getElementById("number_of_peoples").value;
+                const horasTrabalhadas = document.getElementById(
+                    "easyjur__hours_worked"
+                ).value;
+                const valorHora = document.getElementById("easyjur__billed_hour").value;
+                const planoSelecionado =
+                    document.querySelector(".easyjur-btn-plan.active")?.textContent ||
+                    "Nenhum";
+                const receitaAnual = document.getElementById(
+                    "easyjur__annual_revenue"
+                ).textContent;
+                const receitaMensal = document.getElementById(
+                    "easyjur__revenue_value"
+                ).textContent;
+                const horasEconomizadas = document.getElementById(
+                    "easyjur__hours_saved"
+                ).textContent;
+                const custoMensal = document.getElementById("easyjur__cost").textContent;
+                const retornoInvestimento =
+                    document.getElementById("easyjur__return").textContent;
+                const retornoLiquidoAnual = document.getElementById(
+                    "value-liquid-return"
+                ).textContent;
+
+                // Obter as funcionalidades e horas economizadas do plano atual
+                const listaId = planoAtual
+                    .replace("sta", "start")
+                    .replace("pre", "premium")
+                    .replace("std", "standard")
+                    .replace("grw", "growth")
+                    .replace("gpl", "growthplus");
+                const funcionalidades = document.querySelectorAll(
+                    `#easyjur__ul__${listaId} li:not(.easyjur__li__plan_name)`
+                );
+                let funcionalidadesHTML = "";
+                funcionalidades.forEach((li) => {
+                    const funcionalidade = li
+                        .querySelector(".easyjur__span__func")
+                        .textContent.replace(":", "")
+                        .trim();
+                    const horas = li.querySelector(".hours-per-feature").textContent;
+                    funcionalidadesHTML += `<tr><td><strong>${funcionalidade}:</strong></td><td>${horas}</td></tr>`;
+                });
+
+                document.getElementById("easyjur__modal_body").innerHTML = `
+                    <table>
+                        <thead class="easyjur-table-head--to-print">
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Número de Pessoas no Escritório:</strong></td><td>${numPessoas}</td></tr>
+                            <tr><td><strong>Horas Trabalhadas por Dia:</strong></td><td>${horasTrabalhadas} Horas</td></tr>
+                            <tr><td><strong>Valor Cobrado por Hora:</strong></td><td>R$ ${valorHora},00</td></tr>
+                            <tr><td><strong>Plano Selecionado:</strong></td><td>${planoSelecionado}</td></tr>
+                            <tr><td><strong>Estimativa de Receita Anual:</strong></td><td>${receitaAnual}</td></tr>
+                            <tr><td><strong>Estimativa de Receita Mensal:</strong></td><td>${receitaMensal}</td></tr>
+                            <tr><td><strong>Horas Mensais Economizadas:</strong></td><td>${horasEconomizadas}</td></tr>
+                            <tr><td><strong>Horas Anuais Economizadas:</strong></td><td>${document.getElementById("easyjur__annual_hours_saved").textContent}</td></tr>
+                            <tr><td><strong>Custo Mensal do EasyJur:</strong></td><td>${custoMensal}</td></tr>
+                            <tr><td><strong>Custo Anual do EasyJur:</strong></td><td>${document.getElementById("easyjur__annual_cost").textContent}</td></tr>
+                            <tr><td><strong>Estimativa de Receita Líquida Anual:</strong></td><td>${retornoLiquidoAnual}</td></tr>
+                            <tr><td><strong>Retorno sobre o Investimento:</strong></td><td>${retornoInvestimento}</td></tr>
+                            <tr style="background-color: #f5f5f5;"><td colspan="2"><strong>Horas Economizadas por Funcionalidade</strong></td></tr>
+                            ${funcionalidadesHTML}
+                            
+                            
+                        </tbody>
+                    </table>
+                    `;
+
+                // Exibir o modal
+                document.getElementById("easyjur__modal").style.display = "flex";
+
+                // Fechar o modal ao clicar no "X"
+                document
+                    .querySelector(".easyjur-modal-close")
+                    .addEventListener("click", function () {
+                        document.getElementById("easyjur__modal").style.display = "none";
+                    });
+
+                // Fechar o modal ao clicar fora dele
+                window.addEventListener("click", function (event) {
+                    if (event.target === document.getElementById("easyjur__modal")) {
+                        document.getElementById("easyjur__modal").style.display = "none";
+                    }
+                });
+
+                // Imprimir e fechar o modal após a impressão
+                document
+                    .getElementById("easyjur__modal_print")
+                    .addEventListener("click", function () {
+                        window.print();
+                        window.addEventListener(
+                            "afterprint",
+                            function () {
+                                document.getElementById("easyjur__modal").style.display = "none";
+                            },
+                            { once: true }
+                        );
+                    });
+            });
+
+
+    </script>
